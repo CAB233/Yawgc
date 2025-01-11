@@ -1,0 +1,43 @@
+#https://stackoverflow.com/questions/74332455/connection-refused-for-local-server-in-github-actions-workflow
+name: Generate
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "* */1 * * *"
+  push:
+    branches:
+      - main
+jobs:
+  main:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: sub-store-org/Sub-Store
+          ref: master
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+      - name: Install dependencies
+        run: |
+          npm install -g pnpm
+          cd backend && pnpm i --no-frozen-lockfile
+      - name: Get file
+        run: |
+          cd backend
+          echo "${{ secrets.FILE_CONFIG }}" | base64 --decode > sub-store.json
+      - uses: JarvusInnovations/background-action@v1.0.7
+        with:
+          run: |
+            pnpm start
+          wait-on: |
+            http://localhost:3000
+          working-directory: backend
+      - name: Generate config
+        run: curl -o sing-box.json "http://localhost:3000/api/file/config"
+      - name: Upload config
+        uses: actions/upload-artifact@v4
+        with:
+          name: client_config
+          path: sing-box.json
+          retention-days: 1
