@@ -1,9 +1,8 @@
-#https://stackoverflow.com/questions/74332455/connection-refused-for-local-server-in-github-actions-workflow
 name: Generate
 on:
   workflow_dispatch:
   schedule:
-    - cron: "* */1 * * *"
+    - cron: "* */12 * * *"
   push:
     branches:
       - main
@@ -35,9 +34,13 @@ jobs:
           working-directory: backend
       - name: Generate config
         run: curl -o sing-box.json "http://localhost:3000/api/file/config"
-      - name: Upload config
-        uses: actions/upload-artifact@v4
+      - name: Upload files
+        uses: ncipollo/release-action@v1
         with:
-          name: client_config
-          path: sing-box.json
-          retention-days: 1
+          artifactErrorsFailBuild: true
+          removeArtifacts: true
+          allowUpdates: true
+          generateReleaseNotes: false
+          tag: nightly
+          artifacts: "./sing-box.json"
+          prerelease: true
