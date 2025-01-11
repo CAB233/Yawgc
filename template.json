@@ -97,17 +97,17 @@
       "tag": "Direct"
     },
     {
-      "type": "urltest",
-      "tag": "Auto",
-      "outbounds": null
-    },
-    {
       "type": "selector",
       "tag": "Proxy",
       "outbounds": [
         "Auto"
       ],
       "default": "Auto"
+    },
+    {
+      "type": "urltest",
+      "tag": "Auto",
+      "outbounds": null
     },
     {
       "type": "selector",
