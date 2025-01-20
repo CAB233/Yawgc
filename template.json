@@ -9,14 +9,14 @@
         "tag": "dns-proxy",
         "address": "https://1.1.1.1/dns-query",
         "strategy": "ipv4_only",
-        "detour": "Proxy"
+        "detour": "代理"
       },
       {
         "tag": "dns-subnet",
         "address": "https://8.8.8.8/dns-query",
         "strategy": "ipv4_only",
-        "detour": "Proxy",
-        "client_subnet": "58.216.176.200"
+        "detour": "代理",
+        "client_subnet": "171.39.145.154"
       },
       {
         "tag": "dns-fakeip",
@@ -29,7 +29,7 @@
     ],
     "rules": [
       {
-        "clash_mode": "Direct",
+        "clash_mode": "直连",
         "server": "dns-local"
       },
       {
@@ -49,8 +49,6 @@
           "domainset/cdn",
           "non_ip/cdn",
           "non_ip/telegram",
-          "domainset/download",
-          "non_ip/download",
           "non_ip/microsoft",
           "non_ip/global"
         ],
@@ -61,6 +59,8 @@
           "non_ip/apple_cdn",
           "non_ip/apple_cn",
           "non_ip/microsoft_cdn",
+          "domainset/download",
+          "non_ip/download",
           "non_ip/domestic",
           "non_ip/direct",
           "domainset/my_direct"
@@ -94,35 +94,27 @@
   "outbounds": [
     {
       "type": "direct",
-      "tag": "Direct"
+      "tag": "直连"
     },
     {
       "type": "selector",
-      "tag": "Proxy",
+      "tag": "代理",
       "outbounds": [
-        "Auto"
+        "自动"
       ],
-      "default": "Auto"
+      "default": "自动"
     },
     {
       "type": "urltest",
-      "tag": "Auto",
+      "tag": "自动",
       "outbounds": null
-    },
-    {
-      "type": "selector",
-      "tag": "下载",
-      "outbounds": [
-        "Proxy",
-        "Direct"
-      ]
     }
   ],
   "route": {
     "rules": [
       {
-        "clash_mode": "Direct",
-        "outbound": "Direct"
+        "clash_mode": "直连",
+        "outbound": "直连"
       },
       {
         "action": "sniff",
@@ -150,14 +142,8 @@
       },
       {
         "port": 80,
-        "process_name": [
-          "64gram-desktop",
-          "telegram-desktop"
-        ],
-        "package_name": [
-          "uz.unnarsx.cherrygram",
-          "org.telegram.messenger.web"
-        ],
+        "process_name": "64gram-desktop",
+        "package_name": "uz.unnarsx.cherrygram",
         "action": "reject",
         "method": "default"
       },
@@ -180,18 +166,20 @@
           "ssh",
           "bittorrent"
         ],
-        "outbound": "Direct"
+        "outbound": "直连"
       },
       {
         "rule_set": [
           "non_ip/apple_cdn",
           "non_ip/apple_cn",
           "non_ip/microsoft_cdn",
+          "domainset/download",
+          "non_ip/download",
           "non_ip/domestic",
           "non_ip/direct",
           "domainset/my_direct"
         ],
-        "outbound": "Direct"
+        "outbound": "直连"
       },
       {
         "rule_set": [
@@ -201,14 +189,7 @@
           "non_ip/microsoft",
           "non_ip/global"
         ],
-        "outbound": "Proxy"
-      },
-      {
-        "rule_set": [
-          "domainset/download",
-          "non_ip/download"
-        ],
-        "outbound": "下载"
+        "outbound": "代理"
       },
       {
         "action": "resolve"
@@ -227,10 +208,7 @@
               "64gram-desktop",
               "telegram-desktop"
             ],
-            "package_name": [
-              "uz.unnarsx.cherrygram",
-              "org.telegram.messenger.web"
-            ]
+            "package_name": "uz.unnarsx.cherrygram"
           },
           {
             "rule_set": "ip/telegram",
@@ -246,11 +224,11 @@
           "ip/china_ip",
           "ip/china_ip_ipv6"
         ],
-        "outbound": "Direct"
+        "outbound": "直连"
       },
       {
         "ip_is_private": true,
-        "outbound": "Direct"
+        "outbound": "直连"
       }
     ],
     "rule_set": [
@@ -370,12 +348,18 @@
       },
       {
         "type": "remote",
+        "tag": "ip/lan",
+        "format": "source",
+        "url": "https://ruleset.skk.moe/sing-box/ip/lan.json"
+      },
+      {
+        "type": "remote",
         "tag": "domainset/my_direct",
         "format": "source",
         "url": "https://repo.zuoye.win/ruleset/my_direct.json"
       }
     ],
-    "final": "Proxy",
+    "final": "代理",
     "auto_detect_interface": true,
     "override_android_vpn": true
   },
@@ -389,8 +373,8 @@
       "external_controller": "127.0.0.1:9090",
       "external_ui": "ui",
       "external_ui_download_url": "https://github.com/MetaCubeX/metacubexd/archive/gh-pages.zip",
-      "secret": "12345",
-      "default_mode": "Rule",
+      "secret": "114514",
+      "default_mode": "规则",
       "access_control_allow_private_network": true
     }
   }
