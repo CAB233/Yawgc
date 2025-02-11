@@ -16,7 +16,7 @@
         "address": "https://8.8.8.8/dns-query",
         "strategy": "ipv4_only",
         "detour": "代理",
-        "client_subnet": "171.39.145.154"
+        "client_subnet": "27.109.124.0"
       },
       {
         "tag": "dns-fakeip",
@@ -48,6 +48,8 @@
         "rule_set": [
           "domainset/cdn",
           "non_ip/cdn",
+          "domainset/download",
+          "non_ip/download",
           "non_ip/telegram",
           "non_ip/microsoft",
           "non_ip/global"
@@ -59,8 +61,7 @@
           "non_ip/apple_cdn",
           "non_ip/apple_cn",
           "non_ip/microsoft_cdn",
-          "domainset/download",
-          "non_ip/download",
+          "domainset/game-download",
           "non_ip/domestic",
           "non_ip/direct",
           "domainset/my_direct"
@@ -142,8 +143,8 @@
       },
       {
         "port": 80,
-        "process_name": "64gram-desktop",
-        "package_name": "uz.unnarsx.cherrygram",
+        "process_name": "telegram-desktop",
+        "package_name": "xyz.nextalone.nagram",
         "action": "reject",
         "method": "default"
       },
@@ -173,8 +174,7 @@
           "non_ip/apple_cdn",
           "non_ip/apple_cn",
           "non_ip/microsoft_cdn",
-          "domainset/download",
-          "non_ip/download",
+          "domainset/game-download",
           "non_ip/domestic",
           "non_ip/direct",
           "domainset/my_direct"
@@ -185,6 +185,8 @@
         "rule_set": [
           "domainset/cdn",
           "non_ip/cdn",
+          "domainset/download",
+          "non_ip/download",
           "non_ip/telegram",
           "non_ip/microsoft",
           "non_ip/global"
@@ -204,11 +206,8 @@
         "mode": "and",
         "rules": [
           {
-            "process_name": [
-              "64gram-desktop",
-              "telegram-desktop"
-            ],
-            "package_name": "uz.unnarsx.cherrygram"
+            "process_name": "telegram-desktop",
+            "package_name": "xyz.nextalone.nagram"
           },
           {
             "rule_set": "ip/telegram",
@@ -273,6 +272,12 @@
         "tag": "non_ip/download",
         "format": "source",
         "url": "https://ruleset.skk.moe/sing-box/non_ip/download.json"
+      },
+      {
+        "type": "remote",
+        "tag": "domainset/game-download",
+        "format": "source",
+        "url": "https://ruleset.skk.moe/sing-box/domainset/game-download.json"
       },
       {
         "type": "remote",
