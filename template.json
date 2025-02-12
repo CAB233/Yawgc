@@ -12,11 +12,10 @@
         "detour": "代理"
       },
       {
-        "tag": "dns-subnet",
-        "address": "https://8.8.8.8/dns-query",
+        "tag": "dns-final",
+        "address": "https://106.75.164.170/Eaf9nie7quee/endusers",
         "strategy": "ipv4_only",
-        "detour": "代理",
-        "client_subnet": "27.109.124.0"
+        "detour": "直连"
       },
       {
         "tag": "dns-fakeip",
@@ -48,8 +47,6 @@
         "rule_set": [
           "domainset/cdn",
           "non_ip/cdn",
-          "domainset/download",
-          "non_ip/download",
           "non_ip/telegram",
           "non_ip/microsoft",
           "non_ip/global"
@@ -61,7 +58,8 @@
           "non_ip/apple_cdn",
           "non_ip/apple_cn",
           "non_ip/microsoft_cdn",
-          "domainset/game-download",
+          "domainset/download",
+          "non_ip/download",
           "non_ip/domestic",
           "non_ip/direct",
           "domainset/my_direct"
@@ -69,7 +67,7 @@
         "server": "dns-local"
       }
     ],
-    "final": "dns-subnet",
+    "final": "dns-final",
     "fakeip": {
       "enabled": true,
       "inet4_range": "198.18.0.0/15",
@@ -108,7 +106,7 @@
     {
       "type": "urltest",
       "tag": "自动",
-      "outbounds": null
+      "outbounds": []
     }
   ],
   "route": {
@@ -143,8 +141,8 @@
       },
       {
         "port": 80,
-        "process_name": "telegram-desktop",
-        "package_name": "xyz.nextalone.nagram",
+        "process_name": "64gram-desktop",
+        "package_name": "uz.unnarsx.cherrygram",
         "action": "reject",
         "method": "default"
       },
@@ -174,7 +172,8 @@
           "non_ip/apple_cdn",
           "non_ip/apple_cn",
           "non_ip/microsoft_cdn",
-          "domainset/game-download",
+          "domainset/download",
+          "non_ip/download",
           "non_ip/domestic",
           "non_ip/direct",
           "domainset/my_direct"
@@ -185,8 +184,6 @@
         "rule_set": [
           "domainset/cdn",
           "non_ip/cdn",
-          "domainset/download",
-          "non_ip/download",
           "non_ip/telegram",
           "non_ip/microsoft",
           "non_ip/global"
@@ -206,8 +203,11 @@
         "mode": "and",
         "rules": [
           {
-            "process_name": "telegram-desktop",
-            "package_name": "xyz.nextalone.nagram"
+            "process_name": [
+              "64gram-desktop",
+              "telegram-desktop"
+            ],
+            "package_name": "uz.unnarsx.cherrygram"
           },
           {
             "rule_set": "ip/telegram",
@@ -272,12 +272,6 @@
         "tag": "non_ip/download",
         "format": "source",
         "url": "https://ruleset.skk.moe/sing-box/non_ip/download.json"
-      },
-      {
-        "type": "remote",
-        "tag": "domainset/game-download",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/domainset/game-download.json"
       },
       {
         "type": "remote",
