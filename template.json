@@ -13,7 +13,7 @@
       },
       {
         "tag": "dns-final",
-        "address": "https://106.75.164.170/Eaf9nie7quee/endusers",
+        "address": "https://106.75.164.170/Eaf9nie7quee/noech",
         "strategy": "ipv4_only",
         "detour": "直连"
       },
@@ -47,6 +47,8 @@
         "rule_set": [
           "domainset/cdn",
           "non_ip/cdn",
+          "domainset/download",
+          "non_ip/download",
           "non_ip/telegram",
           "non_ip/microsoft",
           "non_ip/global"
@@ -58,8 +60,7 @@
           "non_ip/apple_cdn",
           "non_ip/apple_cn",
           "non_ip/microsoft_cdn",
-          "domainset/download",
-          "non_ip/download",
+          "domainset/game-download",
           "non_ip/domestic",
           "non_ip/direct",
           "domainset/my_direct"
@@ -80,7 +81,6 @@
       "type": "tun",
       "tag": "tun-in",
       "interface_name": "singbox-tun",
-      "mtu": 9000,
       "address": [
         "172.19.0.1/30",
         "fdfe:dcba:9876::1/126"
@@ -106,7 +106,7 @@
     {
       "type": "urltest",
       "tag": "自动",
-      "outbounds": []
+      "outbounds": null
     }
   ],
   "route": {
@@ -114,6 +114,39 @@
       {
         "clash_mode": "直连",
         "outbound": "直连"
+      },
+      {
+        "port": 80,
+        "process_name": "telegram-desktop",
+        "package_name": "xyz.nextalone.nagram",
+        "action": "reject",
+        "method": "default"
+      },
+      {
+        "network": "tcp",
+        "port": 853,
+        "action": "reject",
+        "method": "default"
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "process_name": "telegram-desktop",
+            "package_name": "xyz.nextalone.nagram"
+          },
+          {
+            "rule_set": "ip/telegram",
+            "invert": true
+          }
+        ],
+        "action": "reject",
+        "method": "default"
+      },
+      {
+        "rule_set": "ip/telegram",
+        "outbound": "代理"
       },
       {
         "action": "sniff",
@@ -140,19 +173,6 @@
         "method": "default"
       },
       {
-        "port": 80,
-        "process_name": "64gram-desktop",
-        "package_name": "uz.unnarsx.cherrygram",
-        "action": "reject",
-        "method": "default"
-      },
-      {
-        "network": "tcp",
-        "port": 853,
-        "action": "reject",
-        "method": "default"
-      },
-      {
         "rule_set": [
           "domainset/reject",
           "non_ip/reject"
@@ -172,8 +192,7 @@
           "non_ip/apple_cdn",
           "non_ip/apple_cn",
           "non_ip/microsoft_cdn",
-          "domainset/download",
-          "non_ip/download",
+          "domainset/game-download",
           "non_ip/domestic",
           "non_ip/direct",
           "domainset/my_direct"
@@ -184,6 +203,8 @@
         "rule_set": [
           "domainset/cdn",
           "non_ip/cdn",
+          "domainset/download",
+          "non_ip/download",
           "non_ip/telegram",
           "non_ip/microsoft",
           "non_ip/global"
@@ -195,25 +216,6 @@
       },
       {
         "rule_set": "ip/reject",
-        "action": "reject",
-        "method": "default"
-      },
-      {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "process_name": [
-              "64gram-desktop",
-              "telegram-desktop"
-            ],
-            "package_name": "uz.unnarsx.cherrygram"
-          },
-          {
-            "rule_set": "ip/telegram",
-            "invert": true
-          }
-        ],
         "action": "reject",
         "method": "default"
       },
@@ -272,6 +274,12 @@
         "tag": "non_ip/download",
         "format": "source",
         "url": "https://ruleset.skk.moe/sing-box/non_ip/download.json"
+      },
+      {
+        "type": "remote",
+        "tag": "domainset/game-download",
+        "format": "source",
+        "url": "https://ruleset.skk.moe/sing-box/domainset/game-download.json"
       },
       {
         "type": "remote",
@@ -371,7 +379,7 @@
     "clash_api": {
       "external_controller": "127.0.0.1:9090",
       "external_ui": "ui",
-      "external_ui_download_url": "https://github.com/MetaCubeX/metacubexd/archive/gh-pages.zip",
+      "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
       "secret": "114514",
       "default_mode": "规则",
       "access_control_allow_private_network": true
