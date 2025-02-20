@@ -33,7 +33,9 @@ jobs:
             http://localhost:3000
           working-directory: backend
       - name: Generate config
-        run: curl -o sing-box.json "http://localhost:3000/api/file/config"
+        run: |
+          curl -o sing-box.json "http://localhost:3000/api/file/config"
+          curl -o v2ray.txt "http://localhost:3000/download/1?target=URI"
       - name: Upload files
         uses: ncipollo/release-action@v1
         with:
@@ -42,5 +44,5 @@ jobs:
           allowUpdates: true
           generateReleaseNotes: false
           tag: nightly
-          artifacts: "./sing-box.json"
+          artifacts: "./sing-box.json, ./v2ray.txt"
           prerelease: true
