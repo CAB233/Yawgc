@@ -36,12 +36,11 @@
         "server": "dns-local"
       },
       {
-        "rule_set": [
-          "domainset/reject",
-          "non_ip/reject"
+        "domain": [
+          "aur.archlinux.org",
+          "ssh.github.com"
         ],
-        "action": "reject",
-        "method": "default"
+        "server": "dns-proxy"
       },
       {
         "rule_set": [
@@ -352,12 +351,6 @@
         "tag": "ip/china_ip_ipv6",
         "format": "source",
         "url": "https://ruleset.skk.moe/sing-box/ip/china_ip_ipv6.json"
-      },
-      {
-        "type": "remote",
-        "tag": "ip/lan",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/ip/lan.json"
       },
       {
         "type": "remote",
