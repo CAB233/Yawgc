@@ -1,6 +1,6 @@
 {
   "log": {
-    "level": "info",
+    "level": "warn",
     "timestamp": true
   },
   "dns": {
@@ -32,6 +32,11 @@
         "server": "dns-local"
       },
       {
+        "query_type": "HTTPS",
+        "action": "reject",
+        "method": "default"
+      },
+      {
         "outbound": "any",
         "server": "dns-local"
       },
@@ -55,16 +60,12 @@
         "server": "dns-local"
       },
       {
-        "rule_set": [
-          "domainset/cdn",
-          "non_ip/cdn",
-          "domainset/download",
-          "non_ip/download",
-          "non_ip/telegram",
-          "non_ip/microsoft",
-          "non_ip/global"
+        "query_type": [
+          "A",
+          "AAAA"
         ],
-        "server": "dns-fakeip"
+        "server": "dns-fakeip",
+        "rewrite_ttl": 1
       }
     ],
     "final": "dns-final",
