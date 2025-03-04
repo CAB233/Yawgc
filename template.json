@@ -8,11 +8,13 @@
       {
         "tag": "dns-proxy",
         "address": "https://1.1.1.1/dns-query",
+        "strategy": "ipv4_only",
         "detour": "代理"
       },
       {
         "tag": "dns-final",
         "address": "https://106.75.164.170/Eaf9nie7quee/noech",
+        "strategy": "ipv4_only",
         "detour": "直连"
       },
       {
@@ -99,7 +101,8 @@
       "outbounds": [
         "自动"
       ],
-      "default": "自动"
+      "default": "自动",
+      "interrupt_exist_connections": true
     },
     {
       "type": "urltest",
@@ -112,6 +115,20 @@
       {
         "clash_mode": "直连",
         "outbound": "直连"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "protocol": "dns"
+          },
+          {
+            "network": "udp",
+            "port": 53
+          }
+        ],
+        "action": "hijack-dns"
       },
       {
         "network": "tcp",
@@ -147,20 +164,6 @@
         ],
         "action": "reject",
         "method": "default"
-      },
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "protocol": "dns"
-          },
-          {
-            "network": "udp",
-            "port": 53
-          }
-        ],
-        "action": "hijack-dns"
       },
       {
         "rule_set": [
@@ -199,8 +202,7 @@
         "outbound": "代理"
       },
       {
-        "action": "resolve",
-        "strategy": "ipv4_only"
+        "action": "resolve"
       },
       {
         "rule_set": "ip/reject",
