@@ -137,12 +137,6 @@
         "method": "default"
       },
       {
-        "network": "udp",
-        "port": 443,
-        "action": "reject",
-        "method": "default"
-      },
-      {
         "port": 80,
         "process_name": "telegram-desktop",
         "package_name": "xyz.nextalone.nagram",
@@ -174,6 +168,46 @@
         "method": "default"
       },
       {
+        "rule_set": "ip/telegram",
+        "outbound": "代理"
+      },
+      {
+        "action": "sniff",
+        "sniffer": [
+          "http",
+          "tls",
+          "quic",
+          "bittorrent"
+        ]
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "protocol": "quic"
+          },
+          {
+            "rule_set": [
+              "non_ip/apple_cdn",
+              "non_ip/apple_cn",
+              "non_ip/microsoft_cdn",
+              "domainset/game-download",
+              "non_ip/domestic",
+              "non_ip/direct",
+              "domainset/my_direct"
+            ],
+            "invert": true
+          }
+        ],
+        "action": "reject",
+        "method": "default"
+      },
+      {
+        "protocol": "bittorrent",
+        "outbound": "直连"
+      },
+      {
         "rule_set": [
           "non_ip/apple_cdn",
           "non_ip/apple_cn",
@@ -195,10 +229,6 @@
           "non_ip/microsoft",
           "non_ip/global"
         ],
-        "outbound": "代理"
-      },
-      {
-        "rule_set": "ip/telegram",
         "outbound": "代理"
       },
       {
