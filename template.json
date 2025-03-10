@@ -257,127 +257,148 @@
         "type": "remote",
         "tag": "domainset/reject",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/domainset/reject.json"
+        "url": "https://ruleset.skk.moe/sing-box/domainset/reject.json",
+        "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "non_ip/reject",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/reject.json"
+        "url": "https://ruleset.skk.moe/sing-box/non_ip/reject.json",
+        "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "non_ip/apple_cdn",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/apple_cdn.json"
+        "url": "https://ruleset.skk.moe/sing-box/non_ip/apple_cdn.json",
+        "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "non_ip/microsoft_cdn",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/microsoft_cdn.json"
+        "url": "https://ruleset.skk.moe/sing-box/non_ip/microsoft_cdn.json",
+        "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "non_ip/apple_cn",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/apple_cn.json"
+        "url": "https://ruleset.skk.moe/sing-box/non_ip/apple_cn.json",
+        "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "domainset/download",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/domainset/download.json"
+        "url": "https://ruleset.skk.moe/sing-box/domainset/download.json",
+        "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "non_ip/download",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/download.json"
+        "url": "https://ruleset.skk.moe/sing-box/non_ip/download.json",
+        "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "domainset/game-download",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/domainset/game-download.json"
+        "url": "https://ruleset.skk.moe/sing-box/domainset/game-download.json",
+        "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "non_ip/domestic",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/domestic.json"
+        "url": "https://ruleset.skk.moe/sing-box/non_ip/domestic.json",
+        "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "non_ip/direct",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/direct.json"
+        "url": "https://ruleset.skk.moe/sing-box/non_ip/direct.json",
+        "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "non_ip/microsoft",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/microsoft.json"
+        "url": "https://ruleset.skk.moe/sing-box/non_ip/microsoft.json",
+        "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "domainset/cdn",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/domainset/cdn.json"
+        "url": "https://ruleset.skk.moe/sing-box/domainset/cdn.json",
+        "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "non_ip/cdn",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/cdn.json"
+        "url": "https://ruleset.skk.moe/sing-box/non_ip/cdn.json",
+        "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "non_ip/telegram",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/telegram.json"
+        "url": "https://ruleset.skk.moe/sing-box/non_ip/telegram.json",
+        "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "non_ip/global",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/global.json"
+        "url": "https://ruleset.skk.moe/sing-box/non_ip/global.json",
+        "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "ip/reject",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/ip/reject.json"
+        "url": "https://ruleset.skk.moe/sing-box/ip/reject.json",
+        "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "ip/telegram",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/ip/telegram.json"
+        "url": "https://ruleset.skk.moe/sing-box/ip/telegram.json",
+        "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "ip/domestic",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/ip/domestic.json"
+        "url": "https://ruleset.skk.moe/sing-box/ip/domestic.json",
+        "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "ip/china_ip",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/ip/china_ip.json"
+        "url": "https://ruleset.skk.moe/sing-box/ip/china_ip.json",
+        "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "ip/china_ip_ipv6",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/ip/china_ip_ipv6.json"
+        "url": "https://ruleset.skk.moe/sing-box/ip/china_ip_ipv6.json",
+        "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "domainset/my_direct",
         "format": "source",
-        "url": "https://repo.zuoye.win/ruleset/my_direct.json"
+        "url": "https://repo.zuoye.win/ruleset/my_direct.json",
+        "download_detour": "直连"
       }
     ],
     "final": "代理",
