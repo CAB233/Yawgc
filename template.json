@@ -396,8 +396,8 @@
       {
         "type": "remote",
         "tag": "domainset/my_direct",
-        "format": "source",
-        "url": "https://repo.zuoye.win/ruleset/my_direct.json",
+        "format": "binary",
+        "url": "https://repo.zuoye.win/ruleset/my_direct.srs",
         "download_detour": "直连"
       }
     ],
