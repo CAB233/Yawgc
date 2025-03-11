@@ -13,9 +13,10 @@
       },
       {
         "tag": "dns-final",
-        "address": "https://106.75.164.170/Eaf9nie7quee/noech",
+        "address": "https://8.8.8.8/dns-query",
         "strategy": "ipv4_only",
-        "detour": "直连"
+        "detour": "代理",
+        "client_subnet": "114.141.191.81"
       },
       {
         "tag": "dns-fakeip",
@@ -129,12 +130,6 @@
           }
         ],
         "action": "hijack-dns"
-      },
-      {
-        "network": "tcp",
-        "port": 853,
-        "action": "reject",
-        "method": "default"
       },
       {
         "port": 80,
