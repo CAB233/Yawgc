@@ -12,7 +12,7 @@
         "detour": "代理"
       },
       {
-        "tag": "dns-final",
+        "tag": "dns-pure",
         "address": "https://8.8.8.8/dns-query",
         "strategy": "ipv4_only",
         "detour": "代理",
@@ -44,9 +44,11 @@
       {
         "domain": [
           "aur.archlinux.org",
-          "ssh.github.com"
+          "ssh.github.com",
+          "relay.aosc.io",
+          "relay-cn.aosc.io"
         ],
-        "server": "dns-proxy"
+        "server": "dns-pure"
       },
       {
         "rule_set": [
@@ -69,7 +71,7 @@
         "rewrite_ttl": 1
       }
     ],
-    "final": "dns-final",
+    "final": "dns-pure",
     "fakeip": {
       "enabled": true,
       "inet4_range": "198.18.0.0/15",
