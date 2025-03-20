@@ -211,18 +211,21 @@
         "method": "default"
       },
       {
-        "rule_set": "ip/telegram_sg",
-        "outbound": "Telegram_SG"
-      },
-      {
-        "rule_set": "ip/telegram_eu",
-        "outbound": "Telegram_EU"
-      },
-      {
-        "rule_set": "ip/telegram_us",
-        "outbound": "Telegram_US"
-      },
-      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "inbound": "singbox-tun"
+          },
+          {
+            "rule_set": [
+              "ip/telegram_sg",
+              "ip/telegram_eu",
+              "ip/telegram_us"
+            ],
+            "invert": true
+          }
+        ],
         "action": "sniff",
         "sniffer": [
           "http",
@@ -301,6 +304,18 @@
       {
         "ip_is_private": true,
         "outbound": "直连"
+      },
+      {
+        "rule_set": "ip/telegram_sg",
+        "outbound": "Telegram_SG"
+      },
+      {
+        "rule_set": "ip/telegram_eu",
+        "outbound": "Telegram_EU"
+      },
+      {
+        "rule_set": "ip/telegram_us",
+        "outbound": "Telegram_US"
       }
     ],
     "rule_set": [
