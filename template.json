@@ -162,17 +162,8 @@
         "outbound": "直连"
       },
       {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "protocol": "dns"
-          },
-          {
-            "network": "udp",
-            "port": 53
-          }
-        ],
+        "network": "udp",
+        "port": 53,
         "action": "hijack-dns"
       },
       {
@@ -211,21 +202,12 @@
         "method": "default"
       },
       {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "inbound": "singbox-tun"
-          },
-          {
-            "rule_set": [
-              "ip/telegram_sg",
-              "ip/telegram_eu",
-              "ip/telegram_us"
-            ],
-            "invert": true
-          }
+        "rule_set": [
+          "ip/telegram_sg",
+          "ip/telegram_eu",
+          "ip/telegram_us"
         ],
+        "invert": true,
         "action": "sniff",
         "sniffer": [
           "http",
