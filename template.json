@@ -162,10 +162,15 @@
         "outbound": "直连"
       },
       {
-        "rule_set": "ip/telegram",
+        "rule_set": [
+          "ip/telegram_sg",
+          "ip/telegram_eu",
+          "ip/telegram_us"
+        ],
         "invert": true,
         "action": "sniff",
         "sniffer": [
+          "dns",
           "http",
           "tls",
           "quic",
@@ -173,6 +178,7 @@
         ]
       },
       {
+        "protocol": "dns",
         "action": "hijack-dns"
       },
       {
