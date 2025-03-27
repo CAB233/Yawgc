@@ -162,8 +162,17 @@
         "outbound": "直连"
       },
       {
-        "network": "udp",
-        "port": 53,
+        "rule_set": "ip/telegram",
+        "invert": true,
+        "action": "sniff",
+        "sniffer": [
+          "http",
+          "tls",
+          "quic",
+          "bittorrent"
+        ]
+      },
+      {
         "action": "hijack-dns"
       },
       {
@@ -200,21 +209,6 @@
         ],
         "action": "reject",
         "method": "default"
-      },
-      {
-        "rule_set": [
-          "ip/telegram_sg",
-          "ip/telegram_eu",
-          "ip/telegram_us"
-        ],
-        "invert": true,
-        "action": "sniff",
-        "sniffer": [
-          "http",
-          "tls",
-          "quic",
-          "bittorrent"
-        ]
       },
       {
         "type": "logical",
