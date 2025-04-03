@@ -6,12 +6,6 @@
   "dns": {
     "servers": [
       {
-        "tag": "dns-proxy",
-        "address": "https://1.1.1.1/dns-query",
-        "strategy": "ipv4_only",
-        "detour": "代理"
-      },
-      {
         "tag": "dns-pure",
         "address": "https://8.8.8.8/dns-query",
         "strategy": "ipv4_only",
@@ -465,7 +459,8 @@
     ],
     "final": "默认节点",
     "auto_detect_interface": true,
-    "override_android_vpn": true
+    "override_android_vpn": true,
+    "default_network_strategy": "fallback"
   },
   "experimental": {
     "cache_file": {
