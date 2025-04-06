@@ -176,9 +176,26 @@
         "action": "hijack-dns"
       },
       {
+        "protocol": "quic",
+        "action": "reject",
+        "method": "default"
+      },
+      {
         "port": 80,
         "process_name": "telegram-desktop",
         "package_name": "xyz.nextalone.nagram",
+        "action": "reject",
+        "method": "default"
+      },
+      {
+        "protocol": "bittorrent",
+        "outbound": "直连"
+      },
+      {
+        "rule_set": [
+          "domainset/reject",
+          "non_ip/reject"
+        ],
         "action": "reject",
         "method": "default"
       },
@@ -204,41 +221,7 @@
       },
       {
         "rule_set": [
-          "domainset/reject",
-          "non_ip/reject"
-        ],
-        "action": "reject",
-        "method": "default"
-      },
-      {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "protocol": "quic"
-          },
-          {
-            "rule_set": [
-              "non_ip/apple_cdn",
-              "non_ip/apple_cn",
-              "non_ip/microsoft_cdn",
-              "domainset/game-download",
-              "non_ip/domestic",
-              "non_ip/direct",
-              "domainset/my_direct"
-            ],
-            "invert": true
-          }
-        ],
-        "action": "reject",
-        "method": "default"
-      },
-      {
-        "protocol": "bittorrent",
-        "outbound": "直连"
-      },
-      {
-        "rule_set": [
+          "non_ip/lan",
           "non_ip/apple_cdn",
           "non_ip/apple_cn",
           "non_ip/microsoft_cdn",
@@ -307,6 +290,13 @@
         "tag": "non_ip/reject",
         "format": "source",
         "url": "https://ruleset.skk.moe/sing-box/non_ip/reject.json",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "non_ip/lan",
+        "format": "source",
+        "url": "https://ruleset.skk.moe/sing-box/non_ip/lan.json",
         "download_detour": "直连"
       },
       {
