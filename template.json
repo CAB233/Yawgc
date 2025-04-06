@@ -46,6 +46,7 @@
       },
       {
         "rule_set": [
+          "non_ip/lan",
           "non_ip/apple_cdn",
           "non_ip/apple_cn",
           "non_ip/microsoft_cdn",
