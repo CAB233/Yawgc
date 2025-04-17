@@ -165,19 +165,19 @@
         "invert": true,
         "action": "sniff",
         "sniffer": [
-          "dns",
           "http",
           "tls",
-          "quic",
           "bittorrent"
         ]
       },
       {
-        "protocol": "dns",
+        "network": "udp",
+        "port": 53,
         "action": "hijack-dns"
       },
       {
-        "protocol": "quic",
+        "network": "udp",
+        "port": 443,
         "action": "reject",
         "method": "default"
       },
