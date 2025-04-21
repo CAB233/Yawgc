@@ -45,6 +45,18 @@
         "server": "dns-pure"
       },
       {
+        "rule_set": [
+          "non_ip/domestic",
+          "non_ip/direct",
+          "domainset/my_direct",
+          "non_ip/apple_cdn",
+          "non_ip/apple_cn",
+          "non_ip/microsoft_cdn",
+          "domainset/game-download"
+        ],
+        "server": "dns-local"
+      },
+      {
         "query_type": [
           "A",
           "AAAA"
