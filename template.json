@@ -45,18 +45,6 @@
         "server": "dns-pure"
       },
       {
-        "rule_set": [
-          "non_ip/domestic",
-          "non_ip/direct",
-          "domainset/my_direct",
-          "non_ip/apple_cdn",
-          "non_ip/apple_cn",
-          "non_ip/microsoft_cdn",
-          "domainset/game-download"
-        ],
-        "server": "dns-local"
-      },
-      {
         "query_type": [
           "A",
           "AAAA"
@@ -164,13 +152,14 @@
         "invert": true,
         "action": "sniff",
         "sniffer": [
+          "dns",
           "http",
           "tls",
           "bittorrent"
         ]
       },
       {
-        "network": "udp",
+        "protocol": "dns",
         "port": 53,
         "action": "hijack-dns"
       },
@@ -221,13 +210,29 @@
       },
       {
         "rule_set": [
-          "non_ip/domestic",
           "non_ip/direct",
           "domainset/my_direct",
           "non_ip/apple_cdn",
           "non_ip/apple_cn",
           "non_ip/microsoft_cdn",
           "domainset/game-download"
+        ],
+        "outbound": "直连"
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "non_ip/domestic"
+          },
+          {
+            "rule_set": [
+              "ip/domestic",
+              "ip/china_ip",
+              "ip/china_ip_ipv6"
+            ]
+          }
         ],
         "outbound": "直连"
       },
