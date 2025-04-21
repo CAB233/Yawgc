@@ -46,14 +46,13 @@
       },
       {
         "rule_set": [
-          "non_ip/lan",
+          "non_ip/domestic",
+          "non_ip/direct",
+          "domainset/my_direct",
           "non_ip/apple_cdn",
           "non_ip/apple_cn",
           "non_ip/microsoft_cdn",
-          "domainset/game-download",
-          "non_ip/domestic",
-          "non_ip/direct",
-          "domainset/my_direct"
+          "domainset/game-download"
         ],
         "server": "dns-local"
       },
@@ -222,14 +221,13 @@
       },
       {
         "rule_set": [
-          "non_ip/lan",
+          "non_ip/domestic",
+          "non_ip/direct",
+          "domainset/my_direct",
           "non_ip/apple_cdn",
           "non_ip/apple_cn",
           "non_ip/microsoft_cdn",
-          "domainset/game-download",
-          "non_ip/domestic",
-          "non_ip/direct",
-          "domainset/my_direct"
+          "domainset/game-download"
         ],
         "outbound": "直连"
       },
@@ -291,13 +289,6 @@
         "tag": "non_ip/reject",
         "format": "source",
         "url": "https://ruleset.skk.moe/sing-box/non_ip/reject.json",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "non_ip/lan",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/lan.json",
         "download_detour": "直连"
       },
       {
@@ -449,6 +440,7 @@
       }
     ],
     "final": "默认节点",
+    "find_process": true,
     "auto_detect_interface": true,
     "override_android_vpn": true,
     "default_network_strategy": "fallback"
