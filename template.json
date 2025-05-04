@@ -28,8 +28,7 @@
       },
       {
         "query_type": "HTTPS",
-        "action": "reject",
-        "method": "default"
+        "action": "reject"
       },
       {
         "outbound": "any",
@@ -45,15 +44,7 @@
         "server": "dns-pure"
       },
       {
-        "rule_set": [
-          "non_ip/domestic",
-          "non_ip/direct",
-          "domainset/my_direct",
-          "non_ip/apple_cdn",
-          "non_ip/apple_cn",
-          "non_ip/microsoft_cdn",
-          "domainset/game-download"
-        ],
+        "rule_set": "non_ip/domestic",
         "server": "dns-local"
       },
       {
@@ -167,6 +158,7 @@
           "dns",
           "http",
           "tls",
+          "quic",
           "bittorrent"
         ]
       },
@@ -176,17 +168,10 @@
         "action": "hijack-dns"
       },
       {
-        "network": "udp",
-        "port": 443,
-        "action": "reject",
-        "method": "default"
-      },
-      {
         "port": 80,
         "process_name": "telegram-desktop",
         "package_name": "xyz.nextalone.nagram",
-        "action": "reject",
-        "method": "default"
+        "action": "reject"
       },
       {
         "protocol": "bittorrent",
@@ -197,8 +182,7 @@
           "domainset/reject",
           "non_ip/reject"
         ],
-        "action": "reject",
-        "method": "default"
+        "action": "reject"
       },
       {
         "type": "logical",
@@ -217,8 +201,7 @@
             "invert": true
           }
         ],
-        "action": "reject",
-        "method": "default"
+        "action": "reject"
       },
       {
         "rule_set": [
@@ -228,23 +211,6 @@
           "non_ip/apple_cn",
           "non_ip/microsoft_cdn",
           "domainset/game-download"
-        ],
-        "outbound": "直连"
-      },
-      {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "rule_set": "non_ip/domestic"
-          },
-          {
-            "rule_set": [
-              "ip/domestic",
-              "ip/china_ip",
-              "ip/china_ip_ipv6"
-            ]
-          }
         ],
         "outbound": "直连"
       },
@@ -265,8 +231,7 @@
       },
       {
         "rule_set": "ip/reject",
-        "action": "reject",
-        "method": "default"
+        "action": "reject"
       },
       {
         "rule_set": [
