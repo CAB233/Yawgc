@@ -55,6 +55,18 @@
         "server": "dns-pure"
       },
       {
+        "rule_set": [
+          "non_ip/direct",
+          "domainset/my_direct",
+          "non_ip/apple_cdn",
+          "non_ip/apple_cn",
+          "non_ip/microsoft_cdn",
+          "domainset/game-download",
+          "non_ip/domestic"
+        ],
+        "server": "dns-local"
+      },
+      {
         "query_type": [
           "A",
           "AAAA"
@@ -63,8 +75,11 @@
         "rewrite_ttl": 1
       }
     ],
-    "final": "dns-local",
+    "final": "dns-pure",
     "independent_cache": true
+  },
+  "certificate": {
+    "store": "mozilla"
   },
   "inbounds": [
     {
@@ -413,7 +428,7 @@
     "find_process": true,
     "auto_detect_interface": true,
     "override_android_vpn": true,
-    "default_domain_resolver": "dns-pure",
+    "default_domain_resolver": "dns-local",
     "default_network_strategy": "fallback"
   },
   "experimental": {
