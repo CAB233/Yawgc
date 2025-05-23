@@ -85,7 +85,7 @@
     {
       "type": "tun",
       "tag": "tun-in",
-      "interface_name": "singbox-tun",
+      "interface_name": "sing-tun",
       "address": [
         "172.19.0.1/30",
         "fdfe:dcba:9876::1/126"
@@ -241,18 +241,6 @@
         "outbound": "直连"
       },
       {
-        "rule_set": [
-          "domainset/cdn",
-          "non_ip/cdn",
-          "domainset/download",
-          "non_ip/download",
-          "non_ip/telegram",
-          "non_ip/microsoft",
-          "non_ip/global"
-        ],
-        "outbound": "默认节点"
-      },
-      {
         "action": "resolve"
       },
       {
@@ -317,18 +305,6 @@
       },
       {
         "type": "remote",
-        "tag": "domainset/download",
-        "url": "https://ruleset.skk.moe/sing-box/domainset/download.json",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "non_ip/download",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/download.json",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
         "tag": "domainset/game-download",
         "url": "https://ruleset.skk.moe/sing-box/domainset/game-download.json",
         "download_detour": "直连"
@@ -343,36 +319,6 @@
         "type": "remote",
         "tag": "non_ip/direct",
         "url": "https://ruleset.skk.moe/sing-box/non_ip/direct.json",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "non_ip/microsoft",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/microsoft.json",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "domainset/cdn",
-        "url": "https://ruleset.skk.moe/sing-box/domainset/cdn.json",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "non_ip/cdn",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/cdn.json",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "non_ip/telegram",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/telegram.json",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "non_ip/global",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/global.json",
         "download_detour": "直连"
       },
       {
