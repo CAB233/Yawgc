@@ -55,6 +55,14 @@
         "server": "dns-pure"
       },
       {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "dns-fakeip",
+        "rewrite_ttl": 1
+      },
+      {
         "rule_set": [
           "non_ip/direct",
           "domainset/my_direct",
@@ -65,18 +73,11 @@
           "non_ip/domestic"
         ],
         "server": "dns-local"
-      },
-      {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "dns-fakeip",
-        "rewrite_ttl": 1
       }
     ],
     "final": "dns-pure",
-    "independent_cache": true
+    "independent_cache": true,
+    "client_subnet": "114.141.191.81"
   },
   "certificate": {
     "store": "mozilla"
@@ -242,6 +243,18 @@
         "outbound": "直连"
       },
       {
+        "rule_set": [
+          "domainset/cdn",
+          "non_ip/cdn",
+          "domainset/download",
+          "non_ip/download",
+          "non_ip/telegram",
+          "non_ip/microsoft",
+          "non_ip/global"
+        ],
+        "outbound": "代理"
+      },
+      {
         "action": "resolve"
       },
       {
@@ -324,27 +337,50 @@
       },
       {
         "type": "remote",
+        "tag": "domainset/cdn",
+        "url": "https://repo.zuoye.win/ruleset/domainset/cdn.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "non_ip/cdn",
+        "url": "https://repo.zuoye.win/ruleset/non_ip/cdn.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "domainset/download",
+        "url": "https://repo.zuoye.win/ruleset/domainset/download.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "non_ip/download",
+        "url": "https://repo.zuoye.win/ruleset/non_ip/download.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "non_ip/telegram",
+        "url": "https://repo.zuoye.win/ruleset/non_ip/telegram.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "non_ip/microsoft",
+        "url": "https://repo.zuoye.win/ruleset/non_ip/microsoft.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "non_ip/global",
+        "url": "https://repo.zuoye.win/ruleset/non_ip/global.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
         "tag": "ip/reject",
-        "format": "binary",
-        "url": "https://repo.zuoye.win/ruleset/ip/reject.json",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "ip/telegram_sg",
-        "url": "https://repo.zuoye.win/ruleset/ip/telegram_sg.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "ip/telegram_eu",
-        "url": "https://repo.zuoye.win/ruleset/ip/telegram_eu.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "ip/telegram_us",
-        "url": "https://repo.zuoye.win/ruleset/ip/telegram_us.srs",
+        "url": "https://repo.zuoye.win/ruleset/ip/reject.srs",
         "download_detour": "直连"
       },
       {
@@ -369,6 +405,24 @@
         "type": "remote",
         "tag": "domainset/my_direct",
         "url": "https://repo.zuoye.win/ruleset/domainset/my_direct.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "ip/telegram_sg",
+        "url": "https://repo.zuoye.win/ruleset/ip/telegram_sg.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "ip/telegram_eu",
+        "url": "https://repo.zuoye.win/ruleset/ip/telegram_eu.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "ip/telegram_us",
+        "url": "https://repo.zuoye.win/ruleset/ip/telegram_us.srs",
         "download_detour": "直连"
       }
     ],
