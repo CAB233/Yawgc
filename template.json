@@ -29,7 +29,12 @@
       },
       {
         "query_type": "HTTPS",
-        "action": "reject"
+        "action": "predefined",
+        "rcode": "NOTIMP"
+      },
+      {
+        "domain_suffix": "edu.cn",
+        "server": "dns-local"
       },
       {
         "domain": [
