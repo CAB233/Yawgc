@@ -257,7 +257,7 @@
           "non_ip/microsoft",
           "non_ip/global"
         ],
-        "outbound": "代理"
+        "outbound": "默认节点"
       },
       {
         "action": "resolve"
