@@ -12,6 +12,11 @@
         "server": "8.8.8.8"
       },
       {
+        "type": "https",
+        "tag": "dns-dnspod",
+        "server": "1.12.12.12"
+      },
+      {
         "type": "fakeip",
         "tag": "dns-fakeip",
         "inet4_range": "198.18.0.0/15",
@@ -31,10 +36,6 @@
         "query_type": "HTTPS",
         "action": "predefined",
         "rcode": "NOTIMP"
-      },
-      {
-        "domain_suffix": "edu.cn",
-        "server": "dns-local"
       },
       {
         "domain": [
@@ -60,12 +61,34 @@
         "server": "dns-pure"
       },
       {
-        "query_type": [
-          "A",
-          "AAAA"
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": [
+              "non_ip/direct",
+              "domainset/my_direct",
+              "non_ip/apple_cdn",
+              "non_ip/apple_cn",
+              "non_ip/microsoft_cdn",
+              "domainset/game-download",
+              "non_ip/domestic"
+            ]
+          },
+          {
+            "type": "logical",
+            "mode": "or",
+            "rules": [
+              {
+                "network_is_expensive": true
+              },
+              {
+                "clash_mode": "规则(公共DNS)"
+              }
+            ]
+          }
         ],
-        "server": "dns-fakeip",
-        "rewrite_ttl": 1
+        "server": "dns-dnspod"
       },
       {
         "rule_set": [
@@ -78,6 +101,14 @@
           "non_ip/domestic"
         ],
         "server": "dns-local"
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "dns-fakeip",
+        "rewrite_ttl": 1
       }
     ],
     "final": "dns-pure",
