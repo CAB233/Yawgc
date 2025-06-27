@@ -222,9 +222,10 @@
       },
       {
         "port": 80,
-        "process_name": "telegram-desktop",
+        "process_name": "Telegram",
         "package_name": "xyz.nextalone.nagram",
-        "action": "reject"
+        "action": "reject",
+        "method": "drop"
       },
       {
         "rule_set": [
@@ -232,6 +233,11 @@
           "non_ip/reject"
         ],
         "action": "reject"
+      },
+      {
+        "rule_set": "non_ip/reject-no-drop",
+        "action": "reject",
+        "no_drop": true
       },
       {
         "type": "logical",
@@ -333,6 +339,12 @@
         "type": "remote",
         "tag": "non_ip/reject",
         "url": "https://repo.zuoye.win/ruleset/non_ip/reject.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "non_ip/reject-no-drop",
+        "url": "https://repo.zuoye.win/ruleset/non_ip/reject-no-drop.srs",
         "download_detour": "直连"
       },
       {
