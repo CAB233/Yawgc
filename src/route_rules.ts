@@ -123,15 +123,15 @@ export const directPrivateIP = createRule({
 
 export const proxyTelegramIPSG = createRule({
     rule_set: rule_set.ipTelegramSG.tag,
-    outbounds: outbounds.telegram_sg.tag,
+    outbound: outbounds.telegram_sg.tag,
 });
 
 export const proxyTelegramIPEU = createRule({
     rule_set: rule_set.ipTelegramEU.tag,
-    outbounds: outbounds.telegram_eu.tag,
+    outbound: outbounds.telegram_eu.tag,
 });
 
 export const proxyTelegramIPUS = createRule({
     rule_set: rule_set.ipTelegramUS.tag,
-    outbounds: outbounds.telegram_us.tag,
+    outbound: outbounds.telegram_us.tag,
 });
