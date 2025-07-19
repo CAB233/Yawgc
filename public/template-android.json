@@ -1,0 +1,403 @@
+{
+  "log": {
+    "disabled": false,
+    "level": "warn",
+    "timestamp": true
+  },
+  "certificate": {
+    "store": "mozilla"
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "store_fakeip": true,
+      "store_rdrc": true
+    },
+    "clash_api": {
+      "external_controller": "127.0.0.1:9090",
+      "external_ui": "ui",
+      "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
+      "secret": "114514",
+      "default_mode": "规则",
+      "access_control_allow_private_network": true
+    }
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "dns-google",
+        "type": "https",
+        "server": "8.8.8.8",
+        "detour": "默认节点"
+      },
+      {
+        "tag": "dns-dnspod",
+        "type": "https",
+        "server": "1.12.12.12"
+      },
+      {
+        "tag": "dns-local",
+        "type": "local"
+      },
+      {
+        "tag": "dns-fakeip",
+        "type": "fakeip",
+        "inet4_range": "198.18.0.0/15",
+        "inet6_range": "fc00::/18"
+      }
+    ],
+    "rules": [
+      {
+        "clash_mode": "直连",
+        "action": "route",
+        "server": "dns-local"
+      },
+      {
+        "query_type": "HTTPS",
+        "action": "predefined",
+        "rcode": "NOTIMP"
+      },
+      {
+        "rule_set": [
+          "domain/apple_cdn",
+          "domain/microsoft_cdn",
+          "domain/game-download",
+          "domain/apple_cn",
+          "domain/domestic",
+          "domain/direct"
+        ],
+        "action": "route",
+        "server": "dns-local"
+      },
+      {
+        "client_subnet": "114.141.191.81/32",
+        "action": "route-options"
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "rewrite_ttl": 1,
+        "action": "route",
+        "server": "dns-fakeip"
+      }
+    ],
+    "final": "dns-google",
+    "independent_cache": true
+  },
+  "route": {
+    "rules": [
+      {
+        "clash_mode": "直连",
+        "outbound": "直连"
+      },
+      {
+        "rule_set": [
+          "ip/telegram_eu",
+          "ip/telegram_eu",
+          "ip/telegram_us"
+        ],
+        "invert": true,
+        "action": "sniff",
+        "sniffer": [
+          "dns",
+          "http",
+          "tls",
+          "quic"
+        ]
+      },
+      {
+        "port": 53,
+        "protocol": "dns",
+        "action": "hijack-dns"
+      },
+      {
+        "rule_set": [
+          "domain/reject",
+          "domain/reject_extra"
+        ],
+        "action": "reject"
+      },
+      {
+        "rule_set": "domain/reject-no-drop",
+        "action": "reject",
+        "no_drop": true
+      },
+      {
+        "rule_set": [
+          "domain/apple_cdn",
+          "domain/microsoft_cdn",
+          "domain/game-download",
+          "domain/apple_cn",
+          "domain/domestic",
+          "domain/direct"
+        ],
+        "outbound": "直连"
+      },
+      {
+        "rule_set": [
+          "domain/cdn",
+          "domain/telegram",
+          "domain/microsoft",
+          "domain/download",
+          "domain/global"
+        ],
+        "outbound": "默认节点"
+      },
+      {
+        "action": "resolve"
+      },
+      {
+        "rule_set": "ip/reject",
+        "action": "reject"
+      },
+      {
+        "rule_set": [
+          "ip/domestic",
+          "ip/china_ip",
+          "ip/china_ip_ipv6"
+        ],
+        "outbound": "直连"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "直连"
+      }
+    ],
+    "rule_set": [
+      {
+        "tag": "domain/reject",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/domainset/reject.srs",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "domain/reject_extra",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/domainset/reject_extra.srs",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "domain/reject-no-drop",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/domainset/reject-no-drop.srs",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "domain/cdn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/domainset/cdn.srs",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "domain/telegram",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/domainset/telegram.srs",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "domain/microsoft_cdn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/domainset/microsoft_cdn.srs",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "domain/apple_cdn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/domainset/apple_cdn.srs",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "domain/game-download",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/domainset/game-download.srs",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "domain/download",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/domainset/download.srs",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "domain/apple_cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/domainset/apple_cn.srs",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "domain/microsoft",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/domainset/microsoft.srs",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "domain/global",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/domainset/global.srs",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "domain/domestic",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/domainset/domestic.srs",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "domain/direct",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/domainset/direct.srs",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "ip/reject",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/ip/reject.srs",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "ip/telegram_sg",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/ip/telegram_sg.srs",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "ip/telegram_eu",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/ip/telegram_eu.srs",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "ip/telegram_us",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/ip/telegram_us.srs",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "ip/domestic",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/ip/domestic.srs",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "ip/china_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/ip/china_ip.srs",
+        "download_detour": "直连"
+      },
+      {
+        "tag": "ip/china_ip_ipv6",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://repo-eo.zuoye.win/ruleset/ip/china_ip_ipv6.srs",
+        "download_detour": "直连"
+      }
+    ],
+    "final": "默认节点",
+    "find_process": true,
+    "auto_detect_interface": true,
+    "default_domain_resolver": {
+      "server": "dns-dnspod",
+      "strategy": "ipv4_only"
+    },
+    "override_android_vpn": true,
+    "default_network_strategy": "fallback"
+  },
+  "inbounds": [
+    {
+      "tag": "tun-in",
+      "type": "tun",
+      "interface_name": "sing-tun",
+      "stack": "mixed",
+      "auto_route": true,
+      "strict_route": true,
+      "address": [
+        "172.19.0.1/30",
+        "fdfe:dcba:9876::1/126"
+      ]
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "直连"
+    },
+    {
+      "type": "selector",
+      "tag": "默认节点",
+      "outbounds": [
+        "默认节点（自动）"
+      ],
+      "default": "默认节点（自动）",
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "urltest",
+      "tag": "默认节点（自动）",
+      "outbounds": []
+    },
+    {
+      "type": "selector",
+      "tag": "Telegram_SG",
+      "outbounds": [
+        "Telegram_SG（自动）"
+      ],
+      "default": "Telegram_SG（自动）",
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "urltest",
+      "tag": "Telegram_SG（自动）",
+      "outbounds": []
+    },
+    {
+      "type": "selector",
+      "tag": "Telegram_EU",
+      "outbounds": [
+        "Telegram_EU（自动）"
+      ],
+      "default": "Telegram_EU（自动）",
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "urltest",
+      "tag": "Telegram_EU（自动）",
+      "outbounds": []
+    },
+    {
+      "type": "selector",
+      "tag": "Telegram_US",
+      "outbounds": [
+        "Telegram_US（自动）"
+      ],
+      "default": "Telegram_US（自动）",
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "urltest",
+      "tag": "Telegram_US（自动）",
+      "outbounds": []
+    }
+  ]
+}
