@@ -50,6 +50,9 @@ export const windowsTemplateConfig = createTypebox({
             route_rules.rejectIP,
             route_rules.directIP,
             route_rules.directPrivateIP,
+            route_rules.proxyTelegramIPSG,
+            route_rules.proxyTelegramIPEU,
+            route_rules.proxyTelegramIPUS,
         ],
         rule_set: [
             rule_set.domainReject,
