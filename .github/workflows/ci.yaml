@@ -7,24 +7,50 @@ on:
     branches:
       - main
 jobs:
-  main:
+  generate:
     runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+          
+      - name: Generate config
+        run: |
+          deno task build:all
+          
+      - name: Commit config
+        uses: stefanzweifel/git-auto-commit-action@v6
+        with:
+          commit_message: Update template
+          file_pattern: 'public/template*.json'
+          commit_user_name: YanamiChan[bot]
+          commit_user_email: 182213109+YanamiChan[bot]@users.noreply.github.com
+          commit_author: YanamiChan[bot] <182213109+YanamiChan[bot]@users.noreply.github.com>
+  build:
+    runs-on: ubuntu-22.04
+    needs: generate
     steps:
       - uses: actions/checkout@v4
         with:
           repository: sub-store-org/Sub-Store
           ref: master
+
       - uses: actions/setup-node@v3
         with:
           node-version: "20"
+
       - name: Install dependencies
         run: |
           npm install -g pnpm
           cd backend && pnpm i --no-frozen-lockfile
+
       - name: Get file
         run: |
           cd backend
           echo "${{ secrets.FILE_CONFIG }}" | base64 --decode > sub-store.json
+
       - uses: JarvusInnovations/background-action@v1.0.7
         with:
           run: |
@@ -32,10 +58,12 @@ jobs:
           wait-on: |
             http://localhost:3000
           working-directory: backend
+
       - name: Generate config
         run: |
           curl -o sing-box.json "http://localhost:3000/api/file/config"
           curl -o v2ray.txt "http://localhost:3000/download/1?target=URI"
+
       - name: Upload files
         uses: ncipollo/release-action@v1
         with:

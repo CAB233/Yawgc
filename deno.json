@@ -1,0 +1,27 @@
+{
+  "tasks": {
+    "build:android": "deno run --allow-write build/template-android.ts",
+    "build:windows": "deno run --allow-write build/template-windows.ts",
+    "build:all": "deno task build:android && deno task build:windows"
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1",
+    "@zhexin/typebox": "jsr:@zhexin/typebox@^1.12.24"
+  },
+  "fmt": {
+    "useTabs": false,
+    "lineWidth": 80,
+    "indentWidth": 4,
+    "semiColons": true,
+    "singleQuote": true,
+    "proseWrap": "preserve",
+    "include": [
+      "src/*.ts",
+      "build/*.ts",
+      "build/*/*.ts"
+    ],
+    "exclude": [
+      "public/"
+    ]
+  }
+}
