@@ -18,8 +18,9 @@ jobs:
           
       - name: Generate config
         run: |
+          [ -d public ] || mkdir -v public
           deno task build:all
-          
+
       - name: Commit config
         uses: stefanzweifel/git-auto-commit-action@v6
         with:

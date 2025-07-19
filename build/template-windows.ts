@@ -96,7 +96,6 @@ export const windowsTemplateConfig = createTypebox({
     ],
 });
 
-await Deno.mkdir('public');
 await Deno.writeTextFile(
     OUTPUT_FILE,
     JSON.stringify(windowsTemplateConfig, null, 2),

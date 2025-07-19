@@ -99,7 +99,6 @@ export const androidTemplateConfig = createTypebox({
     ],
 });
 
-await Deno.mkdir('public');
 await Deno.writeTextFile(
     OUTPUT_FILE,
     JSON.stringify(androidTemplateConfig, null, 2),
