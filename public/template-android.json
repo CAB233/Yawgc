@@ -163,6 +163,18 @@
       {
         "ip_is_private": true,
         "outbound": "直连"
+      },
+      {
+        "rule_set": "ip/telegram_sg",
+        "outbounds": "Telegram_SG"
+      },
+      {
+        "rule_set": "ip/telegram_eu",
+        "outbounds": "Telegram_EU"
+      },
+      {
+        "rule_set": "ip/telegram_us",
+        "outbounds": "Telegram_US"
       }
     ],
     "rule_set": [
