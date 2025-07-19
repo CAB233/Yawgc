@@ -62,7 +62,12 @@ jobs:
 
       - name: Generate config
         run: |
-          curl -o sing-box.json "http://localhost:3000/api/file/config"
+          curl -o config-android.json "http://localhost:3000/api/file/android"
+          curl -o config-windows.json "http://localhost:3000/api/file/windows"
+
+          # Only node info
+          curl -o mihomo.yaml "http://localhost:3000/download/1?target=ClashMeta"
+          curl -o sing-box.json "http://localhost:3000/download/1?target=sing-box"
           curl -o v2ray.txt "http://localhost:3000/download/1?target=URI"
 
       - name: Upload files
@@ -73,5 +78,5 @@ jobs:
           allowUpdates: true
           generateReleaseNotes: false
           tag: nightly
-          artifacts: "./sing-box.json, ./v2ray.txt"
+          artifacts: '*.json, mihomo.yaml, v2ray.txt'
           prerelease: true
