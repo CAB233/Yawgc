@@ -29,4 +29,4 @@ export const google = createDnsServer({
     type: 'https',
     server: '8.8.8.8',
     detour: outbounds.selector.tag,
-}, { assertExistOutbounds: [outbounds.selector.tag] });
+});

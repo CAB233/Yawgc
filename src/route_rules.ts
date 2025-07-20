@@ -16,12 +16,6 @@ export const sniff = createRule({
     invert: true,
     action: 'sniff',
     sniffer: ['dns', 'http', 'tls', 'quic'],
-}, {
-    assertExistRuleSet: [
-        rule_set.ipTelegramEU.tag,
-        rule_set.ipTelegramEU.tag,
-        rule_set.ipTelegramUS.tag,
-    ],
 });
 
 export const hijackDNS = createRule({
@@ -40,18 +34,13 @@ export const rejectDomain = createRule({
         rule_set.domainRejectExtra.tag,
     ],
     action: 'reject',
-}, {
-    assertExistRuleSet: [
-        rule_set.domainReject.tag,
-        rule_set.domainRejectExtra.tag,
-    ],
 });
 
 export const rejectDomainNoDrop = createRule({
     rule_set: rule_set.domainRejectNoDrop.tag,
     action: 'reject',
     no_drop: true,
-}, { assertExistRuleSet: [rule_set.domainRejectNoDrop.tag] });
+});
 
 export const directDomain = createRule({
     rule_set: [
@@ -63,16 +52,6 @@ export const directDomain = createRule({
         rule_set.domainDirect.tag,
     ],
     outbound: outbounds.direct.tag,
-}, {
-    assertExistOutbounds: [outbounds.direct.tag],
-    assertExistRuleSet: [
-        rule_set.domainAppleCDN.tag,
-        rule_set.domainMicrosoftCDN.tag,
-        rule_set.domainGameDownload.tag,
-        rule_set.domainAppleCN.tag,
-        rule_set.domainDomestic.tag,
-        rule_set.domainDirect.tag,
-    ],
 });
 
 export const proxyDomain = createRule({
@@ -84,15 +63,6 @@ export const proxyDomain = createRule({
         rule_set.domainGlobal.tag,
     ],
     outbound: outbounds.selector.tag,
-}, {
-    assertExistOutbounds: [outbounds.selector.tag],
-    assertExistRuleSet: [
-        rule_set.domainCDN.tag,
-        rule_set.domainTelegram.tag,
-        rule_set.domainMicrosoft.tag,
-        rule_set.domainDownload.tag,
-        rule_set.domainGlobal.tag,
-    ],
 });
 
 export const rejectIP = createRule({
@@ -107,19 +77,12 @@ export const directIP = createRule({
         rule_set.ipChinaIPIPv6.tag,
     ],
     outbound: outbounds.direct.tag,
-}, {
-    assertExistOutbounds: [outbounds.direct.tag],
-    assertExistRuleSet: [
-        rule_set.ipDomestic.tag,
-        rule_set.ipChinaIP.tag,
-        rule_set.ipChinaIPIPv6.tag,
-    ],
 });
 
 export const directPrivateIP = createRule({
     ip_is_private: true,
     outbound: outbounds.direct.tag,
-}, { assertExistOutbounds: [outbounds.direct.tag] });
+});
 
 export const proxyTelegramIPSG = createRule({
     rule_set: rule_set.ipTelegramSG.tag,
