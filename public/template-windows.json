@@ -14,7 +14,8 @@
       {
         "type": "https",
         "tag": "dns-dnspod",
-        "server": "1.12.12.12"
+        "domain_resolver": "dns-local",
+        "server": "doh.pub"
       },
       {
         "type": "dhcp",
