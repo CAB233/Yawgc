@@ -21,7 +21,8 @@ export const local = createDnsServer({
 export const dnspod = createDnsServer({
     tag: 'dns-dnspod',
     type: 'https',
-    server: '1.12.12.12',
+    server: 'doh.pub',
+    domain_resolver: 'dns-local',
 });
 
 export const google = createDnsServer({
