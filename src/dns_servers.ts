@@ -18,11 +18,10 @@ export const local = createDnsServer({
     type: 'local',
 });
 
-export const dnspod = createDnsServer({
-    tag: 'dns-dnspod',
+export const ali = createDnsServer({
+    tag: 'dns-ali',
     type: 'https',
-    server: 'doh.pub',
-    domain_resolver: 'dns-local',
+    server: '223.5.5.5',
 });
 
 export const google = createDnsServer({

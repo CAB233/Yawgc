@@ -23,7 +23,7 @@ export const windowsTemplateConfig = createTypebox({
     dns: {
         servers: [
             dns_servers.google,
-            dns_servers.dnspod,
+            dns_servers.ali,
             dns_servers.dhcp,
             dns_servers.fakeip,
         ],
@@ -81,7 +81,7 @@ export const windowsTemplateConfig = createTypebox({
         find_process: true,
         auto_detect_interface: true,
         default_domain_resolver: {
-            'server': dns_servers.dnspod.tag,
+            'server': dns_servers.ali.tag,
             'strategy': 'ipv4_only',
         },
     },
