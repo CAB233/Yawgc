@@ -13,9 +13,8 @@
       },
       {
         "type": "https",
-        "tag": "dns-dnspod",
-        "domain_resolver": "dns-local",
-        "server": "doh.pub"
+        "tag": "dns-ali",
+        "server": "223.5.5.5"
       },
       {
         "type": "dhcp",
@@ -380,7 +379,7 @@
     "find_process": true,
     "auto_detect_interface": true,
     "default_domain_resolver": {
-      "server": "dns-dnspod",
+      "server": "dns-ali",
       "strategy": "ipv4_only"
     }
   },
