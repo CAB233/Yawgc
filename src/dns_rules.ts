@@ -18,7 +18,7 @@ export const fakeip = createDnsRule({
 export const rejectHTTPS = createDnsRule({
     query_type: 'HTTPS',
     action: 'predefined',
-    rcode: 'NOTIMP',
+    rcode: 'NOERROR',
 });
 
 export const clientSubnet = createDnsRule({
