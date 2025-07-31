@@ -39,7 +39,7 @@ jobs:
       - name: Commit config
         uses: stefanzweifel/git-auto-commit-action@v6
         with:
-          commit_message: Update template
+          commit_message: 'ci: update template'
           file_pattern: 'public/template*.json'
           commit_user_name: YanamiChan[bot]
           commit_user_email: 182213109+YanamiChan[bot]@users.noreply.github.com
