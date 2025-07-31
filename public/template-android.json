@@ -206,6 +206,11 @@
         "outbound": "直连"
       },
       {
+        "action": "route-options",
+        "tls_fragment_fallback_delay": "250ms",
+        "tls_record_fragment": true
+      },
+      {
         "rule_set": [
           "domain/cdn",
           "domain/telegram",
