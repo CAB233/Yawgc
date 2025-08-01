@@ -45,7 +45,6 @@ export const windowsTemplateConfig = createTypebox({
             route_rules.rejectDomain,
             route_rules.rejectDomainNoDrop,
             route_rules.directDomain,
-            route_rules.tls_record_fragment,
             route_rules.proxyDomain,
             route_rules.resolve,
             route_rules.rejectIP,

@@ -28,12 +28,6 @@ export const resolve = createRule({
     action: 'resolve',
 });
 
-export const tls_record_fragment = createRule({
-    tls_record_fragment: true,
-    tls_fragment_fallback_delay: '250ms',
-    action: 'route-options',
-});
-
 export const rejectDomain = createRule({
     rule_set: [
         rule_set.domainReject.tag,
