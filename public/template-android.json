@@ -38,6 +38,19 @@
         "rcode": "NOERROR"
       },
       {
+        "clash_mode": "增强",
+        "rule_set": [
+          "domain/apple_cdn",
+          "domain/microsoft_cdn",
+          "domain/game-download",
+          "domain/apple_cn",
+          "domain/domestic",
+          "domain/direct"
+        ],
+        "server": "dns-ali",
+        "strategy": "ipv4_only"
+      },
+      {
         "rule_set": [
           "domain/apple_cdn",
           "domain/microsoft_cdn",
@@ -226,12 +239,9 @@
         "rule_set": [
           "ip/domestic",
           "ip/china_ip",
-          "ip/china_ip_ipv6"
+          "ip/china_ip_ipv6",
+          "ip/lan"
         ],
-        "outbound": "直连"
-      },
-      {
-        "ip_is_private": true,
         "outbound": "直连"
       },
       {
@@ -372,6 +382,12 @@
         "type": "remote",
         "tag": "ip/china_ip_ipv6",
         "url": "https://repo-eo.zuoye.win/ruleset/ip/china_ip_ipv6.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "ip/lan",
+        "url": "https://repo-eo.zuoye.win/ruleset/ip/lan.srs",
         "download_detour": "直连"
       }
     ],
