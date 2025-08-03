@@ -88,12 +88,8 @@ export const directIP = createRule({
         rule_set.ipDomestic.tag,
         rule_set.ipChinaIP.tag,
         rule_set.ipChinaIPIPv6.tag,
+        rule_set.ipLAN.tag,
     ],
-    outbound: outbounds.direct.tag,
-});
-
-export const directPrivateIP = createRule({
-    ip_is_private: true,
     outbound: outbounds.direct.tag,
 });
 

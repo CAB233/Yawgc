@@ -168,3 +168,11 @@ export const ipChinaIPIPv6 = createRuleSet({
     url: 'https://repo-eo.zuoye.win/ruleset/ip/china_ip_ipv6.srs',
     download_detour: outbounds.direct.tag,
 }, { assertExistOutbound: [outbounds.direct.tag] });
+
+export const ipLAN = createRuleSet({
+    tag: 'ip/lan',
+    type: 'remote',
+    format: 'binary',
+    url: 'https://repo-eo.zuoye.win/ruleset/ip/lan.srs',
+    download_detour: outbounds.direct.tag,
+}, { assertExistOutbound: [outbounds.direct.tag] });
