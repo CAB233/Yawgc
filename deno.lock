@@ -3,7 +3,7 @@
   "specifiers": {
     "jsr:@std/assert@1": "1.0.13",
     "jsr:@std/internal@^1.0.6": "1.0.9",
-    "jsr:@zhexin/typebox@^1.12.24": "1.12.24",
+    "jsr:@zhexin/typebox@^1.12.25": "1.12.25",
     "npm:@types/node@*": "22.12.0"
   },
   "jsr": {
@@ -16,8 +16,8 @@
     "@std/internal@1.0.9": {
       "integrity": "bdfb97f83e4db7a13e8faab26fb1958d1b80cc64366501af78a0aee151696eb8"
     },
-    "@zhexin/typebox@1.12.24": {
-      "integrity": "e3e30b5168428f351b9b4d712dc6210ac46bfcf4fafba0d254dbcb4adbd60db7"
+    "@zhexin/typebox@1.12.25": {
+      "integrity": "acbc5916c84ef541355a41215aad995cc6758c027b84c4c73d0ae4642e4b2463"
     }
   },
   "npm": {
@@ -34,7 +34,7 @@
   "workspace": {
     "dependencies": [
       "jsr:@std/assert@1",
-      "jsr:@zhexin/typebox@^1.12.24"
+      "jsr:@zhexin/typebox@^1.12.25"
     ]
   }
 }

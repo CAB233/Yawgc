@@ -6,7 +6,7 @@
   },
   "imports": {
     "@std/assert": "jsr:@std/assert@1",
-    "@zhexin/typebox": "jsr:@zhexin/typebox@^1.12.24"
+    "@zhexin/typebox": "jsr:@zhexin/typebox@^1.12.25"
   },
   "fmt": {
     "useTabs": false,
