@@ -38,3 +38,17 @@ export const domestic = createDnsRule({
     action: 'route',
     server: dns_servers.local.tag,
 });
+
+export const clashModeEnhance = createDnsRule({
+    rule_set: [
+        rule_set.domainAppleCDN.tag,
+        rule_set.domainMicrosoftCDN.tag,
+        rule_set.domainGameDownload.tag,
+        rule_set.domainAppleCN.tag,
+        rule_set.domainDomestic.tag,
+        rule_set.domainDirect.tag,
+    ],
+    clash_mode: '增强',
+    server: dns_servers.ali.tag,
+    strategy: 'ipv4_only',
+});

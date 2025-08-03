@@ -30,6 +30,7 @@ export const windowsTemplateConfig = createTypebox({
         rules: [
             dns_rules.clashModeDirect,
             dns_rules.rejectHTTPS,
+            dns_rules.clashModeEnhance,
             dns_rules.domestic,
             dns_rules.clientSubnet,
             dns_rules.fakeip,
