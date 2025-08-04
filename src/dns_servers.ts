@@ -20,7 +20,7 @@ export const local = createDnsServer({
 
 export const ali = createDnsServer({
     tag: 'dns-ali',
-    type: 'https',
+    type: 'h3',
     server: '223.5.5.5',
 });
 
