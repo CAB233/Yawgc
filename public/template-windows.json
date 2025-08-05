@@ -51,26 +51,13 @@
         "strategy": "ipv4_only"
       },
       {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "rule_set": [
-              "domain/apple_cdn",
-              "domain/microsoft_cdn",
-              "domain/game-download",
-              "domain/apple_cn",
-              "domain/domestic",
-              "domain/direct"
-            ]
-          },
-          {
-            "rule_set": [
-              "ip/domestic",
-              "ip/china_ip",
-              "ip/china_ip_ipv6"
-            ]
-          }
+        "rule_set": [
+          "domain/apple_cdn",
+          "domain/microsoft_cdn",
+          "domain/game-download",
+          "domain/apple_cn",
+          "domain/domestic",
+          "domain/direct"
         ],
         "server": "dns-local"
       },
