@@ -4,14 +4,12 @@ import * as rule_set from './rule_set.ts';
 
 export const clashModeDirect = createDnsRule({
     clash_mode: '直连',
-    action: 'route',
     server: dns_servers.local.tag,
 });
 
 export const fakeip = createDnsRule({
     query_type: ['A', 'AAAA'],
     rewrite_ttl: 1,
-    action: 'route',
     server: dns_servers.fakeip.tag,
 });
 
