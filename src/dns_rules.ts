@@ -25,15 +25,27 @@ export const clientSubnet = createDnsRule({
 });
 
 export const domestic = createDnsRule({
-    rule_set: [
-        rule_set.domainAppleCDN.tag,
-        rule_set.domainMicrosoftCDN.tag,
-        rule_set.domainGameDownload.tag,
-        rule_set.domainAppleCN.tag,
-        rule_set.domainDomestic.tag,
-        rule_set.domainDirect.tag,
+    type: 'logical',
+    mode: 'and',
+    rules: [
+        {
+            rule_set: [
+                rule_set.domainAppleCDN.tag,
+                rule_set.domainMicrosoftCDN.tag,
+                rule_set.domainGameDownload.tag,
+                rule_set.domainAppleCN.tag,
+                rule_set.domainDomestic.tag,
+                rule_set.domainDirect.tag,
+            ],
+        },
+        {
+            rule_set: [
+                rule_set.ipDomestic.tag,
+                rule_set.ipChinaIP.tag,
+                rule_set.ipChinaIPIPv6.tag,
+            ],
+        },
     ],
-    action: 'route',
     server: dns_servers.local.tag,
 });
 
