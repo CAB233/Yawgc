@@ -173,14 +173,18 @@
         "sniffer": [
           "dns",
           "http",
-          "tls",
-          "quic"
+          "tls"
         ]
       },
       {
         "protocol": "dns",
         "port": 53,
         "action": "hijack-dns"
+      },
+      {
+        "network": "udp",
+        "port": 443,
+        "action": "reject"
       },
       {
         "rule_set": [
