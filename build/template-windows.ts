@@ -13,6 +13,7 @@ import * as route_rules from '../src/route_rules.ts';
 import * as rule_set from '../src/rule_set.ts';
 import * as inbounds from '../src/inbounds.ts';
 import * as outbounds from '../src/outbounds.ts';
+import { rejects } from 'node:assert';
 
 const OUTPUT_FILE = path.join(PUBLIC_DIR, './template-windows.json');
 
@@ -43,6 +44,7 @@ export const windowsTemplateConfig = createTypebox({
             route_rules.clashModeDirect,
             route_rules.sniff,
             route_rules.hijackDNS,
+            route_rules.rejectUDP443,
             route_rules.rejectDomain,
             route_rules.rejectDomainNoDrop,
             route_rules.directDomain,

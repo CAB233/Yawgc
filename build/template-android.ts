@@ -43,6 +43,7 @@ export const androidTemplateConfig = createTypebox({
             route_rules.clashModeDirect,
             route_rules.sniff,
             route_rules.hijackDNS,
+            route_rules.rejectUDP443,
             route_rules.rejectDomain,
             route_rules.rejectDomainNoDrop,
             route_rules.directDomain,

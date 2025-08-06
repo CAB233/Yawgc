@@ -15,8 +15,14 @@ export const sniff = createRule({
     ],
     invert: true,
     action: 'sniff',
-    sniffer: ['dns', 'http', 'tls', 'quic'],
+    sniffer: ['dns', 'http', 'tls'],
 });
+
+export const rejectUDP443 = createRule({
+    network: 'udp',
+    port: 443,
+    action: 'reject'
+})
 
 export const hijackDNS = createRule({
     port: 53,
