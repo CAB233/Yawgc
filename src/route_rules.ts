@@ -19,10 +19,27 @@ export const sniff = createRule({
 });
 
 export const rejectUDP443 = createRule({
-    network: 'udp',
-    port: 443,
-    action: 'reject'
-})
+    type: 'logical',
+    mode: 'and',
+    rules: [
+        {
+            network: 'udp',
+            port: 443,
+        },
+        {
+            rule_set: [
+                rule_set.domainAppleCDN.tag,
+                rule_set.domainMicrosoftCDN.tag,
+                rule_set.domainGameDownload.tag,
+                rule_set.domainAppleCN.tag,
+                rule_set.domainDomestic.tag,
+                rule_set.domainDirect.tag,
+            ],
+            invert: true,
+        },
+    ],
+    action: 'reject',
+});
 
 export const hijackDNS = createRule({
     port: 53,
