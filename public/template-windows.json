@@ -182,8 +182,25 @@
         "action": "hijack-dns"
       },
       {
-        "network": "udp",
-        "port": 443,
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "network": "udp",
+            "port": 443
+          },
+          {
+            "rule_set": [
+              "domain/apple_cdn",
+              "domain/microsoft_cdn",
+              "domain/game-download",
+              "domain/apple_cn",
+              "domain/domestic",
+              "domain/direct"
+            ],
+            "invert": true
+          }
+        ],
         "action": "reject"
       },
       {
