@@ -8,7 +8,7 @@
       {
         "type": "https",
         "tag": "dns-google",
-        "detour": "默认节点",
+        "detour": "代理",
         "server": "8.8.8.8"
       },
       {
@@ -17,14 +17,14 @@
         "server": "223.5.5.5"
       },
       {
-        "type": "local",
-        "tag": "dns-local"
-      },
-      {
         "type": "fakeip",
         "tag": "dns-fakeip",
         "inet4_range": "198.18.0.0/15",
         "inet6_range": "fc00::/18"
+      },
+      {
+        "type": "local",
+        "tag": "dns-local"
       }
     ],
     "rules": [
@@ -63,7 +63,7 @@
       },
       {
         "action": "route-options",
-        "client_subnet": "114.141.191.81"
+        "client_subnet": "42.159.128.1"
       },
       {
         "query_type": [
@@ -101,59 +101,18 @@
     },
     {
       "type": "selector",
-      "tag": "默认节点",
+      "tag": "代理",
       "outbounds": [
-        "默认节点（自动）"
+        "自动"
       ],
-      "default": "默认节点（自动）",
+      "default": "自动",
       "interrupt_exist_connections": true
     },
     {
       "type": "urltest",
-      "tag": "默认节点（自动）",
-      "outbounds": null
-    },
-    {
-      "type": "selector",
-      "tag": "Telegram_SG",
-      "outbounds": [
-        "Telegram_SG（自动）"
-      ],
-      "default": "Telegram_SG（自动）",
-      "interrupt_exist_connections": true
-    },
-    {
-      "type": "urltest",
-      "tag": "Telegram_SG（自动）",
-      "outbounds": null
-    },
-    {
-      "type": "selector",
-      "tag": "Telegram_EU",
-      "outbounds": [
-        "Telegram_EU（自动）"
-      ],
-      "default": "Telegram_EU（自动）",
-      "interrupt_exist_connections": true
-    },
-    {
-      "type": "urltest",
-      "tag": "Telegram_EU（自动）",
-      "outbounds": null
-    },
-    {
-      "type": "selector",
-      "tag": "Telegram_US",
-      "outbounds": [
-        "Telegram_US（自动）"
-      ],
-      "default": "Telegram_US（自动）",
-      "interrupt_exist_connections": true
-    },
-    {
-      "type": "urltest",
-      "tag": "Telegram_US（自动）",
-      "outbounds": null
+      "tag": "自动",
+      "outbounds": null,
+      "url": "http://cp.cloudflare.com"
     }
   ],
   "route": {
@@ -163,11 +122,7 @@
         "outbound": "直连"
       },
       {
-        "rule_set": [
-          "ip/telegram_eu",
-          "ip/telegram_eu",
-          "ip/telegram_us"
-        ],
+        "rule_set": "ip/telegram",
         "invert": true,
         "action": "sniff",
         "sniffer": [
@@ -220,14 +175,7 @@
         "mode": "and",
         "rules": [
           {
-            "rule_set": [
-              "domain/apple_cdn",
-              "domain/microsoft_cdn",
-              "domain/game-download",
-              "domain/apple_cn",
-              "domain/domestic",
-              "domain/direct"
-            ]
+            "rule_set": "domain/domestic"
           },
           {
             "rule_set": [
@@ -247,7 +195,7 @@
           "domain/download",
           "domain/global"
         ],
-        "outbound": "默认节点"
+        "outbound": "代理"
       },
       {
         "action": "resolve"
@@ -264,18 +212,6 @@
           "ip/lan"
         ],
         "outbound": "直连"
-      },
-      {
-        "rule_set": "ip/telegram_sg",
-        "outbound": "Telegram_SG"
-      },
-      {
-        "rule_set": "ip/telegram_eu",
-        "outbound": "Telegram_EU"
-      },
-      {
-        "rule_set": "ip/telegram_us",
-        "outbound": "Telegram_US"
       }
     ],
     "rule_set": [
@@ -371,20 +307,8 @@
       },
       {
         "type": "remote",
-        "tag": "ip/telegram_sg",
-        "url": "https://repo-eo.zuoye.win/ruleset/ip/telegram_sg.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "ip/telegram_eu",
-        "url": "https://repo-eo.zuoye.win/ruleset/ip/telegram_eu.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "ip/telegram_us",
-        "url": "https://repo-eo.zuoye.win/ruleset/ip/telegram_us.srs",
+        "tag": "ip/telegram",
+        "url": "https://repo-eo.zuoye.win/ruleset/ip/telegram.srs",
         "download_detour": "直连"
       },
       {
@@ -412,7 +336,7 @@
         "download_detour": "直连"
       }
     ],
-    "final": "默认节点",
+    "final": "代理",
     "find_process": true,
     "auto_detect_interface": true,
     "override_android_vpn": true,
@@ -434,6 +358,10 @@
       "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
       "secret": "114514",
       "default_mode": "规则",
+      "access_control_allow_origin": [
+        "https://board.zuoye.win",
+        "https://board.zash.run.place"
+      ],
       "access_control_allow_private_network": true
     }
   }
