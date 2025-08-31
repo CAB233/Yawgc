@@ -1,0 +1,5 @@
+{
+  certificate: {
+    store: 'mozilla',
+  },
+}

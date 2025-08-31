@@ -8,30 +8,39 @@ on:
       - main
 jobs:
   generate:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
 
-      - uses: denoland/setup-deno@v2
-        with:
-          deno-version: v2.x
-          
-      - name: Generate config
+      - name: Install jsonnet
         run: |
-          [ -d public ] || mkdir -v public
-          deno task build:all
+          sudo apt-get update -y
+          sudo apt-get install jsonnet
+          jsonnet --version
 
       - name: Install sing-box
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SING_BOX_VERSION: 1.12.4
         run: |
-          curl -fsSL https://sing-box.app/install.sh | sh -s -- --version "1.12.0-beta.34"
+          curl -fsSL https://sing-box.app/install.sh | sh -s -- --version "${{ env.SING_BOX_VERSION }}"
+          sing-box version
 
-      - name: Format config
+      - name: Generate template config
+        run: |
+          for platform in android windows linux-desktop; do
+            echo "[*] Generating template-$platform.json ..."
+            jsonnet \
+              --output-file "public/template-$platform.json" \
+              --tla-str "platform=$platform" \
+              src/main.jsonnet
+          done
+
+      - name: Format template config
         working-directory: public
         run: |
           for config in *.json; do
-            echo "Formating: $config ..."
+            echo "[*] Formating template-$config ..."
             sing-box format -c "$config" > "/tmp/$config"
             cp -v "/tmp/$config" "$config"
           done
@@ -45,45 +54,45 @@ jobs:
           commit_user_email: 182213109+YanamiChan[bot]@users.noreply.github.com
           commit_author: YanamiChan[bot] <182213109+YanamiChan[bot]@users.noreply.github.com>
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: generate
     steps:
-      - uses: actions/checkout@v4
-        with:
-          repository: sub-store-org/Sub-Store
-          ref: master
-
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      - name: Install dependencies
+      - name: Get sub-store
+        env:
+          SUB_STORE_VERSION: 2.20.16
         run: |
-          npm install -g pnpm
-          cd backend && pnpm i --no-frozen-lockfile
+          curl \
+            -LSso sub-store/sub-store.js \
+            --create-dirs "https://github.com/sub-store-org/Sub-Store/releases/download/${{ env.SUB_STORE_VERSION }}/sub-store.bundle.js"
 
-      - name: Get file
+      - name: Get sub-store config
+        working-directory: sub-store
         run: |
-          cd backend
           echo "${{ secrets.FILE_CONFIG }}" | base64 --decode > sub-store.json
 
       - uses: JarvusInnovations/background-action@v1.0.7
         with:
           run: |
-            pnpm start
+            node sub-store.js
           wait-on: |
             http://localhost:3000
-          working-directory: backend
+          working-directory: sub-store
 
       - name: Generate config
         run: |
-          curl -o config-android.json "http://localhost:3000/api/file/android"
-          curl -o config-windows.json "http://localhost:3000/api/file/windows"
+          for platform in android windows linux-desktop; do
+            echo "[*] Generating config-$platform.json ..."
+            curl -LSso "config-$platform.json" "http://localhost:3000/api/file/$platform"
+          done
 
           # Only node info
-          curl -o mihomo.yaml "http://localhost:3000/download/1?target=ClashMeta"
-          curl -o sing-box.json "http://localhost:3000/download/1?target=sing-box"
-          curl -o v2ray.txt "http://localhost:3000/download/1?target=URI"
+          curl -LSso mihomo.yaml "http://localhost:3000/download/1?target=ClashMeta"
+          curl -LSso sing-box.json "http://localhost:3000/download/1?target=sing-box"
+          curl -LSso v2ray.txt "http://localhost:3000/download/1?target=URI"
 
       - name: Upload files
         uses: ncipollo/release-action@v1
