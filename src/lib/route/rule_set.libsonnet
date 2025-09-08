@@ -100,6 +100,13 @@
         download_detour: '直连',
       },
       {
+        tag: 'domain/lan',
+        type: 'remote',
+        format: 'binary',
+        url: 'https://repo-eo.zuoye.win/ruleset/domainset/lan.srs',
+        download_detour: '直连',
+      },
+      {
         tag: 'ip/reject',
         type: 'remote',
         format: 'binary',

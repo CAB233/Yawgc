@@ -10,6 +10,19 @@
         action: 'predefined',
         rcode: 'NOERROR',
       },
+      // Must realip
+      {
+        rule_set: 'domain/lan',
+        server: 'dns-local',
+      },
+      {
+        query_type: [
+          'A',
+          'AAAA',
+        ],
+        rewrite_ttl: 1,
+        server: 'dns-fakeip',
+      },
       {
         rule_set: [
           'domain/apple_cdn',
@@ -37,14 +50,6 @@
       {
         client_subnet: '42.159.128.1/32',
         action: 'route-options',
-      },
-      {
-        query_type: [
-          'A',
-          'AAAA',
-        ],
-        rewrite_ttl: 1,
-        server: 'dns-fakeip',
       },
     ],
   },
