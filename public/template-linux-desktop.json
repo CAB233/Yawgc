@@ -23,7 +23,7 @@
         "inet6_range": "fc00::/18"
       },
       {
-        "type": "dhcp",
+        "type": "local",
         "tag": "dns-local"
       }
     ],
@@ -36,6 +36,18 @@
         "query_type": "HTTPS",
         "action": "predefined",
         "rcode": "NOERROR"
+      },
+      {
+        "rule_set": "domain/lan",
+        "server": "dns-local"
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "dns-fakeip",
+        "rewrite_ttl": 1
       },
       {
         "clash_mode": "增强",
@@ -64,14 +76,6 @@
       {
         "action": "route-options",
         "client_subnet": "42.159.128.1"
-      },
-      {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "dns-fakeip",
-        "rewrite_ttl": 1
       }
     ],
     "final": "dns-google",
@@ -303,6 +307,12 @@
         "type": "remote",
         "tag": "domain/direct",
         "url": "https://repo-eo.zuoye.win/ruleset/domainset/direct.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "domain/lan",
+        "url": "https://repo-eo.zuoye.win/ruleset/domainset/lan.srs",
         "download_detour": "直连"
       },
       {
