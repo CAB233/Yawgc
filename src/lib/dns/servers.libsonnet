@@ -21,7 +21,7 @@ function(platform) {
 
   local local_server = {
     tag: 'dns-local',
-    type: if (platform == 'android') then 'local' else 'dhcp',
+    type: if (platform == 'windows') then 'dhcp' else 'local',
   },
 
   dns: {
