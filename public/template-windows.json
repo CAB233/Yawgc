@@ -38,6 +38,7 @@
         "rcode": "NOERROR"
       },
       {
+        "domain": "lancache.steamcontent.com",
         "rule_set": "domain/lan",
         "server": "dns-local"
       },
@@ -173,6 +174,16 @@
         "rule_set": "domain/reject-no-drop",
         "action": "reject",
         "no_drop": true
+      },
+      {
+        "rule_set": [
+          "domain/apple_cdn",
+          "domain/microsoft_cdn",
+          "domain/game-download",
+          "domain/apple_cn",
+          "domain/direct"
+        ],
+        "outbound": "直连"
       },
       {
         "type": "logical",
