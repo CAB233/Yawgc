@@ -12,6 +12,7 @@
       },
       // Must realip
       {
+        domain: 'lancache.steamcontent.com',
         rule_set: 'domain/lan',
         server: 'dns-local',
       },
