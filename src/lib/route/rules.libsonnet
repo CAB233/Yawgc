@@ -55,6 +55,16 @@
         no_drop: true,
       },
       {
+        rule_set: [
+          'domain/apple_cdn',
+          'domain/microsoft_cdn',
+          'domain/game-download',
+          'domain/apple_cn',
+          'domain/direct',
+        ],
+        outbound: '直连',
+      },
+      {
         type: 'logical',
         mode: 'and',
         rules: [
