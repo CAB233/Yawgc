@@ -1,6 +1,6 @@
 function(platform) {
   inbounds: [
-    local tun_config = {
+    {
       tag: 'tun-in',
       type: 'tun',
       interface_name: 'sing-tun',
@@ -12,15 +12,15 @@ function(platform) {
         'fdfe:dcba:9876::1/126',
       ],
       strict_route: if (platform == 'android' || platform == 'windows') then true else false,
-    };
-
-    tun_config + if (platform == 'linux-desktop') then {
-      route_exclude_address_set: [
-        'ip/domestic',
-        'ip/china_ip',
-        'ip/china_ip_ipv6',
-        'ip/lan',
-      ],
-    } else {},
+    } + (
+      if (platform != 'linux-desktop') then {} else {
+        route_exclude_address_set: [
+          'ip/domestic',
+          'ip/china_ip',
+          'ip/china_ip_ipv6',
+          'ip/lan',
+        ],
+      }
+    ),
   ],
 }
