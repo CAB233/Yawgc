@@ -1,4 +1,4 @@
-{
+function(platform) {
   route: {
     rules: [
       {
@@ -54,6 +54,55 @@
         action: 'reject',
         no_drop: true,
       },
+    ] + (
+      // Android Telegram block rules
+      if (platform != 'android') then [] else [
+        {
+          package_name: 'xyz.nextalone.nagram',
+          port: 80,
+          action: 'reject',
+          method: 'drop',
+        },
+        {
+          type: 'logical',
+          mode: 'and',
+          rules: [
+            {
+              package_name: 'xyz.nextalone.nagram',
+            },
+            {
+              rule_set: 'ip/telegram',
+              invert: true,
+            },
+          ],
+          action: 'reject',
+        },
+      ]
+    ) + (
+      // Linux Telegram block rules
+      if (platform != 'linux-desktop') then [] else [
+        {
+          process_name: 'Telegram',
+          port: 80,
+          action: 'reject',
+          method: 'drop',
+        },
+        {
+          type: 'logical',
+          mode: 'and',
+          rules: [
+            {
+              process_name: 'Telegram',
+            },
+            {
+              rule_set: 'ip/telegram',
+              invert: true,
+            },
+          ],
+          action: 'reject',
+        },
+      ]
+    ) + [
       {
         rule_set: [
           'domain/apple_cdn',
