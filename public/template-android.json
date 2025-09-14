@@ -38,7 +38,10 @@
         "rcode": "NOERROR"
       },
       {
-        "domain": "lancache.steamcontent.com",
+        "domain": [
+          "lancache.steamcontent.com",
+          "ntp.ntsc.ac.cn"
+        ],
         "rule_set": "domain/lan",
         "server": "dns-local"
       },
@@ -82,6 +85,12 @@
     "final": "dns-google",
     "independent_cache": true,
     "cache_capacity": 2048
+  },
+  "ntp": {
+    "enabled": true,
+    "interval": "30m0s",
+    "server": "ntp.ntsc.ac.cn",
+    "server_port": 123
   },
   "certificate": {
     "store": "mozilla"
