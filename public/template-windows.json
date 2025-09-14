@@ -17,14 +17,14 @@
         "server": "223.5.5.5"
       },
       {
+        "type": "dhcp",
+        "tag": "dns-local"
+      },
+      {
         "type": "fakeip",
         "tag": "dns-fakeip",
         "inet4_range": "198.18.0.0/15",
         "inet6_range": "fc00::/18"
-      },
-      {
-        "type": "dhcp",
-        "tag": "dns-local"
       }
     ],
     "rules": [
