@@ -12,7 +12,7 @@
       },
       // Must realip
       {
-        domain: 'lancache.steamcontent.com',
+        domain: ['lancache.steamcontent.com', 'ntp.ntsc.ac.cn'],
         rule_set: 'domain/lan',
         server: 'dns-local',
       },

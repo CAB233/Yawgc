@@ -55,7 +55,7 @@ function(platform) {
         no_drop: true,
       },
     ] + (
-      // Android Telegram block rules
+      // Android Telegram blocking rules
       if (platform != 'android') then [] else [
         {
           package_name: 'xyz.nextalone.nagram',
@@ -79,7 +79,7 @@ function(platform) {
         },
       ]
     ) + (
-      // Linux Telegram block rules
+      // Linux Telegram blocking rules
       if (platform != 'linux-desktop') then [] else [
         {
           process_name: 'Telegram',
@@ -103,6 +103,11 @@ function(platform) {
         },
       ]
     ) + [
+      {
+        port: 123,
+        network: 'udp',
+        outbound: '直连',
+      },
       {
         rule_set: [
           'domain/apple_cdn',
