@@ -13,23 +13,15 @@ function(platform) {
         server: '223.5.5.5',
       },
       {
+        tag: 'dns-local',
+        type: if (platform == 'android') then 'local' else 'dhcp',
+      },
+      {
         tag: 'dns-fakeip',
         type: 'fakeip',
         inet4_range: '198.18.0.0/15',
         inet6_range: 'fc00::/18',
       },
-    ] + (
-      if (platform == 'android') then [
-        {
-          tag: 'dns-local',
-          type: 'local',
-        },
-      ] else [
-        {
-          tag: 'dns-local',
-          type: 'dhcp',
-        },
-      ]
-    ),
+    ],
   },
 }
