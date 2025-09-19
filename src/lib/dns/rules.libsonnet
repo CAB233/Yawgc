@@ -13,7 +13,7 @@
       // Must realip
       {
         domain: ['lancache.steamcontent.com', 'ntp.ntsc.ac.cn'],
-        rule_set: 'domain/lan',
+        rule_set: 'domain/direct',
         server: 'dns-local',
       },
       {
@@ -31,7 +31,6 @@
           'domain/game-download',
           'domain/apple_cn',
           'domain/domestic',
-          'domain/direct',
         ],
         clash_mode: '增强',
         server: 'dns-ali',
@@ -44,7 +43,6 @@
           'domain/game-download',
           'domain/apple_cn',
           'domain/domestic',
-          'domain/direct',
         ],
         server: 'dns-local',
       },
