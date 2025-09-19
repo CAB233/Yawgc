@@ -42,7 +42,7 @@
           "lancache.steamcontent.com",
           "ntp.ntsc.ac.cn"
         ],
-        "rule_set": "domain/lan",
+        "rule_set": "domain/direct",
         "server": "dns-local"
       },
       {
@@ -60,8 +60,7 @@
           "domain/microsoft_cdn",
           "domain/game-download",
           "domain/apple_cn",
-          "domain/domestic",
-          "domain/direct"
+          "domain/domestic"
         ],
         "server": "dns-ali",
         "strategy": "ipv4_only"
@@ -72,8 +71,7 @@
           "domain/microsoft_cdn",
           "domain/game-download",
           "domain/apple_cn",
-          "domain/domestic",
-          "domain/direct"
+          "domain/domestic"
         ],
         "server": "dns-local"
       },
@@ -214,12 +212,6 @@
         "type": "remote",
         "tag": "domain/direct",
         "url": "https://repo-eo.zuoye.win/ruleset/domainset/direct.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "domain/lan",
-        "url": "https://repo-eo.zuoye.win/ruleset/domainset/lan.srs",
         "download_detour": "直连"
       },
       {
