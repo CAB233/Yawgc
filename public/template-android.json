@@ -257,7 +257,7 @@
     "override_android_vpn": true,
     "default_domain_resolver": {
       "server": "dns-ali",
-      "strategy": "ipv4_only"
+      "strategy": "prefer_ipv4"
     },
     "default_network_strategy": "fallback"
   },
