@@ -5,7 +5,7 @@ function(platform) {
     auto_detect_interface: true,
     default_domain_resolver: {
       server: 'dns-ali',
-      strategy: 'ipv4_only',
+      strategy: 'prefer_ipv4',
     },
   } + (
     if (platform != 'android') then {} else {
