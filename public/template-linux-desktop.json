@@ -54,6 +54,18 @@
         "rewrite_ttl": 1
       },
       {
+        "rule_set": [
+          "domain/apple_cdn",
+          "domain/microsoft_cdn",
+          "domain/game-download",
+          "domain/apple_cn",
+          "domain/domestic"
+        ],
+        "rule_set_ip_cidr_accept_empty": true,
+        "action": "route-options",
+        "disable_cache": true
+      },
+      {
         "clash_mode": "增强",
         "rule_set": [
           "domain/apple_cdn",
