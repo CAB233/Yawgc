@@ -24,6 +24,20 @@
         rewrite_ttl: 1,
         server: 'dns-fakeip',
       },
+      // Waiting for `ip_accept_empty`
+      // https://github.com/SagerNet/sing-box/issues/3418
+      {
+        rule_set: [
+          'domain/apple_cdn',
+          'domain/microsoft_cdn',
+          'domain/game-download',
+          'domain/apple_cn',
+          'domain/domestic',
+        ],
+        action: 'route-options',
+        rule_set_ip_cidr_accept_empty: true,
+        disable_cache: true,
+      },
       {
         rule_set: [
           'domain/apple_cdn',
