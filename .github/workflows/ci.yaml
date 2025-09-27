@@ -80,6 +80,7 @@ jobs:
           wait-on: |
             http://localhost:3000
           working-directory: sub-store
+          log-output: false
 
       - name: Generate config
         run: |
