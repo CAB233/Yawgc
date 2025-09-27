@@ -6,6 +6,10 @@ on:
   push:
     branches:
       - main
+env: 
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  SING_BOX_VERSION: 1.12.8
+  SUB_STORE_VERSION: 2.20.19
 jobs:
   generate:
     runs-on: ubuntu-24.04
@@ -19,9 +23,6 @@ jobs:
           jsonnet --version
 
       - name: Install sing-box
-        env: 
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SING_BOX_VERSION: 1.12.4
         run: |
           curl -fsSL https://sing-box.app/install.sh | sh -s -- --version "${{ env.SING_BOX_VERSION }}"
           sing-box version
@@ -62,8 +63,6 @@ jobs:
           node-version: "20"
 
       - name: Get sub-store
-        env:
-          SUB_STORE_VERSION: 2.20.19
         run: |
           curl \
             -LSso sub-store/sub-store.js \
