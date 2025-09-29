@@ -3,7 +3,7 @@ function(platform)
   local certificate_config = import 'lib/certificate.libsonnet';
   local experimental_config = import 'lib/experimental.libsonnet';
   local outbounds_config = import 'lib/outbounds.libsonnet';
-  local ntp_config = import 'lib/ntp.libsonnet';
+  local ntp_config = (import 'lib/ntp.libsonnet')(platform);
   local inbounds_config = (import 'lib/inbounds.libsonnet')(platform);
   local dns_config = (import 'lib/dns.libsonnet')(platform);
   local route_config = (import 'lib/route.libsonnet')(platform);
