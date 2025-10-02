@@ -1,12 +1,12 @@
 function(platform) {
   dns: {
     servers: [
-      {
-        tag: 'dns-google',
-        type: 'https',
-        server: '8.8.8.8',
-        detour: '代理',
-      },
+      //{
+      //  tag: 'dns-google',
+      //  type: 'https',
+      //  server: '8.8.8.8',
+      //  detour: '代理',
+      //},
       {
         tag: 'dns-ali',
         type: 'h3',
