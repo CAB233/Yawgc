@@ -6,12 +6,6 @@
   "dns": {
     "servers": [
       {
-        "type": "https",
-        "tag": "dns-google",
-        "detour": "代理",
-        "server": "8.8.8.8"
-      },
-      {
         "type": "h3",
         "tag": "dns-ali",
         "server": "223.5.5.5"
