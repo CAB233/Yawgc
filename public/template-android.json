@@ -83,13 +83,9 @@
           "domain/domestic"
         ],
         "server": "dns-local"
-      },
-      {
-        "action": "route-options",
-        "client_subnet": "42.159.128.1"
       }
     ],
-    "final": "dns-google",
+    "final": "dns-local",
     "independent_cache": true,
     "cache_capacity": 2048
   },
