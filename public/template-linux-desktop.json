@@ -6,6 +6,12 @@
   "dns": {
     "servers": [
       {
+        "type": "https",
+        "tag": "dns-google",
+        "detour": "代理",
+        "server": "8.8.8.8"
+      },
+      {
         "type": "h3",
         "tag": "dns-ali",
         "server": "223.5.5.5"
@@ -77,9 +83,13 @@
           "domain/domestic"
         ],
         "server": "dns-local"
+      },
+      {
+        "action": "route-options",
+        "client_subnet": "42.159.128.1"
       }
     ],
-    "final": "dns-local",
+    "final": "dns-google",
     "independent_cache": true,
     "cache_capacity": 2048
   },
