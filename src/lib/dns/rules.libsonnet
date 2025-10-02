@@ -60,10 +60,6 @@
         ],
         server: 'dns-local',
       },
-      {
-        client_subnet: '42.159.128.1/32',
-        action: 'route-options',
-      },
     ],
   },
 }
