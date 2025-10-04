@@ -100,13 +100,6 @@
         download_detour: '直连',
       },
       {
-        tag: 'ip/reject',
-        type: 'remote',
-        format: 'binary',
-        url: 'https://repo-eo.zuoye.win/ruleset/ip/reject.srs',
-        download_detour: '直连',
-      },
-      {
         tag: 'ip/telegram',
         type: 'remote',
         format: 'binary',

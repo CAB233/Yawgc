@@ -151,10 +151,6 @@ function(platform) {
         action: 'resolve',
       },
       {
-        rule_set: 'ip/reject',
-        action: 'reject',
-      },
-      {
         rule_set: [
           'ip/domestic',
           'ip/china_ip',
