@@ -39,6 +39,7 @@
       },
       {
         "domain": "lancache.steamcontent.com",
+        "domain_suffix": "edu.cn",
         "rule_set": "domain/direct",
         "server": "dns-local"
       },
@@ -215,12 +216,6 @@
         "type": "remote",
         "tag": "domain/direct",
         "url": "https://repo-eo.zuoye.win/ruleset/domainset/direct.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "ip/reject",
-        "url": "https://repo-eo.zuoye.win/ruleset/ip/reject.srs",
         "download_detour": "直连"
       },
       {
