@@ -13,6 +13,7 @@
       // Must realip
       {
         domain: ['lancache.steamcontent.com'],
+        domain_suffix: ['edu.cn'],
         rule_set: 'domain/direct',
         server: 'dns-local',
       },
