@@ -47,9 +47,8 @@
           'domain/apple_cn',
           'domain/domestic',
         ],
-        clash_mode: '增强',
-        server: 'dns-ali',
-        strategy: 'ipv4_only',
+        server: 'dns-local',
+        ip_accept_any: true,
       },
       {
         rule_set: [
@@ -59,7 +58,8 @@
           'domain/apple_cn',
           'domain/domestic',
         ],
-        server: 'dns-local',
+        server: 'dns-ali',
+        strategy: 'ipv4_only',
       },
       {
         client_subnet: '42.159.128.1/32',
