@@ -86,8 +86,12 @@
         "strategy": "ipv4_only"
       },
       {
-        "action": "route-options",
-        "client_subnet": "42.159.128.1"
+        "rule_set": [
+          "ip/domestic",
+          "ip/china_ip",
+          "ip/china_ip_ipv6"
+        ],
+        "server": "dns-ali"
       }
     ],
     "final": "dns-google",
