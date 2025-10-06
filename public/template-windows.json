@@ -64,7 +64,7 @@
         "disable_cache": true
       },
       {
-        "clash_mode": "增强",
+        "ip_accept_any": true,
         "rule_set": [
           "domain/apple_cdn",
           "domain/microsoft_cdn",
@@ -72,8 +72,7 @@
           "domain/apple_cn",
           "domain/domestic"
         ],
-        "server": "dns-ali",
-        "strategy": "ipv4_only"
+        "server": "dns-local"
       },
       {
         "rule_set": [
@@ -83,7 +82,8 @@
           "domain/apple_cn",
           "domain/domestic"
         ],
-        "server": "dns-local"
+        "server": "dns-ali",
+        "strategy": "ipv4_only"
       },
       {
         "action": "route-options",
