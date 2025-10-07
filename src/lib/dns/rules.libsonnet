@@ -10,6 +10,7 @@
         action: 'predefined',
         rcode: 'NOERROR',
       },
+
       // Must realip
       {
         domain: ['lancache.steamcontent.com'],
@@ -17,6 +18,7 @@
         rule_set: 'domain/direct',
         server: 'dns-local',
       },
+
       {
         query_type: [
           'A',
@@ -25,6 +27,7 @@
         rewrite_ttl: 1,
         server: 'dns-fakeip',
       },
+
       // Waiting for `ip_accept_empty`
       // https://github.com/SagerNet/sing-box/issues/3418
       {
@@ -39,7 +42,8 @@
         rule_set_ip_cidr_accept_empty: true,
         disable_cache: true,
       },
-      // Must be resolved in CN. ===>
+
+      // Must be resolved in CN.
       {
         rule_set: [
           'domain/apple_cdn',
@@ -62,17 +66,16 @@
         server: 'dns-ali',
         strategy: 'ipv4_only',
       },
-      // <===
-      //
-      // Other domains shall be resolved in CN as a priority.
-      // The premise is that even if it is the result of pollution, it originates from foreign IP.
+
+      // Ref: https://crzidea.com/#/article/introducing-crzidea-doh
       {
         rule_set: [
           'ip/domestic',
           'ip/china_ip',
           'ip/china_ip_ipv6',
         ],
-        server: 'dns-ali',
+        server: 'dns-google',
+        client_subnet: '42.159.128.1/32',
       },
     ],
   },
