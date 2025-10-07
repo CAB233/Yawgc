@@ -91,7 +91,8 @@
           "ip/china_ip",
           "ip/china_ip_ipv6"
         ],
-        "server": "dns-ali"
+        "server": "dns-google",
+        "client_subnet": "42.159.128.1"
       }
     ],
     "final": "dns-google",
