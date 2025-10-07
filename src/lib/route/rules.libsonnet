@@ -119,25 +119,6 @@ function(platform) {
         outbound: '直连',
       },
       {
-        type: 'logical',
-        mode: 'and',
-        rules: [
-          {
-            rule_set: [
-              'domain/domestic',
-            ],
-          },
-          {
-            rule_set: [
-              'ip/domestic',
-              'ip/china_ip',
-              'ip/china_ip_ipv6',
-            ],
-          },
-        ],
-        outbound: '直连',
-      },
-      {
         rule_set: [
           'domain/cdn',
           'domain/telegram',
