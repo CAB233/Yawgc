@@ -4,7 +4,7 @@ function(platform)
       enabled: true,
       server: 'ntp.ntsc.ac.cn',
       server_port: 123,
-      interval: '30m',
+      interval: '1440m',
       write_to_system: false,
     },
   }
