@@ -101,7 +101,7 @@
   },
   "ntp": {
     "enabled": true,
-    "interval": "30m0s",
+    "interval": "24h0m0s",
     "server": "ntp.ntsc.ac.cn",
     "server_port": 123
   },
@@ -377,4 +377,3 @@
     }
   }
 }
-
