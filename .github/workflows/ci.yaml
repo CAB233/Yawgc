@@ -42,8 +42,7 @@ jobs:
         run: |
           for config in *.json; do
             echo "[*] Formating template-$config ..."
-            sing-box format -c "$config" > "/tmp/$config"
-            cp -v "/tmp/$config" "$config"
+            sing-box format -w -c "$config"
           done
 
       - name: Commit config
