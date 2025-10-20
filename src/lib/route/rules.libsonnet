@@ -63,20 +63,6 @@ function(platform) {
           action: 'reject',
           method: 'drop',
         },
-        {
-          type: 'logical',
-          mode: 'and',
-          rules: [
-            {
-              package_name: 'xyz.nextalone.nagram',
-            },
-            {
-              rule_set: 'ip/telegram',
-              invert: true,
-            },
-          ],
-          action: 'reject',
-        },
       ]
     ) + (
       // Linux Telegram blocking rules
@@ -86,20 +72,6 @@ function(platform) {
           port: 80,
           action: 'reject',
           method: 'drop',
-        },
-        {
-          type: 'logical',
-          mode: 'and',
-          rules: [
-            {
-              process_name: 'Telegram',
-            },
-            {
-              rule_set: 'ip/telegram',
-              invert: true,
-            },
-          ],
-          action: 'reject',
         },
       ]
     ) + [
