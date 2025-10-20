@@ -199,20 +199,6 @@
         "method": "drop"
       },
       {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "package_name": "xyz.nextalone.nagram"
-          },
-          {
-            "rule_set": "ip/telegram",
-            "invert": true
-          }
-        ],
-        "action": "reject"
-      },
-      {
         "network": "udp",
         "port": 123,
         "outbound": "直连"
