@@ -10,6 +10,10 @@
         action: 'predefined',
         rcode: 'NOERROR',
       },
+      {
+        clash_mode: '全局',
+        server: 'dns-google',
+      },
 
       // Must realip
       {

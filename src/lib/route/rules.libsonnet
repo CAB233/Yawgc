@@ -6,6 +6,10 @@ function(platform) {
         outbound: '直连',
       },
       {
+        clash_mode: '全局',
+        outbound: '代理',
+      },
+      {
         rule_set: 'ip/telegram',
         invert: true,
         action: 'sniff',
