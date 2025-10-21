@@ -38,6 +38,10 @@
         "rcode": "NOERROR"
       },
       {
+        "clash_mode": "全局",
+        "server": "dns-google"
+      },
+      {
         "domain": "lancache.steamcontent.com",
         "domain_suffix": "edu.cn",
         "rule_set": "domain/direct",
@@ -142,6 +146,10 @@
       {
         "clash_mode": "直连",
         "outbound": "直连"
+      },
+      {
+        "clash_mode": "全局",
+        "outbound": "代理"
       },
       {
         "rule_set": "ip/telegram",
