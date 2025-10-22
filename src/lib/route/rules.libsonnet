@@ -34,12 +34,7 @@ function(platform) {
           },
           {
             rule_set: [
-              'domain/apple_cdn',
-              'domain/microsoft_cdn',
-              'domain/game-download',
-              'domain/apple_cn',
-              'domain/domestic',
-              'domain/direct',
+              'geosite-geolocation-cn',
             ],
             invert: true,
           },
@@ -86,21 +81,13 @@ function(platform) {
       },
       {
         rule_set: [
-          'domain/apple_cdn',
-          'domain/microsoft_cdn',
-          'domain/game-download',
-          'domain/apple_cn',
-          'domain/direct',
+          'geosite-geolocation-cn',
         ],
         outbound: '直连',
       },
       {
         rule_set: [
-          'domain/cdn',
-          'domain/telegram',
-          'domain/microsoft',
-          'domain/download',
-          'domain/global',
+          'geosite-geolocation-!cn',
         ],
         outbound: '代理',
       },
@@ -109,11 +96,12 @@ function(platform) {
       },
       {
         rule_set: [
-          'ip/domestic',
-          'ip/china_ip',
-          'ip/china_ip_ipv6',
-          'ip/lan',
+          'geoip-cn',
         ],
+        outbound: '直连',
+      },
+      {
+        ip_is_private: true,
         outbound: '直连',
       },
     ],

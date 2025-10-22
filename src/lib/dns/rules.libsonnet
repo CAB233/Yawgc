@@ -19,7 +19,7 @@
       {
         domain: ['lancache.steamcontent.com'],
         domain_suffix: ['edu.cn'],
-        rule_set: 'domain/direct',
+        rule_set: 'geosite-private',
         server: 'dns-local',
       },
 
@@ -36,11 +36,8 @@
       // https://github.com/SagerNet/sing-box/issues/3418
       {
         rule_set: [
-          'domain/apple_cdn',
-          'domain/microsoft_cdn',
           'domain/game-download',
-          'domain/apple_cn',
-          'domain/domestic',
+          'geosite-geolocation-cn',
         ],
         action: 'route-options',
         rule_set_ip_cidr_accept_empty: true,
@@ -50,22 +47,16 @@
       // Must be resolved in CN.
       {
         rule_set: [
-          'domain/apple_cdn',
-          'domain/microsoft_cdn',
           'domain/game-download',
-          'domain/apple_cn',
-          'domain/domestic',
+          'geosite-geolocation-cn',
         ],
         server: 'dns-local',
         ip_accept_any: true,
       },
       {
         rule_set: [
-          'domain/apple_cdn',
-          'domain/microsoft_cdn',
           'domain/game-download',
-          'domain/apple_cn',
-          'domain/domestic',
+          'geosite-geolocation-cn',
         ],
         server: 'dns-ali',
         strategy: 'ipv4_only',
@@ -74,9 +65,7 @@
       // Ref: https://crzidea.com/#/article/introducing-crzidea-doh
       {
         rule_set: [
-          'ip/domestic',
-          'ip/china_ip',
-          'ip/china_ip_ipv6',
+          'geoip-cn',
         ],
         server: 'dns-google',
         client_subnet: '42.159.128.1/32',
