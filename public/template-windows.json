@@ -44,7 +44,7 @@
       {
         "domain": "lancache.steamcontent.com",
         "domain_suffix": "edu.cn",
-        "rule_set": "domain/direct",
+        "rule_set": "geosite-private",
         "server": "dns-local"
       },
       {
@@ -57,11 +57,8 @@
       },
       {
         "rule_set": [
-          "domain/apple_cdn",
-          "domain/microsoft_cdn",
           "domain/game-download",
-          "domain/apple_cn",
-          "domain/domestic"
+          "geosite-geolocation-cn"
         ],
         "rule_set_ip_cidr_accept_empty": true,
         "action": "route-options",
@@ -70,31 +67,21 @@
       {
         "ip_accept_any": true,
         "rule_set": [
-          "domain/apple_cdn",
-          "domain/microsoft_cdn",
           "domain/game-download",
-          "domain/apple_cn",
-          "domain/domestic"
+          "geosite-geolocation-cn"
         ],
         "server": "dns-local"
       },
       {
         "rule_set": [
-          "domain/apple_cdn",
-          "domain/microsoft_cdn",
           "domain/game-download",
-          "domain/apple_cn",
-          "domain/domestic"
+          "geosite-geolocation-cn"
         ],
         "server": "dns-ali",
         "strategy": "ipv4_only"
       },
       {
-        "rule_set": [
-          "ip/domestic",
-          "ip/china_ip",
-          "ip/china_ip_ipv6"
-        ],
+        "rule_set": "geoip-cn",
         "server": "dns-google",
         "client_subnet": "42.159.128.1"
       }
@@ -175,14 +162,7 @@
             "port": 443
           },
           {
-            "rule_set": [
-              "domain/apple_cdn",
-              "domain/microsoft_cdn",
-              "domain/game-download",
-              "domain/apple_cn",
-              "domain/domestic",
-              "domain/direct"
-            ],
+            "rule_set": "geosite-geolocation-cn",
             "invert": true
           }
         ],
@@ -206,35 +186,22 @@
         "outbound": "直连"
       },
       {
-        "rule_set": [
-          "domain/apple_cdn",
-          "domain/microsoft_cdn",
-          "domain/game-download",
-          "domain/apple_cn",
-          "domain/direct"
-        ],
+        "rule_set": "geosite-geolocation-cn",
         "outbound": "直连"
       },
       {
-        "rule_set": [
-          "domain/cdn",
-          "domain/telegram",
-          "domain/microsoft",
-          "domain/download",
-          "domain/global"
-        ],
+        "rule_set": "geosite-geolocation-!cn",
         "outbound": "代理"
       },
       {
         "action": "resolve"
       },
       {
-        "rule_set": [
-          "ip/domestic",
-          "ip/china_ip",
-          "ip/china_ip_ipv6",
-          "ip/lan"
-        ],
+        "rule_set": "geoip-cn",
+        "outbound": "直连"
+      },
+      {
+        "ip_is_private": true,
         "outbound": "直连"
       }
     ],
@@ -259,26 +226,20 @@
       },
       {
         "type": "remote",
-        "tag": "domain/cdn",
-        "url": "https://repo-eo.zuoye.win/ruleset/domainset/cdn.srs",
+        "tag": "geosite-geolocation-cn",
+        "url": "https://testingcf.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-geolocation-cn.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
-        "tag": "domain/telegram",
-        "url": "https://repo-eo.zuoye.win/ruleset/domainset/telegram.srs",
+        "tag": "geosite-geolocation-!cn",
+        "url": "https://testingcf.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-geolocation-!cn.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
-        "tag": "domain/microsoft_cdn",
-        "url": "https://repo-eo.zuoye.win/ruleset/domainset/microsoft_cdn.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "domain/apple_cdn",
-        "url": "https://repo-eo.zuoye.win/ruleset/domainset/apple_cdn.srs",
+        "tag": "geosite-private",
+        "url": "https://testingcf.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-private.srs",
         "download_detour": "直连"
       },
       {
@@ -289,68 +250,14 @@
       },
       {
         "type": "remote",
-        "tag": "domain/download",
-        "url": "https://repo-eo.zuoye.win/ruleset/domainset/download.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "domain/apple_cn",
-        "url": "https://repo-eo.zuoye.win/ruleset/domainset/apple_cn.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "domain/microsoft",
-        "url": "https://repo-eo.zuoye.win/ruleset/domainset/microsoft.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "domain/global",
-        "url": "https://repo-eo.zuoye.win/ruleset/domainset/global.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "domain/domestic",
-        "url": "https://repo-eo.zuoye.win/ruleset/domainset/domestic.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "domain/direct",
-        "url": "https://repo-eo.zuoye.win/ruleset/domainset/direct.srs",
+        "tag": "geoip-cn",
+        "url": "https://testingcf.jsdelivr.net/gh/SagerNet/sing-geoip@rule-set/geoip-cn.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "ip/telegram",
         "url": "https://repo-eo.zuoye.win/ruleset/ip/telegram.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "ip/domestic",
-        "url": "https://repo-eo.zuoye.win/ruleset/ip/domestic.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "ip/china_ip",
-        "url": "https://repo-eo.zuoye.win/ruleset/ip/china_ip.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "ip/china_ip_ipv6",
-        "url": "https://repo-eo.zuoye.win/ruleset/ip/china_ip_ipv6.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "ip/lan",
-        "url": "https://repo-eo.zuoye.win/ruleset/ip/lan.srs",
         "download_detour": "直连"
       }
     ],
