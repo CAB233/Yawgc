@@ -56,15 +56,6 @@
         "rewrite_ttl": 1
       },
       {
-        "rule_set": [
-          "domain/game-download",
-          "geosite-geolocation-cn"
-        ],
-        "rule_set_ip_cidr_accept_empty": true,
-        "action": "route-options",
-        "disable_cache": true
-      },
-      {
         "ip_accept_any": true,
         "rule_set": [
           "domain/game-download",
