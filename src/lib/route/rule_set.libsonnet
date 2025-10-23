@@ -23,21 +23,21 @@
         download_detour: '直连',
       },
       {
-        tag: 'geosite-geolocation-cn',
+        tag: 'domain/cn',
         type: 'remote',
         format: 'binary',
         url: 'https://testingcf.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-geolocation-cn.srs',
         download_detour: '直连',
       },
       {
-        tag: 'geosite-geolocation-!cn',
+        tag: 'domain/!cn',
         type: 'remote',
         format: 'binary',
         url: 'https://testingcf.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-geolocation-!cn.srs',
         download_detour: '直连',
       },
       {
-        tag: 'geosite-private',
+        tag: 'domain/private',
         type: 'remote',
         format: 'binary',
         url: 'https://testingcf.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-private.srs',
@@ -51,7 +51,7 @@
         download_detour: '直连',
       },
       {
-        tag: 'geoip-cn',
+        tag: 'ip/cn',
         type: 'remote',
         format: 'binary',
         url: 'https://testingcf.jsdelivr.net/gh/SagerNet/sing-geoip@rule-set/geoip-cn.srs',

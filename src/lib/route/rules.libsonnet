@@ -34,7 +34,7 @@ function(platform) {
           },
           {
             rule_set: [
-              'geosite-geolocation-cn',
+              'domain/cn',
             ],
             invert: true,
           },
@@ -81,13 +81,14 @@ function(platform) {
       },
       {
         rule_set: [
-          'geosite-geolocation-cn',
+          'domain/game-download',
+          'domain/cn',
         ],
         outbound: '直连',
       },
       {
         rule_set: [
-          'geosite-geolocation-!cn',
+          'domain/!cn',
         ],
         outbound: '代理',
       },
@@ -96,7 +97,7 @@ function(platform) {
       },
       {
         rule_set: [
-          'geoip-cn',
+          'ip/cn',
         ],
         outbound: '直连',
       },
