@@ -32,18 +32,6 @@
         server: 'dns-fakeip',
       },
 
-      // Waiting for `ip_accept_empty`
-      // https://github.com/SagerNet/sing-box/issues/3418
-      {
-        rule_set: [
-          'domain/game-download',
-          'geosite-geolocation-cn',
-        ],
-        action: 'route-options',
-        rule_set_ip_cidr_accept_empty: true,
-        disable_cache: true,
-      },
-
       // Must be resolved in CN.
       {
         rule_set: [
