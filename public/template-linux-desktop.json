@@ -44,7 +44,7 @@
       {
         "domain": "lancache.steamcontent.com",
         "domain_suffix": "edu.cn",
-        "rule_set": "geosite-private",
+        "rule_set": "domain/private",
         "server": "dns-local"
       },
       {
@@ -59,20 +59,20 @@
         "ip_accept_any": true,
         "rule_set": [
           "domain/game-download",
-          "geosite-geolocation-cn"
+          "domain/cn"
         ],
         "server": "dns-local"
       },
       {
         "rule_set": [
           "domain/game-download",
-          "geosite-geolocation-cn"
+          "domain/cn"
         ],
         "server": "dns-ali",
         "strategy": "ipv4_only"
       },
       {
-        "rule_set": "geoip-cn",
+        "rule_set": "ip/cn",
         "server": "dns-google",
         "client_subnet": "42.159.128.1"
       }
@@ -154,7 +154,7 @@
             "port": 443
           },
           {
-            "rule_set": "geosite-geolocation-cn",
+            "rule_set": "domain/cn",
             "invert": true
           }
         ],
@@ -184,18 +184,21 @@
         "outbound": "直连"
       },
       {
-        "rule_set": "geosite-geolocation-cn",
+        "rule_set": [
+          "domain/game-download",
+          "domain/cn"
+        ],
         "outbound": "直连"
       },
       {
-        "rule_set": "geosite-geolocation-!cn",
+        "rule_set": "domain/!cn",
         "outbound": "代理"
       },
       {
         "action": "resolve"
       },
       {
-        "rule_set": "geoip-cn",
+        "rule_set": "ip/cn",
         "outbound": "直连"
       },
       {
@@ -224,19 +227,19 @@
       },
       {
         "type": "remote",
-        "tag": "geosite-geolocation-cn",
+        "tag": "domain/cn",
         "url": "https://testingcf.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-geolocation-cn.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
-        "tag": "geosite-geolocation-!cn",
+        "tag": "domain/!cn",
         "url": "https://testingcf.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-geolocation-!cn.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
-        "tag": "geosite-private",
+        "tag": "domain/private",
         "url": "https://testingcf.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-private.srs",
         "download_detour": "直连"
       },
@@ -248,7 +251,7 @@
       },
       {
         "type": "remote",
-        "tag": "geoip-cn",
+        "tag": "ip/cn",
         "url": "https://testingcf.jsdelivr.net/gh/SagerNet/sing-geoip@rule-set/geoip-cn.srs",
         "download_detour": "直连"
       },
