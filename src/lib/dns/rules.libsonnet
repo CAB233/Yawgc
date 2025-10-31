@@ -52,7 +52,17 @@
 
       // Ref: https://crzidea.com/#/article/introducing-crzidea-doh
       {
-        rule_set: 'ip/cn',
+        type: 'logical',
+        mode: 'and',
+        rules: [
+          {
+            rule_set: 'domain/!cn',
+            invert: true,
+          },
+          {
+            rule_set: 'ip/cn',
+          },
+        ],
         server: 'dns-google',
         client_subnet: '42.159.128.1/32',
       },
