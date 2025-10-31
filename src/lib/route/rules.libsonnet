@@ -42,10 +42,7 @@ function(platform) {
         action: 'reject',
       },
       {
-        rule_set: [
-          'domain/reject',
-          'domain/reject_extra',
-        ],
+        rule_set: 'domain/reject',
         action: 'reject',
       },
       {
