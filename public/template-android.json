@@ -72,7 +72,17 @@
         "strategy": "ipv4_only"
       },
       {
-        "rule_set": "ip/cn",
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "domain/!cn",
+            "invert": true
+          },
+          {
+            "rule_set": "ip/cn"
+          }
+        ],
         "server": "dns-google",
         "client_subnet": "42.159.128.1"
       }
@@ -160,10 +170,7 @@
         "action": "reject"
       },
       {
-        "rule_set": [
-          "domain/reject",
-          "domain/reject_extra"
-        ],
+        "rule_set": "domain/reject",
         "action": "reject"
       },
       {
@@ -209,13 +216,7 @@
       {
         "type": "remote",
         "tag": "domain/reject",
-        "url": "https://repo-eo.zuoye.win/ruleset/domainset/reject.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "domain/reject_extra",
-        "url": "https://repo-eo.zuoye.win/ruleset/domainset/reject_extra.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/lyc8503/sing-box-rules@rule-set-geosite/geosite-category-ads-all.srs",
         "download_detour": "直连"
       },
       {
@@ -227,19 +228,19 @@
       {
         "type": "remote",
         "tag": "domain/cn",
-        "url": "https://testingcf.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-geolocation-cn.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/lyc8503/sing-box-rules@rule-set-geosite/geosite-geolocation-cn.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "domain/!cn",
-        "url": "https://testingcf.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-geolocation-!cn.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/lyc8503/sing-box-rules@rule-set-geosite/geosite-geolocation-!cn.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "domain/private",
-        "url": "https://testingcf.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-private.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/lyc8503/sing-box-rules@rule-set-geosite/geosite-private.srs",
         "download_detour": "直连"
       },
       {
@@ -251,7 +252,7 @@
       {
         "type": "remote",
         "tag": "ip/cn",
-        "url": "https://testingcf.jsdelivr.net/gh/SagerNet/sing-geoip@rule-set/geoip-cn.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/lyc8503/sing-box-rules@rule-set-geoip/geoip-cn.srs",
         "download_detour": "直连"
       },
       {
