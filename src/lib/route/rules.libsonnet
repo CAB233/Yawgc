@@ -1,4 +1,4 @@
-function(platform) {
+{
   route: {
     rules: [
       {
@@ -50,27 +50,12 @@ function(platform) {
         action: 'reject',
         no_drop: true,
       },
-    ] + (
-      // Android Telegram blocking rules
-      if (platform != 'android') then [] else [
-        {
-          package_name: 'xyz.nextalone.nagram',
-          port: 80,
-          action: 'reject',
-          method: 'drop',
-        },
-      ]
-    ) + (
-      // Linux Telegram blocking rules
-      if (platform != 'linux-desktop') then [] else [
-        {
-          process_name: 'Telegram',
-          port: 80,
-          action: 'reject',
-          method: 'drop',
-        },
-      ]
-    ) + [
+      {
+        rule_set: 'ip/telegram',
+        port: 80,
+        action: 'reject',
+        method: 'drop',
+      },
       {
         port: 123,
         network: 'udp',
