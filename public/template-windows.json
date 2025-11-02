@@ -132,14 +132,6 @@
   "route": {
     "rules": [
       {
-        "clash_mode": "直连",
-        "outbound": "直连"
-      },
-      {
-        "clash_mode": "全局",
-        "outbound": "代理"
-      },
-      {
         "rule_set": "ip/telegram",
         "invert": true,
         "action": "sniff",
@@ -153,6 +145,14 @@
         "protocol": "dns",
         "port": 53,
         "action": "hijack-dns"
+      },
+      {
+        "clash_mode": "直连",
+        "outbound": "直连"
+      },
+      {
+        "clash_mode": "全局",
+        "outbound": "代理"
       },
       {
         "type": "logical",
@@ -177,6 +177,12 @@
         "rule_set": "domain/reject-no-drop",
         "action": "reject",
         "no_drop": true
+      },
+      {
+        "port": 80,
+        "rule_set": "ip/telegram",
+        "action": "reject",
+        "method": "drop"
       },
       {
         "network": "udp",
