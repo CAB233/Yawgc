@@ -2,14 +2,6 @@ function(platform) {
   route: {
     rules: [
       {
-        clash_mode: '直连',
-        outbound: '直连',
-      },
-      {
-        clash_mode: '全局',
-        outbound: '代理',
-      },
-      {
         rule_set: 'ip/telegram',
         invert: true,
         action: 'sniff',
@@ -23,6 +15,14 @@ function(platform) {
         port: 53,
         protocol: 'dns',
         action: 'hijack-dns',
+      },
+      {
+        clash_mode: '直连',
+        outbound: '直连',
+      },
+      {
+        clash_mode: '全局',
+        outbound: '代理',
       },
       {
         type: 'logical',
