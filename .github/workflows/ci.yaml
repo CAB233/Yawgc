@@ -2,10 +2,12 @@ name: Generate
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 */12 * * *"
+    - cron: '0 */12 * * *'
   push:
     branches:
-      - main
+      - 'main'
+    paths:
+      - 'src/**'
 env: 
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   SING_BOX_VERSION: 1.12.8
