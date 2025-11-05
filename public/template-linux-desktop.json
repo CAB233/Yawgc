@@ -44,7 +44,7 @@
       {
         "domain": "lancache.steamcontent.com",
         "domain_suffix": "edu.cn",
-        "rule_set": "domain/private",
+        "rule_set": "geosite-private",
         "server": "dns-local"
       },
       {
@@ -57,17 +57,11 @@
       },
       {
         "ip_accept_any": true,
-        "rule_set": [
-          "domain/game-download",
-          "domain/cn"
-        ],
+        "rule_set": "geosite-direct",
         "server": "dns-local"
       },
       {
-        "rule_set": [
-          "domain/game-download",
-          "domain/cn"
-        ],
+        "rule_set": "geosite-direct",
         "server": "dns-ali",
         "strategy": "ipv4_only"
       },
@@ -76,11 +70,11 @@
         "mode": "and",
         "rules": [
           {
-            "rule_set": "domain/!cn",
+            "rule_set": "geosite-proxy",
             "invert": true
           },
           {
-            "rule_set": "ip/cn"
+            "rule_set": "geoip-cn"
           }
         ],
         "server": "dns-google",
@@ -133,7 +127,7 @@
   "route": {
     "rules": [
       {
-        "rule_set": "ip/telegram",
+        "rule_set": "geoip-telegram",
         "invert": true,
         "action": "sniff",
         "sniffer": [
@@ -164,24 +158,24 @@
             "port": 443
           },
           {
-            "rule_set": "domain/cn",
+            "rule_set": "geosite-direct",
             "invert": true
           }
         ],
         "action": "reject"
       },
       {
-        "rule_set": "domain/reject",
+        "rule_set": "geosite-reject",
         "action": "reject"
       },
       {
-        "rule_set": "domain/reject-no-drop",
+        "rule_set": "geosite-reject-no-drop",
         "action": "reject",
         "no_drop": true
       },
       {
         "port": 80,
-        "rule_set": "ip/telegram",
+        "rule_set": "geoip-telegram",
         "action": "reject",
         "method": "drop"
       },
@@ -191,21 +185,18 @@
         "outbound": "直连"
       },
       {
-        "rule_set": [
-          "domain/game-download",
-          "domain/cn"
-        ],
+        "rule_set": "geosite-direct",
         "outbound": "直连"
       },
       {
-        "rule_set": "domain/!cn",
+        "rule_set": "geosite-proxy",
         "outbound": "代理"
       },
       {
         "action": "resolve"
       },
       {
-        "rule_set": "ip/cn",
+        "rule_set": "geoip-cn",
         "outbound": "直连"
       },
       {
@@ -216,50 +207,44 @@
     "rule_set": [
       {
         "type": "remote",
-        "tag": "domain/reject",
-        "url": "https://testingcf.jsdelivr.net/gh/lyc8503/sing-box-rules@rule-set-geosite/geosite-category-ads-all.srs",
+        "tag": "geosite-reject",
+        "url": "https://repo.zuoye.win/ruleset/geosite-reject.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
-        "tag": "domain/reject-no-drop",
-        "url": "https://repo-eo.zuoye.win/ruleset/domainset/reject-no-drop.srs",
+        "tag": "geosite-reject-no-drop",
+        "url": "https://repo.zuoye.win/ruleset/geosite-reject-no-drop.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
-        "tag": "domain/cn",
-        "url": "https://testingcf.jsdelivr.net/gh/lyc8503/sing-box-rules@rule-set-geosite/geosite-geolocation-cn.srs",
+        "tag": "geosite-direct",
+        "url": "https://repo.zuoye.win/ruleset/geosite-direct.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
-        "tag": "domain/!cn",
-        "url": "https://testingcf.jsdelivr.net/gh/lyc8503/sing-box-rules@rule-set-geosite/geosite-geolocation-!cn.srs",
+        "tag": "geosite-proxy",
+        "url": "https://repo.zuoye.win/ruleset/geosite-proxy.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
-        "tag": "domain/private",
-        "url": "https://testingcf.jsdelivr.net/gh/lyc8503/sing-box-rules@rule-set-geosite/geosite-private.srs",
+        "tag": "geosite-private",
+        "url": "https://repo.zuoye.win/ruleset/geosite-private.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
-        "tag": "domain/game-download",
-        "url": "https://repo-eo.zuoye.win/ruleset/domainset/game-download.srs",
+        "tag": "geoip-cn",
+        "url": "https://repo.zuoye.win/ruleset/geoip-cn.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
-        "tag": "ip/cn",
-        "url": "https://testingcf.jsdelivr.net/gh/lyc8503/sing-box-rules@rule-set-geoip/geoip-cn.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "ip/telegram",
-        "url": "https://repo-eo.zuoye.win/ruleset/ip/telegram.srs",
+        "tag": "geoip-telegram",
+        "url": "https://repo.zuoye.win/ruleset/geoip-telegram.srs",
         "download_detour": "直连"
       }
     ],
