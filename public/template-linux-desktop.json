@@ -208,43 +208,43 @@
       {
         "type": "remote",
         "tag": "geosite-reject",
-        "url": "https://repo.zuoye.win/ruleset/geosite-reject.srs",
+        "url": "https://repo-eo.zuoye.win/ruleset/geosite-reject.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "geosite-reject-no-drop",
-        "url": "https://repo.zuoye.win/ruleset/geosite-reject-no-drop.srs",
+        "url": "https://repo-eo.zuoye.win/ruleset/geosite-reject-no-drop.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "geosite-direct",
-        "url": "https://repo.zuoye.win/ruleset/geosite-direct.srs",
+        "url": "https://repo-eo.zuoye.win/ruleset/geosite-direct.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "geosite-proxy",
-        "url": "https://repo.zuoye.win/ruleset/geosite-proxy.srs",
+        "url": "https://repo-eo.zuoye.win/ruleset/geosite-proxy.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "geosite-private",
-        "url": "https://repo.zuoye.win/ruleset/geosite-private.srs",
+        "url": "https://repo-eo.zuoye.win/ruleset/geosite-private.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "geoip-cn",
-        "url": "https://repo.zuoye.win/ruleset/geoip-cn.srs",
+        "url": "https://repo-eo.zuoye.win/ruleset/geoip-cn.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
         "tag": "geoip-telegram",
-        "url": "https://repo.zuoye.win/ruleset/geoip-telegram.srs",
+        "url": "https://repo-eo.zuoye.win/ruleset/geoip-telegram.srs",
         "download_detour": "直连"
       }
     ],
