@@ -2,7 +2,7 @@
   route: {
     rules: [
       {
-        rule_set: 'ip/telegram',
+        rule_set: 'geoip-telegram',
         invert: true,
         action: 'sniff',
         sniffer: [
@@ -34,7 +34,7 @@
           },
           {
             rule_set: [
-              'domain/cn',
+              'geosite-direct',
             ],
             invert: true,
           },
@@ -42,16 +42,16 @@
         action: 'reject',
       },
       {
-        rule_set: 'domain/reject',
+        rule_set: 'geosite-reject',
         action: 'reject',
       },
       {
-        rule_set: 'domain/reject-no-drop',
+        rule_set: 'geosite-reject-no-drop',
         action: 'reject',
         no_drop: true,
       },
       {
-        rule_set: 'ip/telegram',
+        rule_set: 'geoip-telegram',
         port: 80,
         action: 'reject',
         method: 'drop',
@@ -62,25 +62,18 @@
         outbound: '直连',
       },
       {
-        rule_set: [
-          'domain/game-download',
-          'domain/cn',
-        ],
+        rule_set: 'geosite-direct',
         outbound: '直连',
       },
       {
-        rule_set: [
-          'domain/!cn',
-        ],
+        rule_set: 'geosite-proxy',
         outbound: '代理',
       },
       {
         action: 'resolve',
       },
       {
-        rule_set: [
-          'ip/cn',
-        ],
+        rule_set: 'geoip-cn',
         outbound: '直连',
       },
       {

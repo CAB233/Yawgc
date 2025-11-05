@@ -19,7 +19,7 @@
       {
         domain: ['lancache.steamcontent.com'],
         domain_suffix: ['edu.cn'],
-        rule_set: 'domain/private',
+        rule_set: 'geosite-private',
         server: 'dns-local',
       },
 
@@ -34,18 +34,12 @@
 
       // Must be resolved in CN.
       {
-        rule_set: [
-          'domain/game-download',
-          'domain/cn',
-        ],
+        rule_set: 'geosite-direct',
         server: 'dns-local',
         ip_accept_any: true,
       },
       {
-        rule_set: [
-          'domain/game-download',
-          'domain/cn',
-        ],
+        rule_set: 'geosite-direct',
         server: 'dns-ali',
         strategy: 'ipv4_only',
       },
@@ -56,11 +50,11 @@
         mode: 'and',
         rules: [
           {
-            rule_set: 'domain/!cn',
+            rule_set: 'geosite-proxy',
             invert: true,
           },
           {
-            rule_set: 'ip/cn',
+            rule_set: 'geoip-cn',
           },
         ],
         server: 'dns-google',
