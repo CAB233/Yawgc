@@ -1,0 +1,190 @@
+{
+  "log": {
+    "level": "warn",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "type": "https",
+        "tag": "dns-google",
+        "detour": "代理",
+        "server": "8.8.8.8"
+      },
+      {
+        "type": "udp",
+        "tag": "dns-ali",
+        "server": "223.5.5.5"
+      },
+      {
+        "type": "fakeip",
+        "tag": "dns-fakeip",
+        "inet4_range": "198.18.0.0/15",
+        "inet6_range": "fc00::/18"
+      }
+    ],
+    "rules": [
+      {
+        "clash_mode": "直连",
+        "server": "dns-ali"
+      },
+      {
+        "clash_mode": "全局",
+        "server": "dns-google"
+      },
+      {
+        "rule_set": "geosite-direct",
+        "server": "dns-ali"
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "dns-fakeip",
+        "rewrite_ttl": 1
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "geosite-proxy",
+            "invert": true
+          },
+          {
+            "rule_set": "geoip-cn"
+          }
+        ],
+        "server": "dns-google",
+        "client_subnet": "42.159.128.1"
+      }
+    ],
+    "final": "dns-google",
+    "independent_cache": true
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "interface_name": "sing-tun",
+      "address": [
+        "172.19.0.1/30",
+        "fdfe:dcba:9876::1/126"
+      ],
+      "auto_route": true,
+      "strict_route": true,
+      "stack": "mixed"
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "直连"
+    },
+    {
+      "type": "selector",
+      "tag": "代理",
+      "outbounds": [
+        "自动"
+      ],
+      "default": "自动",
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "urltest",
+      "tag": "自动",
+      "outbounds": [],
+      "url": "http://cp.cloudflare.com"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "action": "sniff"
+      },
+      {
+        "protocol": "dns",
+        "action": "hijack-dns"
+      },
+      {
+        "clash_mode": "直连",
+        "outbound": "直连"
+      },
+      {
+        "clash_mode": "全局",
+        "outbound": "代理"
+      },
+      {
+        "rule_set": "geosite-reject",
+        "action": "reject"
+      },
+      {
+        "rule_set": "geosite-direct",
+        "outbound": "直连"
+      },
+      {
+        "rule_set": "geosite-proxy",
+        "outbound": "代理"
+      },
+      {
+        "action": "resolve"
+      },
+      {
+        "rule_set": "geoip-cn",
+        "outbound": "直连"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "直连"
+      }
+    ],
+    "rule_set": [
+      {
+        "type": "remote",
+        "tag": "geosite-reject",
+        "url": "https://testingcf.jsdelivr.net/gh/lyc8503/sing-box-rules@rule-set-geosite/geosite-category-ads-all.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-direct",
+        "url": "https://testingcf.jsdelivr.net/gh/lyc8503/sing-box-rules@rule-set-geosite/geosite-geolocation-cn.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-proxy",
+        "url": "https://testingcf.jsdelivr.net/gh/lyc8503/sing-box-rules@rule-set-geosite/geosite-geolocation-!cn.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "geoip-cn",
+        "url": "https://testingcf.jsdelivr.net/gh/lyc8503/sing-box-rules@rule-set-geoip/geoip-cn.srs",
+        "download_detour": "直连"
+      }
+    ],
+    "final": "代理",
+    "auto_detect_interface": true,
+    "default_domain_resolver": "dns-ali"
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "store_fakeip": true,
+      "store_rdrc": true
+    },
+    "clash_api": {
+      "external_controller": "127.0.0.1:9090",
+      "external_ui": "ui",
+      "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist-no-fonts.zip",
+      "secret": "114514",
+      "default_mode": "规则",
+      "access_control_allow_origin": [
+        "https://board.zash.run.place"
+      ],
+      "access_control_allow_private_network": true
+    }
+  }
+}
