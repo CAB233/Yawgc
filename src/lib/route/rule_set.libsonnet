@@ -37,6 +37,13 @@
         download_detour: '直连',
       },
       {
+        tag: 'geosite-connectivity-check',
+        type: 'remote',
+        format: 'binary',
+        url: 'https://repo-eo.zuoye.win/ruleset/geosite-connectivity-check.srs',
+        download_detour: '直连',
+      },
+      {
         tag: 'geoip-cn',
         type: 'remote',
         format: 'binary',

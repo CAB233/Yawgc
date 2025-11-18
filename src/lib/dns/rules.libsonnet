@@ -18,8 +18,7 @@
       // Must realip
       {
         domain: ['lancache.steamcontent.com'],
-        domain_suffix: ['edu.cn'],
-        rule_set: 'geosite-private',
+        rule_set: ['geosite-private', 'geosite-connectivity-check'],
         server: 'dns-local',
       },
 
