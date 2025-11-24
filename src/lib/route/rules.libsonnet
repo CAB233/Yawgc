@@ -33,9 +33,7 @@
             port: 443,
           },
           {
-            rule_set: [
-              'geosite-direct',
-            ],
+            rule_set: 'geosite-direct',
             invert: true,
           },
         ],
