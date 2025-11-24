@@ -3,7 +3,7 @@ function(platform) {
     servers: [
       {
         tag: 'dns-google',
-        type: 'https',
+        type: 'tls',
         server: '8.8.8.8',
         detour: '代理',
       },
