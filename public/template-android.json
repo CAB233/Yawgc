@@ -6,7 +6,7 @@
   "dns": {
     "servers": [
       {
-        "type": "https",
+        "type": "tls",
         "tag": "dns-google",
         "detour": "代理",
         "server": "8.8.8.8"
@@ -43,8 +43,10 @@
       },
       {
         "domain": "lancache.steamcontent.com",
-        "domain_suffix": "edu.cn",
-        "rule_set": "geosite-private",
+        "rule_set": [
+          "geosite-private",
+          "geosite-connectivity-check"
+        ],
         "server": "dns-local"
       },
       {
@@ -232,6 +234,12 @@
         "type": "remote",
         "tag": "geosite-private",
         "url": "https://repo-eo.zuoye.win/ruleset/geosite-private.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-connectivity-check",
+        "url": "https://repo-eo.zuoye.win/ruleset/geosite-connectivity-check.srs",
         "download_detour": "直连"
       },
       {
