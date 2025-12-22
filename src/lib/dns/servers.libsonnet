@@ -24,7 +24,7 @@ function(platform) {
       {
         tag: 'dns-fakeip',
         type: 'fakeip',
-        inet4_range: '198.51.100.0/24',
+        inet4_range: '28.0.0.0/8',
         inet6_range: '2001:2::/48',
       },
     ],
