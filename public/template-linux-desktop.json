@@ -135,7 +135,8 @@
         "sniffer": [
           "dns",
           "http",
-          "tls"
+          "tls",
+          "quic"
         ]
       },
       {
@@ -152,28 +153,8 @@
         "outbound": "代理"
       },
       {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "network": "udp",
-            "port": 443
-          },
-          {
-            "rule_set": "geosite-direct",
-            "invert": true
-          }
-        ],
-        "action": "reject"
-      },
-      {
         "rule_set": "geosite-reject",
         "action": "reject"
-      },
-      {
-        "rule_set": "geosite-reject-no-drop",
-        "action": "reject",
-        "no_drop": true
       },
       {
         "port": 80,
@@ -191,6 +172,11 @@
         "outbound": "直连"
       },
       {
+        "protocol": "quic",
+        "rule_set": "geosite-proxy",
+        "action": "reject"
+      },
+      {
         "rule_set": "geosite-proxy",
         "outbound": "代理"
       },
@@ -204,6 +190,10 @@
       {
         "ip_is_private": true,
         "outbound": "直连"
+      },
+      {
+        "protocol": "quic",
+        "action": "reject"
       }
     ],
     "rule_set": [
@@ -211,12 +201,6 @@
         "type": "remote",
         "tag": "geosite-reject",
         "url": "https://repo-eo.zuoye.win/ruleset/geosite-reject.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "geosite-reject-no-drop",
-        "url": "https://repo-eo.zuoye.win/ruleset/geosite-reject-no-drop.srs",
         "download_detour": "直连"
       },
       {
