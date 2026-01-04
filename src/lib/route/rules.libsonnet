@@ -9,6 +9,7 @@
           'dns',
           'http',
           'tls',
+          'quic',
         ],
       },
       {
@@ -23,21 +24,6 @@
       {
         clash_mode: '全局',
         outbound: '代理',
-      },
-      {
-        type: 'logical',
-        mode: 'and',
-        rules: [
-          {
-            network: 'udp',
-            port: 443,
-          },
-          {
-            rule_set: 'geosite-direct',
-            invert: true,
-          },
-        ],
-        action: 'reject',
       },
       {
         rule_set: 'geosite-reject',
@@ -60,6 +46,11 @@
       },
       {
         rule_set: 'geosite-proxy',
+        protocol: 'quic',
+        action: 'reject',
+      },
+      {
+        rule_set: 'geosite-proxy',
         outbound: '代理',
       },
       {
@@ -72,6 +63,10 @@
       {
         ip_is_private: true,
         outbound: '直连',
+      },
+      {
+        protocol: 'quic',
+        action: 'reject',
       },
     ],
   },
