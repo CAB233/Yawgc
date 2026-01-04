@@ -44,11 +44,6 @@
         action: 'reject',
       },
       {
-        rule_set: 'geosite-reject-no-drop',
-        action: 'reject',
-        no_drop: true,
-      },
-      {
         rule_set: 'geoip-telegram',
         port: 80,
         action: 'reject',

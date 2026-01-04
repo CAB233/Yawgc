@@ -9,13 +9,6 @@
         download_detour: '直连',
       },
       {
-        tag: 'geosite-reject-no-drop',
-        type: 'remote',
-        format: 'binary',
-        url: 'https://repo-eo.zuoye.win/ruleset/geosite-reject-no-drop.srs',
-        download_detour: '直连',
-      },
-      {
         tag: 'geosite-direct',
         type: 'remote',
         format: 'binary',
