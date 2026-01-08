@@ -89,8 +89,6 @@
         "fdfe:dcba:9876::1/126"
       ],
       "auto_route": true,
-      "auto_redirect": true,
-      "route_exclude_address_set": "geoip-cn",
       "stack": "mixed"
     }
   ],
