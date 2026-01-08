@@ -12,11 +12,6 @@
         "server": "8.8.8.8"
       },
       {
-        "type": "h3",
-        "tag": "dns-ali",
-        "server": "223.5.5.5"
-      },
-      {
         "type": "dhcp",
         "tag": "dns-local"
       },
@@ -58,14 +53,8 @@
         "rewrite_ttl": 1
       },
       {
-        "ip_accept_any": true,
         "rule_set": "geosite-direct",
         "server": "dns-local"
-      },
-      {
-        "rule_set": "geosite-direct",
-        "server": "dns-ali",
-        "strategy": "ipv4_only"
       },
       {
         "type": "logical",
