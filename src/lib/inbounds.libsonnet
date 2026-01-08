@@ -11,7 +11,7 @@ function(platform) {
         'fdfe:dcba:9876::1/126',
       ],
       strict_route: if (platform != 'linux-desktop') then true else false,
-      auto_redirect: if (platform != 'linux-desktop') then true else false,
+      auto_redirect: if (platform == 'linux-desktop') then true else false,
     },
   ],
 }
