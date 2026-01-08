@@ -8,11 +8,6 @@ function(platform) {
         detour: '代理',
       },
       {
-        tag: 'dns-ali',
-        type: 'h3',
-        server: '223.5.5.5',
-      },
-      {
         tag: 'dns-local',
         type: if (platform == 'android') then 'local' else 'dhcp',
       },

@@ -35,12 +35,6 @@
       {
         rule_set: 'geosite-direct',
         server: 'dns-local',
-        ip_accept_any: true,
-      },
-      {
-        rule_set: 'geosite-direct',
-        server: 'dns-ali',
-        strategy: 'ipv4_only',
       },
 
       // Ref: https://crzidea.com/#/article/introducing-crzidea-doh
