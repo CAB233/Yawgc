@@ -1,6 +1,11 @@
 {
   route: {
     rules: [
+      // pre-match like, need global fakeip
+      {
+        rule_set: 'geosite-reject',
+        action: 'reject',
+      },
       {
         rule_set: 'geoip-telegram',
         invert: true,
@@ -24,10 +29,6 @@
       {
         clash_mode: '全局',
         outbound: '代理',
-      },
-      {
-        rule_set: 'geosite-reject',
-        action: 'reject',
       },
       {
         rule_set: 'geoip-telegram',
