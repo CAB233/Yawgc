@@ -6,6 +6,9 @@ on:
       - 'main'
     paths:
       - 'src/**'
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 env: 
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   SING_BOX_VERSION: 1.12.8
