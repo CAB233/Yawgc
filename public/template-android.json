@@ -118,6 +118,10 @@
   "route": {
     "rules": [
       {
+        "rule_set": "geosite-reject",
+        "action": "reject"
+      },
+      {
         "rule_set": "geoip-telegram",
         "invert": true,
         "action": "sniff",
@@ -140,10 +144,6 @@
       {
         "clash_mode": "全局",
         "outbound": "代理"
-      },
-      {
-        "rule_set": "geosite-reject",
-        "action": "reject"
       },
       {
         "port": 80,
