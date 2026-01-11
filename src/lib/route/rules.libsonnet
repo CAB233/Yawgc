@@ -1,6 +1,14 @@
-{
+function(platform) {
   route: {
-    rules: [
+    rules: [] + (
+      // for some apps like qBittorrent
+      if (platform != 'linux-desktop') then [] else [
+        {
+          inbound: 'socks-in',
+          outbound: '直连',
+        },
+      ]
+    ) + [
       // pre-match like, need global fakeip
       {
         rule_set: 'geosite-reject',

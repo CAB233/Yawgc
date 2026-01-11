@@ -13,5 +13,15 @@ function(platform) {
       strict_route: if (platform != 'linux-desktop') then true else false,
       auto_redirect: if (platform == 'linux-desktop') then true else false,
     },
-  ],
+  ] + (
+    // for some apps like qBittorrent
+    if (platform != 'linux-desktop') then [] else [
+      {
+        type: 'socks',
+        tag: 'socks-in',
+        listen: '127.0.0.1',
+        listen_port: 7921,
+      },
+    ]
+  ),
 }
