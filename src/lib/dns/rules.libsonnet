@@ -17,7 +17,6 @@
 
       // Must realip
       {
-        domain: ['lancache.steamcontent.com'],
         rule_set: ['geosite-private', 'geosite-connectivity-check'],
         server: 'dns-local',
       },
