@@ -37,7 +37,6 @@
         "server": "dns-google"
       },
       {
-        "domain": "lancache.steamcontent.com",
         "rule_set": [
           "geosite-private",
           "geosite-connectivity-check"
