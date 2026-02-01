@@ -121,18 +121,6 @@
         "action": "reject"
       },
       {
-        "rule_set": "geoip-telegram",
-        "invert": true,
-        "action": "sniff",
-        "sniffer": [
-          "dns",
-          "http",
-          "tls",
-          "quic"
-        ]
-      },
-      {
-        "protocol": "dns",
         "port": 53,
         "action": "hijack-dns"
       },
@@ -160,7 +148,8 @@
         "outbound": "直连"
       },
       {
-        "protocol": "quic",
+        "network": "udp",
+        "port": 443,
         "rule_set": "geosite-proxy",
         "action": "reject"
       },
@@ -180,7 +169,8 @@
         "outbound": "直连"
       },
       {
-        "protocol": "quic",
+        "network": "udp",
+        "port": 443,
         "action": "reject"
       }
     ],
