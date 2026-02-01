@@ -15,19 +15,7 @@ function(platform) {
         action: 'reject',
       },
       {
-        rule_set: 'geoip-telegram',
-        invert: true,
-        action: 'sniff',
-        sniffer: [
-          'dns',
-          'http',
-          'tls',
-          'quic',
-        ],
-      },
-      {
         port: 53,
-        protocol: 'dns',
         action: 'hijack-dns',
       },
       {
@@ -55,7 +43,8 @@ function(platform) {
       },
       {
         rule_set: 'geosite-proxy',
-        protocol: 'quic',
+        port: 443,
+        network: 'udp',
         action: 'reject',
       },
       {
@@ -74,7 +63,8 @@ function(platform) {
         outbound: '直连',
       },
       {
-        protocol: 'quic',
+        port: 443,
+        network: 'udp',
         action: 'reject',
       },
     ],
