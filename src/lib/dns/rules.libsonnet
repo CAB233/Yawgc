@@ -14,13 +14,11 @@
         clash_mode: '全局',
         server: 'dns-google',
       },
-
-      // Must realip
       {
+        // Must realip
         rule_set: ['geosite-private', 'geosite-connectivity-check'],
         server: 'dns-local',
       },
-
       {
         query_type: [
           'A',
@@ -29,15 +27,12 @@
         rewrite_ttl: 1,
         server: 'dns-fakeip',
       },
-
-      // Must be resolved in CN.
       {
         rule_set: 'geosite-direct',
         server: 'dns-local',
       },
-
-      // Ref: https://crzidea.com/#/article/introducing-crzidea-doh
       {
+        // Ref: https://crzidea.com/#/article/introducing-crzidea-doh
         type: 'logical',
         mode: 'and',
         rules: [
