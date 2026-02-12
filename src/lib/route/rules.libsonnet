@@ -11,6 +11,13 @@ function(platform) {
     ) + [
       // pre-match like, need global fakeip
       {
+        // https://github.com/telegramdesktop/tdesktop/issues/28453
+        rule_set: 'geoip-telegram',
+        port: 80,
+        action: 'reject',
+        method: 'drop',
+      },
+      {
         rule_set: 'geosite-reject',
         action: 'reject',
       },
@@ -25,12 +32,6 @@ function(platform) {
       {
         clash_mode: '全局',
         outbound: '代理',
-      },
-      {
-        rule_set: 'geoip-telegram',
-        port: 80,
-        action: 'reject',
-        method: 'drop',
       },
       {
         port: 123,
