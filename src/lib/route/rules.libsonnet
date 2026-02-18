@@ -12,13 +12,13 @@ function(platform) {
       // pre-match like, need global fakeip
       {
         // https://github.com/telegramdesktop/tdesktop/issues/28453
-        rule_set: 'geoip-telegram',
+        rule_set: 'ip/telegram',
         port: 80,
         action: 'reject',
         method: 'drop',
       },
       {
-        rule_set: 'geosite-reject',
+        rule_set: 'domain/reject',
         action: 'reject',
       },
       {
@@ -39,24 +39,45 @@ function(platform) {
         outbound: '直连',
       },
       {
-        rule_set: 'geosite-direct',
+        // For Must direct rules
+        rule_set: 'domain/game-download',
         outbound: '直连',
       },
       {
-        rule_set: 'geosite-proxy',
+        rule_set: 'domain/china-list',
+        action: 'resolve',
+      },
+      {
+        rule_set: [
+          'domain/cdn',
+          'domain/stream',
+          'domain/telegram',
+          'domain/download',
+          'domain/microsoft',
+          'domain/ai',
+          'domain/global',
+        ],
         port: 443,
         network: 'udp',
         action: 'reject',
       },
       {
-        rule_set: 'geosite-proxy',
+        rule_set: [
+          'domain/cdn',
+          'domain/stream',
+          'domain/telegram',
+          'domain/download',
+          'domain/microsoft',
+          'domain/ai',
+          'domain/global',
+        ],
         outbound: '代理',
       },
       {
         action: 'resolve',
       },
       {
-        rule_set: 'geoip-cn',
+        rule_set: 'ip/cn',
         outbound: '直连',
       },
       {

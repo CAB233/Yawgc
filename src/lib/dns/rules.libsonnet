@@ -16,7 +16,10 @@
       },
       {
         // Must realip
-        rule_set: ['geosite-private', 'geosite-connectivity-check'],
+        rule_set: [
+          'domain/private',
+          'domain/connectivity-check',
+        ],
         server: 'dns-local',
       },
       {
@@ -28,7 +31,10 @@
         server: 'dns-fakeip',
       },
       {
-        rule_set: 'geosite-direct',
+        rule_set: [
+          'domain/game-download',
+          'domain/china-list',
+        ],
         server: 'dns-local',
       },
       {
@@ -37,11 +43,19 @@
         mode: 'and',
         rules: [
           {
-            rule_set: 'geosite-proxy',
+            rule_set: [
+              'domain/cdn',
+              'domain/stream',
+              'domain/telegram',
+              'domain/download',
+              'domain/microsoft',
+              'domain/ai',
+              'domain/global',
+            ],
             invert: true,
           },
           {
-            rule_set: 'geoip-cn',
+            rule_set: 'ip/cn',
           },
         ],
         server: 'dns-google',
