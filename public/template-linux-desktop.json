@@ -39,8 +39,8 @@
       },
       {
         "rule_set": [
-          "geosite-private",
-          "geosite-connectivity-check"
+          "domain/private",
+          "domain/connectivity-check"
         ],
         "server": "dns-local"
       },
@@ -53,7 +53,10 @@
         "rewrite_ttl": 1
       },
       {
-        "rule_set": "geosite-direct",
+        "rule_set": [
+          "domain/game-download",
+          "domain/china-list"
+        ],
         "server": "dns-local"
       },
       {
@@ -61,11 +64,19 @@
         "mode": "and",
         "rules": [
           {
-            "rule_set": "geosite-proxy",
+            "rule_set": [
+              "domain/cdn",
+              "domain/stream",
+              "domain/telegram",
+              "domain/download",
+              "domain/microsoft",
+              "domain/ai",
+              "domain/global"
+            ],
             "invert": true
           },
           {
-            "rule_set": "geoip-cn"
+            "rule_set": "ip/cn"
           }
         ],
         "server": "dns-google",
@@ -129,12 +140,12 @@
       },
       {
         "port": 80,
-        "rule_set": "geoip-telegram",
+        "rule_set": "ip/telegram",
         "action": "reject",
         "method": "drop"
       },
       {
-        "rule_set": "geosite-reject",
+        "rule_set": "domain/reject",
         "action": "reject"
       },
       {
@@ -155,24 +166,44 @@
         "outbound": "直连"
       },
       {
-        "rule_set": "geosite-direct",
+        "rule_set": "domain/game-download",
         "outbound": "直连"
+      },
+      {
+        "rule_set": "domain/china-list",
+        "action": "resolve"
       },
       {
         "network": "udp",
         "port": 443,
-        "rule_set": "geosite-proxy",
+        "rule_set": [
+          "domain/cdn",
+          "domain/stream",
+          "domain/telegram",
+          "domain/download",
+          "domain/microsoft",
+          "domain/ai",
+          "domain/global"
+        ],
         "action": "reject"
       },
       {
-        "rule_set": "geosite-proxy",
+        "rule_set": [
+          "domain/cdn",
+          "domain/stream",
+          "domain/telegram",
+          "domain/download",
+          "domain/microsoft",
+          "domain/ai",
+          "domain/global"
+        ],
         "outbound": "代理"
       },
       {
         "action": "resolve"
       },
       {
-        "rule_set": "geoip-cn",
+        "rule_set": "ip/cn",
         "outbound": "直连"
       },
       {
@@ -188,44 +219,86 @@
     "rule_set": [
       {
         "type": "remote",
-        "tag": "geosite-reject",
-        "url": "https://repo-eo.zuoye.win/ruleset/geosite-reject.srs",
+        "tag": "domain/reject",
+        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-category-ads-all.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
-        "tag": "geosite-direct",
-        "url": "https://repo-eo.zuoye.win/ruleset/geosite-direct.srs",
+        "tag": "domain/game-download",
+        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release2/game-download.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
-        "tag": "geosite-proxy",
-        "url": "https://repo-eo.zuoye.win/ruleset/geosite-proxy.srs",
+        "tag": "domain/china-list",
+        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-china-list.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
-        "tag": "geosite-private",
-        "url": "https://repo-eo.zuoye.win/ruleset/geosite-private.srs",
+        "tag": "domain/cdn",
+        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release2/cdn.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
-        "tag": "geosite-connectivity-check",
-        "url": "https://repo-eo.zuoye.win/ruleset/geosite-connectivity-check.srs",
+        "tag": "domain/stream",
+        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release2/stream.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
-        "tag": "geoip-cn",
-        "url": "https://repo-eo.zuoye.win/ruleset/geoip-cn.srs",
+        "tag": "domain/telegram",
+        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release2/telegram.srs",
         "download_detour": "直连"
       },
       {
         "type": "remote",
-        "tag": "geoip-telegram",
-        "url": "https://repo-eo.zuoye.win/ruleset/geoip-telegram.srs",
+        "tag": "domain/download",
+        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release2/download.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "domain/microsoft",
+        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release2/microsoft.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "domain/ai",
+        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release2/ai.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "domain/global",
+        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release2/global.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "domain/private",
+        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-private.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "domain/connectivity-check",
+        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-connectivity-check.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "ip/cn",
+        "url": "https://testingcf.jsdelivr.net/gh/Loyalsoldier/geoip@release/srs/cn.srs",
+        "download_detour": "直连"
+      },
+      {
+        "type": "remote",
+        "tag": "ip/telegram",
+        "url": "https://testingcf.jsdelivr.net/gh/Loyalsoldier/geoip@release/srs/telegram.srs",
         "download_detour": "直连"
       }
     ],
