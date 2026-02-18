@@ -88,7 +88,8 @@ jobs:
         run: |
           for platform in android windows linux-desktop; do
             echo "[*] Generating config-$platform.json ..."
-            curl -LSso "config-$platform.json" "http://localhost:3000/api/file/$platform"
+            curl -LSso "config-$platform.json.tmp" "http://localhost:3000/api/file/$platform"
+            jq -c . "config-$platform.json.tmp" > "config-$platform.json"
           done
 
           # Only node info
