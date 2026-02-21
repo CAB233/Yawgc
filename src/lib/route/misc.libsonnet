@@ -3,7 +3,6 @@ function(platform) {
     final: '代理',
     find_process: true,
     auto_detect_interface: true,
-    default_domain_resolver: 'dns-local',
   } + (
     if (platform != 'android') then {} else {
       override_android_vpn: true,
