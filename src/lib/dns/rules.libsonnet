@@ -12,6 +12,15 @@
       },
       {
         clash_mode: '全局',
+        query_type: [
+          'A',
+          'AAAA',
+        ],
+        rewrite_ttl: 1,
+        server: 'dns-fakeip',
+      },
+      {
+        clash_mode: '全局',
         server: 'dns-google',
       },
       {
