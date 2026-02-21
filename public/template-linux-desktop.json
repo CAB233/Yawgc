@@ -34,6 +34,15 @@
         "rcode": "NOERROR"
       },
       {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "clash_mode": "全局",
+        "server": "dns-fakeip",
+        "rewrite_ttl": 1
+      },
+      {
         "clash_mode": "全局",
         "server": "dns-google"
       },
@@ -113,7 +122,8 @@
   "outbounds": [
     {
       "type": "direct",
-      "tag": "直连"
+      "tag": "直连",
+      "domain_resolver": "dns-local"
     },
     {
       "type": "selector",
@@ -304,8 +314,7 @@
     ],
     "final": "代理",
     "find_process": true,
-    "auto_detect_interface": true,
-    "default_domain_resolver": "dns-local"
+    "auto_detect_interface": true
   },
   "experimental": {
     "cache_file": {
