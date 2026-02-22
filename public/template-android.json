@@ -166,12 +166,11 @@
         "outbound": "直连"
       },
       {
-        "rule_set": "domain/game-download",
+        "rule_set": [
+          "domain/game-download",
+          "domain/china-list"
+        ],
         "outbound": "直连"
-      },
-      {
-        "rule_set": "domain/china-list",
-        "action": "resolve"
       },
       {
         "network": "udp",
@@ -232,7 +231,7 @@
       {
         "type": "remote",
         "tag": "domain/china-list",
-        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-china-list.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-geolocation-cn.srs",
         "download_detour": "直连"
       },
       {
