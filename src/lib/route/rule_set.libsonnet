@@ -19,7 +19,7 @@
         tag: 'domain/china-list',
         type: 'remote',
         format: 'binary',
-        url: 'https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-china-list.srs',
+        url: 'https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-geolocation-cn.srs',
         download_detour: '直连',
       },
       {

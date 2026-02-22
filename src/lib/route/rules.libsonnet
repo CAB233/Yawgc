@@ -39,13 +39,11 @@ function(platform) {
         outbound: '直连',
       },
       {
-        // For Must direct rules
-        rule_set: 'domain/game-download',
+        rule_set: [
+          'domain/game-download',
+          'domain/china-list',
+        ],
         outbound: '直连',
-      },
-      {
-        rule_set: 'domain/china-list',
-        action: 'resolve',
       },
       {
         rule_set: [
