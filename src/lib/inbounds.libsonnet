@@ -12,7 +12,13 @@ function(platform) {
       ],
       strict_route: if (platform != 'linux-desktop') then true else false,
       auto_redirect: if (platform == 'linux-desktop') then true else false,
-    },
+    } + (
+      // https://github.com/SagerNet/sing-box/issues/3660
+      // https://github.com/SagerNet/sing-box/issues/3760
+      if (platform != 'android') then {} else {
+        include_package: 'io.nekohasekai.sfa',
+      }
+    ),
   ] + (
     // for some apps like qBittorrent
     if (platform != 'linux-desktop') then [] else [
