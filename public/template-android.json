@@ -110,7 +110,6 @@
       ],
       "auto_route": true,
       "strict_route": true,
-      "include_package": "io.nekohasekai.sfa",
       "stack": "mixed"
     }
   ],
