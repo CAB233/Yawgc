@@ -3,7 +3,6 @@
     {
       type: 'direct',
       tag: '直连',
-      domain_resolver: 'dns-local',
     },
     {
       type: 'selector',
