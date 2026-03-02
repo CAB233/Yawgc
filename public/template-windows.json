@@ -116,8 +116,7 @@
   "outbounds": [
     {
       "type": "direct",
-      "tag": "直连",
-      "domain_resolver": "dns-local"
+      "tag": "直连"
     },
     {
       "type": "selector",
@@ -303,7 +302,8 @@
     ],
     "final": "代理",
     "find_process": true,
-    "auto_detect_interface": true
+    "auto_detect_interface": true,
+    "default_domain_resolver": "dns-local"
   },
   "experimental": {
     "cache_file": {
