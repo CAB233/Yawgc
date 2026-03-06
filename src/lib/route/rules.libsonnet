@@ -11,6 +11,21 @@ function(platform) {
     ) + [
       // pre-match like, need global fakeip
       {
+        // reject IPv6 traffic when no real IPv6 is available
+        type: 'logical',
+        mode: 'and',
+        rules: [
+          {
+            ip_version: 6,
+          },
+          {
+            default_interface_address: '2000::/3',
+            invert: true,
+          },
+        ],
+        action: 'reject',
+      },
+      {
         // https://github.com/telegramdesktop/tdesktop/issues/28453
         rule_set: 'ip/telegram',
         port: 80,
