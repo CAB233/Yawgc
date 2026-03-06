@@ -29,9 +29,17 @@
         "server": "dns-local"
       },
       {
-        "query_type": "HTTPS",
+        "query_type": [
+          "SVCB",
+          "HTTPS"
+        ],
         "action": "predefined",
         "rcode": "NOERROR"
+      },
+      {
+        "rule_set": "domain/reject",
+        "action": "predefined",
+        "rcode": "NXDOMAIN"
       },
       {
         "query_type": [
@@ -160,10 +168,6 @@
       {
         "port": 53,
         "action": "hijack-dns"
-      },
-      {
-        "rule_set": "domain/reject",
-        "action": "reject"
       },
       {
         "clash_mode": "直连",
