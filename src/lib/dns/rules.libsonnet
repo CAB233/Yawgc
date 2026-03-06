@@ -6,7 +6,10 @@
         server: 'dns-local',
       },
       {
-        query_type: 'HTTPS',
+        query_type: [
+          'SVCB',
+          'HTTPS',
+        ],
         action: 'predefined',
         rcode: 'NOERROR',
       },
