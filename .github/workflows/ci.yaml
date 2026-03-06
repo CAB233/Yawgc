@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 env: 
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  SING_BOX_VERSION: 1.12.8
+  SING_BOX_VERSION: 1.13.0
   SUB_STORE_VERSION: 2.20.80
 jobs:
   generate:
