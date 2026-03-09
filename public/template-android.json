@@ -39,7 +39,10 @@
       {
         "rule_set": "domain/reject",
         "action": "predefined",
-        "rcode": "NXDOMAIN"
+        "answer": [
+          "*.\t3600\tIN\tA\t127.0.0.1",
+          "*.\t3600\tIN\tAAAA\t::1"
+        ]
       },
       {
         "query_type": [
@@ -164,6 +167,10 @@
         "rule_set": "ip/telegram",
         "action": "reject",
         "method": "drop"
+      },
+      {
+        "rule_set": "domain/reject",
+        "action": "reject"
       },
       {
         "port": 53,
