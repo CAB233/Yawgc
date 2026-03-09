@@ -37,6 +37,10 @@ function(platform) {
         action: 'hijack-dns',
       },
       {
+        rule_set: 'domain/reject',
+        action: 'reject',
+      },
+      {
         clash_mode: '直连',
         outbound: '直连',
       },

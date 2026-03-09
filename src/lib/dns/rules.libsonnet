@@ -14,11 +14,6 @@
         rcode: 'NOERROR',
       },
       {
-        rule_set: 'domain/reject',
-        action: 'predefined',
-        rcode: 'NXDOMAIN',
-      },
-      {
         clash_mode: '全局',
         query_type: [
           'A',
