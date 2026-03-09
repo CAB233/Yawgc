@@ -33,12 +33,12 @@ function(platform) {
         method: 'drop',
       },
       {
-        port: 53,
-        action: 'hijack-dns',
-      },
-      {
         rule_set: 'domain/reject',
         action: 'reject',
+      },
+      {
+        port: 53,
+        action: 'hijack-dns',
       },
       {
         clash_mode: '直连',
