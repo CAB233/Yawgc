@@ -14,6 +14,14 @@
         rcode: 'NOERROR',
       },
       {
+        rule_set: 'domain/reject',
+        action: 'predefined',
+        answer: [
+          '*. 3600 IN A 127.0.0.1',
+          '*. 3600 IN AAAA ::1',
+        ],
+      },
+      {
         clash_mode: '全局',
         query_type: [
           'A',

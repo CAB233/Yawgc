@@ -9,7 +9,6 @@ function(platform) {
         },
       ]
     ) + [
-      // pre-match like, need global fakeip
       {
         // reject IPv6 traffic when no real IPv6 is available
         type: 'logical',
@@ -36,6 +35,10 @@ function(platform) {
         rule_set: 'domain/reject',
         action: 'reject',
       },
+      //{
+      //  // pre-matching before sniffing and requires tun and fakeip
+      //  action: 'sniff',
+      //},
       {
         port: 53,
         action: 'hijack-dns',
