@@ -9,13 +9,6 @@
         download_detour: '直连',
       },
       {
-        tag: 'domain/game-download',
-        type: 'remote',
-        format: 'binary',
-        url: 'https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release2/game-download.srs',
-        download_detour: '直连',
-      },
-      {
         tag: 'domain/china-list',
         type: 'remote',
         format: 'binary',

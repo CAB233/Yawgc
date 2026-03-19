@@ -57,9 +57,12 @@ function(platform) {
         outbound: '直连',
       },
       {
-        rule_set: [
-          'domain/game-download',
-          'domain/china-list',
+        rule_set: 'domain/china-list',
+        // Now only for Steam download
+        // https://www.dogfight360.com/blog/knowledge-base/fix_steamdl_region/
+        domain_suffix: [
+          '.cm.steampowered.com',
+          '.steamserver.net',
         ],
         outbound: '直连',
       },
