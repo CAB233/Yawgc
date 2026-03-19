@@ -73,10 +73,11 @@
         "rewrite_ttl": 1
       },
       {
-        "rule_set": [
-          "domain/game-download",
-          "domain/china-list"
+        "domain_suffix": [
+          ".cm.steampowered.com",
+          ".steamserver.net"
         ],
+        "rule_set": "domain/china-list",
         "server": "dns-local"
       },
       {
@@ -190,10 +191,11 @@
         "outbound": "直连"
       },
       {
-        "rule_set": [
-          "domain/game-download",
-          "domain/china-list"
+        "domain_suffix": [
+          ".cm.steampowered.com",
+          ".steamserver.net"
         ],
+        "rule_set": "domain/china-list",
         "outbound": "直连"
       },
       {
@@ -244,12 +246,6 @@
         "type": "remote",
         "tag": "domain/reject",
         "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-category-ads-all.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "domain/game-download",
-        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release2/game-download.srs",
         "download_detour": "直连"
       },
       {
