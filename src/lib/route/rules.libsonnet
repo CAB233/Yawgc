@@ -97,9 +97,6 @@ function(platform) {
       },
       {
         rule_set: 'ip/cn',
-        outbound: '直连',
-      },
-      {
         ip_is_private: true,
         outbound: '直连',
       },
