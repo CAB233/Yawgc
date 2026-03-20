@@ -67,25 +67,17 @@ jobs:
       - name: Get sub-store
         run: |
           curl \
-            -LSso sub-store/sub-store.js \
-            --create-dirs "https://github.com/sub-store-org/Sub-Store/releases/download/${{ env.SUB_STORE_VERSION }}/sub-store.bundle.js"
+            -LSso sub-store.js \
+            "https://github.com/sub-store-org/Sub-Store/releases/download/${{ env.SUB_STORE_VERSION }}/sub-store.bundle.js"
 
       - name: Get sub-store config
-        working-directory: sub-store
         run: |
           echo "${{ secrets.FILE_CONFIG }}" | base64 --decode > sub-store.json
 
-      - uses: JarvusInnovations/background-action@v1.0.7
-        with:
-          run: |
-            node sub-store.js
-          wait-on: |
-            http://localhost:3000
-          working-directory: sub-store
-          log-output: false
-
       - name: Generate config
         run: |
+          node sub-store.js > /dev/null 2>&1 &
+          sleep 5
           for platform in android windows linux-desktop; do
             echo "[*] Generating config-$platform.json ..."
             curl -LSso "config-$platform.json.tmp" "http://localhost:3000/api/file/$platform"
