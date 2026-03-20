@@ -228,11 +228,8 @@
         "action": "resolve"
       },
       {
-        "rule_set": "ip/cn",
-        "outbound": "直连"
-      },
-      {
         "ip_is_private": true,
+        "rule_set": "ip/cn",
         "outbound": "直连"
       },
       {
