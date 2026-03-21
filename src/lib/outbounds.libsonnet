@@ -16,7 +16,6 @@
     {
       type: 'urltest',
       tag: '自动',
-      url: 'https://cp.cloudflare.com/generate_204',
       interrupt_exist_connections: true,
       outbounds: [],
     },
