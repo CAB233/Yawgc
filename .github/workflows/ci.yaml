@@ -29,7 +29,8 @@ jobs:
           sudo apt-get update -y
           sudo apt-get install jsonnet just
           curl -fsSL https://sing-box.app/install.sh | sh -s -- --version "${{ env.SING_BOX_VERSION }}"
-          
+          curl -LSso sub-store.js "https://github.com/sub-store-org/Sub-Store/releases/download/${{ env.SUB_STORE_VERSION }}/sub-store.bundle.js"
+
           jsonnet --version
           just --version
           sing-box version
@@ -45,38 +46,33 @@ jobs:
           commit_user_name: YanamiChan[bot]
           commit_user_email: 182213109+YanamiChan[bot]@users.noreply.github.com
           commit_author: YanamiChan[bot] <182213109+YanamiChan[bot]@users.noreply.github.com>
-  build:
-    runs-on: ubuntu-24.04
-    needs: generate
-    steps:
+
       - uses: actions/setup-node@v6
         with:
-          node-version: "20"
-
-      - name: Get sub-store
-        run: |
-          curl \
-            -LSso sub-store.js \
-            "https://github.com/sub-store-org/Sub-Store/releases/download/${{ env.SUB_STORE_VERSION }}/sub-store.bundle.js"
+          node-version: '20'
 
       - name: Get sub-store config
-        run: |
-          echo "${{ secrets.FILE_CONFIG }}" | base64 --decode > sub-store.json
+        run: echo "${{ secrets.FILE_CONFIG }}" | base64 --decode > sub-store.json
 
       - name: Generate config
         run: |
+          just generate true
+          python3 -m http.server 8000 --directory public/ > /dev/null 2>&1 &
+          sleep 1
+
           node sub-store.js > /dev/null 2>&1 &
-          sleep 5
+          sleep 1
+          mkdir output
           for platform in android windows linux-desktop; do
-            echo "[*] Generating config-$platform.json ..."
+            echo "[INFO] Generating config-$platform.json ..."
             curl -LSso "config-$platform.json.tmp" "http://localhost:3000/api/file/$platform"
-            jq -c . "config-$platform.json.tmp" > "config-$platform.json"
+            jq -c . "config-$platform.json.tmp" > "output/config-$platform.json"
           done
 
           # Only node info
-          curl -LSso mihomo.yaml "http://localhost:3000/download/1?target=ClashMeta"
-          curl -LSso sing-box.json "http://localhost:3000/download/1?target=sing-box"
-          curl -LSso v2ray.txt "http://localhost:3000/download/1?target=URI"
+          curl -LSso output/mihomo.yaml "http://localhost:3000/download/1?target=ClashMeta"
+          curl -LSso output/sing-box.json "http://localhost:3000/download/1?target=sing-box"
+          curl -LSso output/v2ray.txt "http://localhost:3000/download/1?target=URI"
 
       - name: Upload files
         uses: ncipollo/release-action@v1
@@ -86,5 +82,5 @@ jobs:
           allowUpdates: true
           generateReleaseNotes: false
           tag: nightly
-          artifacts: '*.json, mihomo.yaml, v2ray.txt'
+          artifacts: 'output/*.json, output/mihomo.yaml, output/v2ray.txt'
           prerelease: true
