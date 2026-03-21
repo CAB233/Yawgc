@@ -183,14 +183,6 @@
         "action": "reject"
       },
       {
-        "action": "sniff",
-        "sniffer": [
-          "http",
-          "tls",
-          "quic"
-        ]
-      },
-      {
         "port": 53,
         "action": "hijack-dns"
       },
