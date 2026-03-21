@@ -155,10 +155,6 @@
   "route": {
     "rules": [
       {
-        "inbound": "socks-in",
-        "outbound": "直连"
-      },
-      {
         "type": "logical",
         "mode": "and",
         "rules": [
@@ -171,6 +167,10 @@
           }
         ],
         "action": "reject"
+      },
+      {
+        "inbound": "socks-in",
+        "outbound": "直连"
       },
       {
         "port": 80,
