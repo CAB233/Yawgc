@@ -143,7 +143,6 @@
       "type": "urltest",
       "tag": "自动",
       "outbounds": null,
-      "url": "https://cp.cloudflare.com/generate_204",
       "interrupt_exist_connections": true
     }
   ],
