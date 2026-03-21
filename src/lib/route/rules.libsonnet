@@ -1,14 +1,6 @@
 function(platform) {
   route: {
-    rules: [] + (
-      // for some apps like qBittorrent
-      if (platform != 'linux-desktop') then [] else [
-        {
-          inbound: 'socks-in',
-          outbound: '直连',
-        },
-      ]
-    ) + [
+    rules: [
       {
         // reject IPv6 traffic when no real IPv6 is available
         type: 'logical',
@@ -24,6 +16,15 @@ function(platform) {
         ],
         action: 'reject',
       },
+    ] + (
+      // for some apps like qBittorrent
+      if (platform != 'linux-desktop') then [] else [
+        {
+          inbound: 'socks-in',
+          outbound: '直连',
+        },
+      ]
+    ) + [
       {
         // https://github.com/telegramdesktop/tdesktop/issues/28453
         rule_set: 'ip/telegram',
