@@ -36,10 +36,14 @@ function(platform) {
         rule_set: 'domain/reject',
         action: 'reject',
       },
-      //{
-      //  // pre-matching before sniffing and requires tun and fakeip
-      //  action: 'sniff',
-      //},
+    ] + (
+      // pre-matching before sniffing and requires tun and fakeip
+      if (!std.extVar('sniff')) then [] else [
+        {
+          action: 'sniff',
+        },
+      ]
+    ) + [
       {
         port: 53,
         action: 'hijack-dns',

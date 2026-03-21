@@ -1,6 +1,11 @@
 name: Generate
 on:
   workflow_dispatch:
+    inputs:
+      enable_sniff:
+        description: 'Enable sniff'
+        type: bool
+        default: false
   push:
     branches:
       - 'main'
@@ -19,34 +24,18 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Install jsonnet
+      - name: Install tools
         run: |
           sudo apt-get update -y
-          sudo apt-get install jsonnet
-          jsonnet --version
-
-      - name: Install sing-box
-        run: |
+          sudo apt-get install jsonnet just
           curl -fsSL https://sing-box.app/install.sh | sh -s -- --version "${{ env.SING_BOX_VERSION }}"
+          
+          jsonnet --version
+          just --version
           sing-box version
 
-      - name: Generate template config
-        run: |
-          for platform in android windows linux-desktop; do
-            echo "[*] Generating template-$platform.json ..."
-            jsonnet \
-              --output-file "public/template-$platform.json" \
-              --tla-str "platform=$platform" \
-              src/main.jsonnet
-          done
-
-      - name: Format template config
-        working-directory: public
-        run: |
-          for config in *.json; do
-            echo "[*] Formating template-$config ..."
-            sing-box format -w -c "$config"
-          done
+      - name: Generate config
+        run: just generate ${{ inputs.enable_sniff }}
 
       - name: Commit config
         uses: stefanzweifel/git-auto-commit-action@v7
