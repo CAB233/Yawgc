@@ -33,7 +33,7 @@ function(platform) {
         method: 'drop',
       },
       {
-        rule_set: 'domain/reject',
+        rule_set: 'domain/ads',
         action: 'reject',
       },
     ] + (

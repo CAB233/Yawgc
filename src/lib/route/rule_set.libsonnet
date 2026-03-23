@@ -2,7 +2,7 @@
   route: {
     rule_set: [
       {
-        tag: 'domain/reject',
+        tag: 'domain/ads',
         type: 'remote',
         format: 'binary',
         url: 'https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-category-ads-all.srs',

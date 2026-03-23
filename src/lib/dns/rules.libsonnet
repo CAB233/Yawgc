@@ -14,7 +14,7 @@
         rcode: 'NOERROR',
       },
       {
-        rule_set: 'domain/reject',
+        rule_set: 'domain/ads',
         action: 'predefined',
         answer: [
           '*. 3600 IN A 127.0.0.1',
