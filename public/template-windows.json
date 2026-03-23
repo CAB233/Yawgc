@@ -37,7 +37,7 @@
         "rcode": "NOERROR"
       },
       {
-        "rule_set": "domain/reject",
+        "rule_set": "domain/ads",
         "action": "predefined",
         "answer": [
           "*.\t3600\tIN\tA\t127.0.0.1",
@@ -169,7 +169,7 @@
         "method": "drop"
       },
       {
-        "rule_set": "domain/reject",
+        "rule_set": "domain/ads",
         "action": "reject"
       },
       {
@@ -240,7 +240,7 @@
     "rule_set": [
       {
         "type": "remote",
-        "tag": "domain/reject",
+        "tag": "domain/ads",
         "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-category-ads-all.srs",
         "download_detour": "直连"
       },
