@@ -22,19 +22,6 @@
         ],
       },
       {
-        clash_mode: '全局',
-        query_type: [
-          'A',
-          'AAAA',
-        ],
-        rewrite_ttl: 1,
-        server: 'dns-fakeip',
-      },
-      {
-        clash_mode: '全局',
-        server: 'dns-google',
-      },
-      {
         // Must realip
         rule_set: [
           'domain/private',
@@ -49,6 +36,10 @@
         ],
         rewrite_ttl: 1,
         server: 'dns-fakeip',
+      },
+      {
+        clash_mode: '全局',
+        server: 'dns-google',
       },
       {
         rule_set: 'domain/china-list',
