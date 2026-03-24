@@ -45,19 +45,6 @@
         ]
       },
       {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "clash_mode": "全局",
-        "server": "dns-fakeip",
-        "rewrite_ttl": 1
-      },
-      {
-        "clash_mode": "全局",
-        "server": "dns-google"
-      },
-      {
         "rule_set": [
           "domain/private",
           "domain/connectivity-check"
@@ -71,6 +58,10 @@
         ],
         "server": "dns-fakeip",
         "rewrite_ttl": 1
+      },
+      {
+        "clash_mode": "全局",
+        "server": "dns-google"
       },
       {
         "domain_suffix": [
