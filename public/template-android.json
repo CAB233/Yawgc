@@ -76,15 +76,7 @@
         "mode": "and",
         "rules": [
           {
-            "rule_set": [
-              "domain/cdn",
-              "domain/stream",
-              "domain/telegram",
-              "domain/download",
-              "domain/microsoft",
-              "domain/ai",
-              "domain/global"
-            ],
+            "rule_set": "domain/geolocation-!cn",
             "invert": true
           },
           {
@@ -191,27 +183,11 @@
       {
         "network": "udp",
         "port": 443,
-        "rule_set": [
-          "domain/cdn",
-          "domain/stream",
-          "domain/telegram",
-          "domain/download",
-          "domain/microsoft",
-          "domain/ai",
-          "domain/global"
-        ],
+        "rule_set": "domain/geolocation-!cn",
         "action": "reject"
       },
       {
-        "rule_set": [
-          "domain/cdn",
-          "domain/stream",
-          "domain/telegram",
-          "domain/download",
-          "domain/microsoft",
-          "domain/ai",
-          "domain/global"
-        ],
+        "rule_set": "domain/geolocation-!cn",
         "outbound": "代理"
       },
       {
@@ -243,44 +219,8 @@
       },
       {
         "type": "remote",
-        "tag": "domain/cdn",
-        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release2/cdn.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "domain/stream",
-        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release2/stream.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "domain/telegram",
-        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release2/telegram.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "domain/download",
-        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release2/download.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "domain/microsoft",
-        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release2/microsoft.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "domain/ai",
-        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release2/ai.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "domain/global",
-        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release2/global.srs",
+        "tag": "domain/geolocation-!cn",
+        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-geolocation-!cn.srs",
         "download_detour": "直连"
       },
       {
