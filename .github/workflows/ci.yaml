@@ -4,20 +4,25 @@ on:
     inputs:
       enable_sniff:
         description: 'Enable sniff (release)'
-        type: bool
-        default: true
+        type: string
+        required: false
+        default: 'true'
   push:
     branches:
       - 'main'
     paths:
       - 'src/**'
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+
 env: 
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   SING_BOX_VERSION: 1.13.0
   SUB_STORE_VERSION: 2.21.51
+  ENABLE_SNIFF: ${{ github.event.inputs.enable_sniff || 'true' }}
+
 jobs:
   generate:
     runs-on: ubuntu-24.04
@@ -56,7 +61,7 @@ jobs:
 
       - name: Generate config
         run: |
-          just generate ${{ inputs.enable_sniff }}
+          just generate ${{ env.ENABLE_SNIFF }}
           python3 -m http.server 8000 --directory public/ > /dev/null 2>&1 &
           sleep 1
 
