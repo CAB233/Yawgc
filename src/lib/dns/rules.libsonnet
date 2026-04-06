@@ -57,15 +57,7 @@
         mode: 'and',
         rules: [
           {
-            rule_set: [
-              'domain/cdn',
-              'domain/stream',
-              'domain/telegram',
-              'domain/download',
-              'domain/microsoft',
-              'domain/ai',
-              'domain/global',
-            ],
+            rule_set: 'domain/geolocation-!cn',
             invert: true,
           },
           {

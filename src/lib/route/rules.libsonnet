@@ -72,29 +72,13 @@ function(platform) {
         outbound: '直连',
       },
       {
-        rule_set: [
-          'domain/cdn',
-          'domain/stream',
-          'domain/telegram',
-          'domain/download',
-          'domain/microsoft',
-          'domain/ai',
-          'domain/global',
-        ],
+        rule_set: 'domain/geolocation-!cn',
         port: 443,
         network: 'udp',
         action: 'reject',
       },
       {
-        rule_set: [
-          'domain/cdn',
-          'domain/stream',
-          'domain/telegram',
-          'domain/download',
-          'domain/microsoft',
-          'domain/ai',
-          'domain/global',
-        ],
+        rule_set: 'domain/geolocation-!cn',
         outbound: '代理',
       },
       {
