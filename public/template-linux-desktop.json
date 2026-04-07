@@ -88,8 +88,7 @@
       }
     ],
     "final": "dns-google",
-    "independent_cache": true,
-    "cache_capacity": 2048
+    "independent_cache": true
   },
   "certificate": {
     "store": "mozilla"
