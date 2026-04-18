@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> Required version: >= 1.13.0
+> Required version: 1.13.0+
 
 ## Limitation
 
