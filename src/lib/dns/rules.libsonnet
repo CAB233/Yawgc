@@ -2,6 +2,21 @@
   dns: {
     rules: [
       {
+        // reject AAAA when real IPv6 is unavailable
+        type: 'logical',
+        mode: 'and',
+        rules: [
+          {
+            query_type: 'AAAA',
+          },
+          {
+            default_interface_address: '2000::/3',
+            invert: true,
+          },
+        ],
+        action: 'reject',
+      },
+      {
         clash_mode: '直连',
         server: 'dns-local',
       },

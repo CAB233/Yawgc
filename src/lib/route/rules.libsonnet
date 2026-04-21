@@ -2,7 +2,7 @@ function(platform) {
   route: {
     rules: [
       {
-        // reject IPv6 traffic when no real IPv6 is available
+        // reject IPv6 traffic when real IPv6 is unavailable
         type: 'logical',
         mode: 'and',
         rules: [
