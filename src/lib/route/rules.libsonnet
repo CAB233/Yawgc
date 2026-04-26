@@ -1,22 +1,24 @@
 function(platform) {
   route: {
-    rules: [
-      {
-        // reject IPv6 traffic when real IPv6 is unavailable
-        type: 'logical',
-        mode: 'and',
-        rules: [
-          {
-            ip_version: 6,
-          },
-          {
-            default_interface_address: '2000::/3',
-            invert: true,
-          },
-        ],
-        action: 'reject',
-      },
-    ] + (
+    rules: (
+      // reject IPv6 traffic when real IPv6 is unavailable
+      if (platform == 'windows') then [] else [
+        {
+          type: 'logical',
+          mode: 'and',
+          rules: [
+            {
+              ip_version: 6,
+            },
+            {
+              default_interface_address: '2000::/3',
+              invert: true,
+            },
+          ],
+          action: 'reject',
+        },
+      ]
+    ) + (
       // for some apps like qBittorrent
       if (platform != 'linux-desktop') then [] else [
         {
