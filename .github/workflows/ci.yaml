@@ -19,7 +19,6 @@ concurrency:
 
 env: 
   SING_BOX_VERSION: 1.13.0
-  SUB_STORE_VERSION: 2.24.5
   ENABLE_SNIFF: ${{ github.event.inputs.enable_sniff || 'true' }}
 
 jobs:
@@ -33,7 +32,6 @@ jobs:
           sudo apt-get update -y
           sudo apt-get install jsonnet just
           GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} curl -fsSL https://sing-box.app/install.sh | sh -s -- --version "${{ env.SING_BOX_VERSION }}"
-          curl -LSso sub-store.js "https://github.com/sub-store-org/Sub-Store/releases/download/${{ env.SUB_STORE_VERSION }}/sub-store.bundle.js"
 
           echo "::notice title=Jsonnet version::$(jsonnet --version)"
           echo "::notice title=Just version::$(just --version)"
@@ -50,41 +48,3 @@ jobs:
           commit_user_name: YanamiChan[bot]
           commit_user_email: 182213109+YanamiChan[bot]@users.noreply.github.com
           commit_author: YanamiChan[bot] <182213109+YanamiChan[bot]@users.noreply.github.com>
-
-      - uses: actions/setup-node@v6
-        with:
-          node-version: '20'
-
-      - name: Get sub-store config
-        run: echo "${{ secrets.FILE_CONFIG }}" | base64 --decode > sub-store.json
-
-      - name: Generate config
-        run: |
-          just generate ${{ env.ENABLE_SNIFF }}
-          python3 -m http.server 8000 --directory public/ > /dev/null 2>&1 &
-          sleep 1
-
-          node sub-store.js > /dev/null 2>&1 &
-          sleep 1
-          mkdir output
-          for platform in android windows linux-desktop; do
-            echo "[INFO] Generating config-$platform.json ..."
-            curl -LSso "config-$platform.json.tmp" "http://localhost:3000/api/file/$platform"
-            jq -c . "config-$platform.json.tmp" > "output/config-$platform.json"
-          done
-
-          # Only node info
-          curl -LSso output/mihomo.yaml "http://localhost:3000/download/1?target=ClashMeta"
-          curl -LSso output/sing-box.json "http://localhost:3000/download/1?target=sing-box"
-          curl -LSso output/v2ray.txt "http://localhost:3000/download/1?target=URI"
-
-      - name: Upload files
-        uses: ncipollo/release-action@v1
-        with:
-          artifactErrorsFailBuild: true
-          removeArtifacts: true
-          allowUpdates: true
-          generateReleaseNotes: false
-          tag: nightly
-          artifacts: 'output/*.json, output/mihomo.yaml, output/v2ray.txt'
-          prerelease: true
