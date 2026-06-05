@@ -42,7 +42,6 @@
           'domain/private',
           'domain/connectivity-check',
         ],
-        disable_cache: true,
         server: 'dns-local',
       },
       {
@@ -55,7 +54,7 @@
       },
       {
         clash_mode: '全局',
-        server: 'dns-final',
+        server: 'dns-google',
       },
       {
         rule_set: 'domain/china-list',
@@ -67,18 +66,21 @@
         ],
         server: 'dns-local',
       },
-      // Ref: https://crzidea.com/#/article/introducing-crzidea-doh
       {
-        rule_set: 'domain/geolocation-!cn',
-        invert: true,
-        action: 'evaluate',
-        server: 'dns-pure',
+        // Ref: https://crzidea.com/#/article/introducing-crzidea-doh
+        type: 'logical',
+        mode: 'and',
+        rules: [
+          {
+            rule_set: 'domain/geolocation-!cn',
+            invert: true,
+          },
+          {
+            rule_set: 'ip/cn',
+          },
+        ],
+        server: 'dns-google',
         client_subnet: '42.159.128.1/32',
-      },
-      {
-        match_response: true,
-        rule_set: 'ip/cn',
-        action: 'respond',
       },
     ],
   },
