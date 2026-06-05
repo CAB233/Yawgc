@@ -18,7 +18,6 @@ concurrency:
   cancel-in-progress: true
 
 env: 
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   SING_BOX_VERSION: 1.13.0
   SUB_STORE_VERSION: 2.24.5
   ENABLE_SNIFF: ${{ github.event.inputs.enable_sniff || 'true' }}
@@ -33,7 +32,7 @@ jobs:
         run: |
           sudo apt-get update -y
           sudo apt-get install jsonnet just
-          curl -fsSL https://sing-box.app/install.sh | sh -s -- --version "${{ env.SING_BOX_VERSION }}"
+          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} curl -fsSL https://sing-box.app/install.sh | sh -s -- --version "${{ env.SING_BOX_VERSION }}"
           curl -LSso sub-store.js "https://github.com/sub-store-org/Sub-Store/releases/download/${{ env.SUB_STORE_VERSION }}/sub-store.bundle.js"
 
           echo "::notice title=Jsonnet version::$(jsonnet --version)"
