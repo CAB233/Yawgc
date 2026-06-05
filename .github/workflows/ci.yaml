@@ -36,9 +36,9 @@ jobs:
           curl -fsSL https://sing-box.app/install.sh | sh -s -- --version "${{ env.SING_BOX_VERSION }}"
           curl -LSso sub-store.js "https://github.com/sub-store-org/Sub-Store/releases/download/${{ env.SUB_STORE_VERSION }}/sub-store.bundle.js"
 
-          jsonnet --version
-          just --version
-          sing-box version
+          echo "::notice title=Jsonnet version::$(jsonnet --version)"
+          echo "::notice title=Just version::$(just --version)"
+          echo "::notice title=Sing-box version::$(sing-box version)"
 
       - name: Generate config
         run: just generate false
