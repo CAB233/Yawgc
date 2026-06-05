@@ -1,6 +1,6 @@
 {
   dns: {
-    final: 'dns-google',
-    independent_cache: true,
+    final: 'dns-final',
+    optimistic: true,
   },
 }
