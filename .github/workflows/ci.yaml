@@ -19,7 +19,7 @@ concurrency:
 
 env: 
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  SING_BOX_VERSION: 1.13.13
+  SING_BOX_VERSION: 1.13.0
   SUB_STORE_VERSION: 2.24.5
   ENABLE_SNIFF: ${{ github.event.inputs.enable_sniff || 'true' }}
 
