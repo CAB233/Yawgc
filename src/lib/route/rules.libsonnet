@@ -1,14 +1,6 @@
-function(platform) {
+{
   route: {
-    rules: (
-      // for some apps like qBittorrent
-      if (platform != 'linux-desktop') then [] else [
-        {
-          inbound: 'socks-in',
-          outbound: '直连',
-        },
-      ]
-    ) + [
+    rules: [
       {
         // https://github.com/telegramdesktop/tdesktop/issues/28453
         rule_set: 'ip/telegram',
