@@ -119,12 +119,6 @@
       "auto_route": true,
       "auto_redirect": true,
       "stack": "mixed"
-    },
-    {
-      "type": "socks",
-      "tag": "socks-in",
-      "listen": "127.0.0.1",
-      "listen_port": 7921
     }
   ],
   "outbounds": [
@@ -150,10 +144,6 @@
   ],
   "route": {
     "rules": [
-      {
-        "inbound": "socks-in",
-        "outbound": "直连"
-      },
       {
         "port": 80,
         "rule_set": "ip/telegram",
