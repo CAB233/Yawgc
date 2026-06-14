@@ -59,10 +59,7 @@
         ]
       },
       {
-        "rule_set": [
-          "domain/private",
-          "domain/connectivity-check"
-        ],
+        "rule_set": "domain/private",
         "server": "dns-local"
       },
       {
@@ -226,12 +223,6 @@
         "type": "remote",
         "tag": "domain/private",
         "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-private.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "domain/connectivity-check",
-        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-connectivity-check.srs",
         "download_detour": "直连"
       },
       {
