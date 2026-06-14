@@ -26,7 +26,7 @@
         tag: 'ip/cn',
         type: 'remote',
         format: 'binary',
-        url: 'https://testingcf.jsdelivr.net/gh/Loyalsoldier/geoip@release/srs/cn.srs',
+        url: 'https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release2/china-ip.srs',
         download_detour: '直连',
       },
       {
