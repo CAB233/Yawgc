@@ -56,7 +56,6 @@
         server: 'dns-google',
       },
       {
-        rule_set: 'domain/china-list',
         // Now only for Steam download
         // https://www.dogfight360.com/blog/knowledge-base/fix_steamdl_region/
         domain_suffix: [
