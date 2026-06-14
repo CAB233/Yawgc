@@ -40,7 +40,6 @@
         // Must realip
         rule_set: [
           'domain/private',
-          'domain/connectivity-check',
         ],
         server: 'dns-local',
       },

@@ -30,13 +30,6 @@
         download_detour: '直连',
       },
       {
-        tag: 'domain/connectivity-check',
-        type: 'remote',
-        format: 'binary',
-        url: 'https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-connectivity-check.srs',
-        download_detour: '直连',
-      },
-      {
         tag: 'ip/cn',
         type: 'remote',
         format: 'binary',
