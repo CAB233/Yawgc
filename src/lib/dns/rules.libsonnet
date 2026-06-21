@@ -17,10 +17,6 @@
         action: 'reject',
       },
       {
-        clash_mode: '直连',
-        server: 'dns-local',
-      },
-      {
         query_type: [
           'SVCB',
           'HTTPS',
