@@ -5,7 +5,7 @@
         tag: 'domain/ads',
         type: 'remote',
         format: 'binary',
-        url: 'https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-category-ads-all.srs',
+        url: 'https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release3/adguard-dns-filter.srs',
         download_detour: '直连',
       },
       {
