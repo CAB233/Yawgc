@@ -39,10 +39,6 @@
         "action": "reject"
       },
       {
-        "clash_mode": "直连",
-        "server": "dns-local"
-      },
-      {
         "query_type": [
           "SVCB",
           "HTTPS"
@@ -155,10 +151,6 @@
         "action": "hijack-dns"
       },
       {
-        "clash_mode": "直连",
-        "outbound": "直连"
-      },
-      {
         "clash_mode": "全局",
         "outbound": "代理"
       },
@@ -202,7 +194,7 @@
       {
         "type": "remote",
         "tag": "domain/ads",
-        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-category-ads-all.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release3/adguard-dns-filter.srs",
         "download_detour": "直连"
       },
       {
