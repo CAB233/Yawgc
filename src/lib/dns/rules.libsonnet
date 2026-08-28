@@ -17,9 +17,20 @@
         action: 'reject',
       },
       {
-        query_type: [
-          'SVCB',
-          'HTTPS',
+        // Domain for testing：cloudflare-ech.com, crypto.cloudflare.com
+        type: 'logical',
+        mode: 'and',
+        rules: [
+          {
+            domain: 'cloudflare-ech.com',
+            invert: true,
+          },
+          {
+            query_type: [
+              'SVCB',
+              'HTTPS',
+            ],
+          },
         ],
         action: 'predefined',
         rcode: 'NOERROR',
