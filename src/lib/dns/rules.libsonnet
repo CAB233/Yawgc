@@ -63,12 +63,15 @@
         server: 'dns-google',
       },
       {
+        // Must resolve directly
+        //
         // Now only for Steam download
         // https://www.dogfight360.com/blog/knowledge-base/fix_steamdl_region/
         domain_suffix: [
           '.cm.steampowered.com',
           '.steamserver.net',
         ],
+        domain: 'cloudflare-ech.com',
         server: 'dns-local',
       },
       // Ref: https://crzidea.com/#/article/introducing-crzidea-doh
