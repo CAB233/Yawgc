@@ -60,21 +60,18 @@
         ],
         server: 'dns-local',
       },
+      // Ref: https://crzidea.com/#/article/introducing-crzidea-doh
       {
-        // Ref: https://crzidea.com/#/article/introducing-crzidea-doh
-        type: 'logical',
-        mode: 'and',
-        rules: [
-          {
-            rule_set: 'domain/geolocation-!cn',
-            invert: true,
-          },
-          {
-            rule_set: 'ip/cn',
-          },
-        ],
+        rule_set: 'domain/geolocation-!cn',
+        invert: true,
+        action: 'evaluate',
         server: 'dns-google',
         client_subnet: '42.159.128.1/32',
+      },
+      {
+        match_response: true,
+        rule_set: 'ip/cn',
+        action: 'respond',
       },
     ],
   },
