@@ -1,5 +1,5 @@
 {
-  "$schema": "https://github.com/jiang-zhexin/typebox/releases/latest/download/schema.json",
+  "$schema": "https://sing-box.sagernet.org/schema.json",
   "log": {
     "level": "warn",
     "timestamp": true
@@ -7,14 +7,14 @@
   "dns": {
     "servers": [
       {
-        "type": "tls",
+        "type": "local",
+        "tag": "dns-local"
+      },
+      {
+        "type": "https",
         "tag": "dns-google",
         "detour": "代理",
         "server": "8.8.8.8"
-      },
-      {
-        "type": "local",
-        "tag": "dns-local"
       },
       {
         "type": "fakeip",
@@ -39,9 +39,19 @@
         "action": "reject"
       },
       {
-        "query_type": [
-          "SVCB",
-          "HTTPS"
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "domain": "cloudflare-ech.com",
+            "invert": true
+          },
+          {
+            "query_type": [
+              "SVCB",
+              "HTTPS"
+            ]
+          }
         ],
         "action": "predefined",
         "rcode": "NOERROR"
@@ -71,6 +81,7 @@
         "server": "dns-google"
       },
       {
+        "domain": "cloudflare-ech.com",
         "domain_suffix": [
           ".cm.steampowered.com",
           ".steamserver.net"
@@ -78,27 +89,34 @@
         "server": "dns-local"
       },
       {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "rule_set": "domain/geolocation-!cn",
-            "invert": true
-          },
-          {
-            "rule_set": "ip/cn"
-          }
-        ],
+        "rule_set": "domain/geolocation-!cn",
+        "invert": true,
+        "action": "evaluate",
         "server": "dns-google",
         "client_subnet": "42.159.128.1"
+      },
+      {
+        "rule_set": "ip/cn",
+        "match_response": true,
+        "action": "respond"
       }
     ],
     "final": "dns-google",
-    "independent_cache": true
+    "optimistic": true
   },
   "certificate": {
     "store": "mozilla"
   },
+  "http_clients": [
+    {
+      "tag": "clients-proxy",
+      "engine": "go",
+      "version": 2,
+      "detour": "代理",
+      "stream_receive_window": 0,
+      "connection_receive_window": 0
+    }
+  ],
   "inbounds": [
     {
       "type": "tun",
@@ -229,20 +247,24 @@
     "default_domain_resolver": "dns-local",
     "default_network_strategy": "fallback"
   },
+  "services": [
+    {
+      "type": "api",
+      "listen": "127.0.0.1",
+      "listen_port": 9090,
+      "secret": "114514",
+      "access_control_allow_private_network": true,
+      "dashboard": true
+    }
+  ],
   "experimental": {
     "cache_file": {
       "enabled": true,
       "store_fakeip": true,
-      "store_rdrc": true
+      "store_dns": true
     },
     "clash_api": {
-      "external_controller": "127.0.0.1:9090",
-      "external_ui": "ui",
-      "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist-no-fonts.zip",
-      "secret": "114514",
-      "default_mode": "规则",
-      "access_control_allow_origin": "https://board.zash.run.place",
-      "access_control_allow_private_network": true
+      "default_mode": "规则"
     }
   }
 }
