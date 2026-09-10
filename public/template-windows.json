@@ -82,10 +82,6 @@
       },
       {
         "domain": "cloudflare-ech.com",
-        "domain_suffix": [
-          ".cm.steampowered.com",
-          ".steamserver.net"
-        ],
         "server": "dns-local"
       },
       {
