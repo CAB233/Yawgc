@@ -57,7 +57,10 @@
         "rcode": "NOERROR"
       },
       {
-        "rule_set": "domain/ads",
+        "rule_set": [
+          "domain/adguard-dns-filter",
+          "domain/awavenue-ads-rule"
+        ],
         "action": "predefined",
         "answer": [
           "*.\t3600\tIN\tA\t127.0.0.1",
@@ -157,7 +160,10 @@
         "method": "drop"
       },
       {
-        "rule_set": "domain/ads",
+        "rule_set": [
+          "domain/adguard-dns-filter",
+          "domain/awavenue-ads-rule"
+        ],
         "action": "reject"
       },
       {
@@ -207,33 +213,23 @@
     "rule_set": [
       {
         "type": "remote",
-        "tag": "domain/ads",
-        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release3/adguard-dns-filter.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "domain/geolocation-!cn",
-        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-geolocation-!cn.srs",
-        "download_detour": "直连"
-      },
-      {
-        "type": "remote",
-        "tag": "domain/private",
-        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-private.srs",
-        "download_detour": "直连"
+        "tag": [
+          "domain/adguard-dns-filter",
+          "domain/awavenue-ads-rule",
+          "domain/geolocation-!cn",
+          "domain/private"
+        ],
+        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@artifacts/{tag}.srs"
       },
       {
         "type": "remote",
         "tag": "ip/cn",
-        "url": "https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release2/china-ip.srs",
-        "download_detour": "直连"
+        "url": "https://testingcf.jsdelivr.net/gh/duakc/geoip@release/srs/cn.srs"
       },
       {
         "type": "remote",
         "tag": "ip/telegram",
-        "url": "https://testingcf.jsdelivr.net/gh/Loyalsoldier/geoip@release/srs/telegram.srs",
-        "download_detour": "直连"
+        "url": "https://testingcf.jsdelivr.net/gh/Loyalsoldier/geoip@release/srs/telegram.srs"
       }
     ],
     "final": "代理",
@@ -250,7 +246,10 @@
       "listen_port": 9090,
       "secret": "114514",
       "access_control_allow_private_network": true,
-      "dashboard": true
+      "dashboard": {
+        "enabled": true,
+        "http_client": "clients-proxy"
+      }
     }
   ],
   "experimental": {
