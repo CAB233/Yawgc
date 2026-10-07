@@ -2,39 +2,24 @@
   route: {
     rule_set: [
       {
-        tag: 'domain/ads',
+        tag: [
+          'domain/adguard-dns-filter',
+          'domain/awavenue-ads-rule',
+          'domain/geolocation-!cn',
+          'domain/private',
+        ],
         type: 'remote',
-        format: 'binary',
-        url: 'https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release3/adguard-dns-filter.srs',
-        download_detour: '直连',
-      },
-      {
-        tag: 'domain/geolocation-!cn',
-        type: 'remote',
-        format: 'binary',
-        url: 'https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-geolocation-!cn.srs',
-        download_detour: '直连',
-      },
-      {
-        tag: 'domain/private',
-        type: 'remote',
-        format: 'binary',
-        url: 'https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release/geosite-private.srs',
-        download_detour: '直连',
+        url: 'https://testingcf.jsdelivr.net/gh/cab233/yawgrs@artifacts/{tag}.srs',
       },
       {
         tag: 'ip/cn',
         type: 'remote',
-        format: 'binary',
-        url: 'https://testingcf.jsdelivr.net/gh/cab233/yawgrs@release2/china-ip.srs',
-        download_detour: '直连',
+        url: 'https://testingcf.jsdelivr.net/gh/duakc/geoip@release/srs/cn.srs',
       },
       {
         tag: 'ip/telegram',
         type: 'remote',
-        format: 'binary',
         url: 'https://testingcf.jsdelivr.net/gh/Loyalsoldier/geoip@release/srs/telegram.srs',
-        download_detour: '直连',
       },
     ],
   },

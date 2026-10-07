@@ -9,7 +9,10 @@
         method: 'drop',
       },
       {
-        rule_set: 'domain/ads',
+        rule_set: [
+          'domain/adguard-dns-filter',
+          'domain/awavenue-ads-rule',
+        ],
         action: 'reject',
       },
     ] + (

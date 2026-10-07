@@ -36,7 +36,10 @@
         rcode: 'NOERROR',
       },
       {
-        rule_set: 'domain/ads',
+        rule_set: [
+          'domain/adguard-dns-filter',
+          'domain/awavenue-ads-rule',
+        ],
         action: 'predefined',
         answer: [
           '*. 3600 IN A 127.0.0.1',
