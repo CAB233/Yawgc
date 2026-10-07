@@ -8,6 +8,7 @@
       access_control_allow_private_network: true,
       dashboard: {
         enabled: true,
+        http_client: 'clients-proxy',
       },
     },
   ],
